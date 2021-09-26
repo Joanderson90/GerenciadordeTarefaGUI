@@ -29,6 +29,7 @@ public class TarefaTeste {
         tarefa.setDescricao("Task Manager");
         tarefa.setTitulo("Problema 2");
         tarefa.setValidade("29/10/2021");
+        
         assertEquals("Task Manager", tarefa.getDescricao());
         assertEquals("Problema 2", tarefa.getTitulo());
         assertEquals("29/10/2021", tarefa.getValidade());
@@ -36,6 +37,7 @@ public class TarefaTeste {
 	 
 	 @Test
 	 public void testEquals() {
+		 
 		 Tarefa temp = new Tarefa("PBL3", "Sistema Gerenciador de tarefas", "19/10/2021");
 		 assertFalse(temp.equals(tarefa));
 
@@ -44,6 +46,81 @@ public class TarefaTeste {
 
         temp = new Tarefa("PBL4", "Desconhecido");
         assertFalse(temp.equals(tarefa));
+	 }
+	 
+	 @Test 
+	 public void testTarefaIniciaComoPendente() {
+		 
+		 Status esperado = Status.PENDENTE;
+		 Status obtido = tarefa.getStatus();
+		 
+		 assertEquals(esperado, obtido);
+		 
+	 }
+	 
+	 @Test 
+	 public void testMudancaStatusTarefa() {
+		 
+		 Status emExecucao = Status.EM_EXECUCAO;
+		 Status concluida = Status.CONCLUIDA;
+		 Status pendente = Status.PENDENTE;
+		 
+		 tarefa.setStatus(emExecucao);
+		 assertEquals(emExecucao, tarefa.getStatus());
+		 
+		 tarefa.setStatus(concluida);
+		 assertEquals(concluida, tarefa.getStatus());
+		 
+		 tarefa.setStatus(pendente);
+		 assertEquals(pendente, tarefa.getStatus());
+	 }
+	 
+	 @Test
+	 public void testSetTarefaAtrasadaDay(){
+		 
+		 String dataTarefaMenorDataAtual = "25/09/2021"; //Data atual teste: 26/09/2021
+		 tarefa.setValidade(dataTarefaMenorDataAtual);
+		 
+		 
+		 boolean esperado = true;
+		 
+		 boolean obtido = tarefa.getIsAtrasada();
+		 
+		 assertEquals(esperado, obtido);
+		 
+		 
+	 }
+	 
+	 @Test
+	 public void testSetTarefaAtrasadaMonth(){
+		 
+		 String dataTarefaMenorDataAtual = "26/08/2021"; //Data atual teste: 26/09/2021
+		 tarefa.setValidade(dataTarefaMenorDataAtual);
+		 
+		 
+		 boolean esperado = true;
+		 
+		 boolean obtido = tarefa.getIsAtrasada();
+		 
+		 assertEquals(esperado, obtido);
+		 
+		 
+	 }
+	 
+	 @Test
+	 public void testSetTarefaAtrasadaYear(){
+		 
+		 String dataTarefaMenorDataAtual = "26/09/2020"; //Data atual teste: 26/09/2021
+		 tarefa.setValidade(dataTarefaMenorDataAtual);
+		 
+		 
+		 boolean esperado = true;
+		 
+		 boolean obtido = tarefa.getIsAtrasada();
+		 
+		 assertEquals(esperado, obtido);
+		 
+		 
 	 }
 
 }
