@@ -51,40 +51,15 @@ public class Projeto {
 	}
 	
 	public boolean equals(Object obj) {
-		
-		   
-		boolean objIsEqual = false;
         
         if (obj instanceof Projeto){
-        	
-        	boolean tituloIsEqual = false;
-            boolean descricaoIsEqual = false;
-            boolean tarefasIsEqual = false;
-
             Projeto projetoASerComparado = (Projeto) obj;
             
-            String tituloProjetoASerComparado =  projetoASerComparado.getTitulo();
-            String descricaoProjetoASerComparado = projetoASerComparado.getDescricao();
-            List<Tarefa> tarefasProjetoASerComparado = projetoASerComparado.getTarefas();
-            
-            if(tituloProjetoASerComparado == this.getTitulo()) tituloIsEqual = true;
-            
-            if(descricaoProjetoASerComparado == this.getDescricao()) descricaoIsEqual = true;
-            
-            if(tarefasProjetoASerComparado.equals(this.getTarefas())) tarefasIsEqual = true;
-            
-            
-            
-            if(tituloIsEqual && descricaoIsEqual && tarefasIsEqual) {
-            	
-            	objIsEqual = true;
-            }
-            
-            
-
+            return (this.descricao == projetoASerComparado.getDescricao() && this.titulo == projetoASerComparado.getTitulo() &&
+            		this.tarefas.equals(projetoASerComparado.getTarefas()));
         }
         
-        return objIsEqual;
+        return false;
 	}
 
 }

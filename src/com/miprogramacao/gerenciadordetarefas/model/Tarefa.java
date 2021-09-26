@@ -49,44 +49,18 @@ public class Tarefa {
 		this.status = status;
 	}
 	
-	
 	public boolean equals(Object obj) {
-		
-   
-	   boolean objIsEqual = false;
         
         if (obj instanceof Tarefa){
-        	
-        	boolean tituloIsEqual = false;
-            boolean descricaoIsEqual = false;
-            boolean validadeIsEqual = false;
-            boolean statusIsEqual = false;
 
             Tarefa tarefaASerComparada = (Tarefa) obj;
             
-            String tituloTarefaASerComparada =  tarefaASerComparada.getTitulo();
-            String descricaoTarefaASerComparada = tarefaASerComparada.getDescricao();
-            String validadeTarefaASerComparada =  tarefaASerComparada.getValidade();
-            Status statusTarefaASerComparada = tarefaASerComparada.getStatus();
-            
-            if(tituloTarefaASerComparada == this.getTitulo()) tituloIsEqual = true;
-            
-            if(descricaoTarefaASerComparada == this.getDescricao()) descricaoIsEqual = true;
-            
-            if(validadeTarefaASerComparada == this.getValidade()) validadeIsEqual = true;
-            
-            if(statusTarefaASerComparada == this.getStatus()) statusIsEqual = true;
-            
-            if(tituloIsEqual && descricaoIsEqual && validadeIsEqual && statusIsEqual) {
-            	
-            	objIsEqual = true;
-            }
-            
-            
+            return (this.titulo == tarefaASerComparada.getTitulo() && this.descricao == tarefaASerComparada.getDescricao() && 
+    				this.validade == tarefaASerComparada.getValidade() && this.status == tarefaASerComparada.getStatus());
 
         }
         
-        return objIsEqual;
+        return false;
 	}
 
 	public boolean getIsAtrasada() {
