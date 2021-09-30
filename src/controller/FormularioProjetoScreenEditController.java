@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.miprogramacao.gerenciadordetarefas.controller;
+package controller;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import Exceptions.ArgumentoInvalidoException;
+import Exceptions.ObjetoInexistenteException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +34,7 @@ import com.miprogramacao.gerenciadordetarefas.model.*;
  * @author User
  */
 
-public class FormularioProjetoScreenController implements Initializable {
+public class FormularioProjetoScreenEditController implements Initializable {
 	
     @FXML
     private TextField txtTitulo;
@@ -44,9 +45,10 @@ public class FormularioProjetoScreenController implements Initializable {
     private MessageAlert msgAlert = new MessageAlert();
     
     private Projeto temp = new Projeto("temp");
+    private Projeto projetoSelecionado = ProjetosScreenController.getProjetoSelecionado();
 
     @FXML
-    void addAlteracao(ActionEvent event) throws ArgumentoInvalidoException {
+    void addAlteracao(ActionEvent event) throws ArgumentoInvalidoException, ObjetoInexistenteException {
     	
     	String titulo = txtTitulo.getText();
     	String descricao = txtDescricao.getText();
@@ -63,9 +65,9 @@ public class FormularioProjetoScreenController implements Initializable {
         	temp.setTitulo(titulo);
         	temp.setDescricao(descricao);
         	
-        	ProjetosScreenController.setProjetoSalvo(temp);
+        	ProjetosScreenController.setProjetoEditado(temp, projetoSelecionado.getTitulo());
         	
-        	this.msgAlert.getMessageProjetoSalvo();
+        	this.msgAlert.getMessageProjetoEditado();;
         	
         	
     	}
