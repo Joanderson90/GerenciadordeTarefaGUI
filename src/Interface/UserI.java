@@ -1,11 +1,10 @@
 package Interface;
 
-import com.miprogramacao.gerenciadordetarefas.model.Projeto;
-import com.miprogramacao.gerenciadordetarefas.model.Status;
-import com.miprogramacao.gerenciadordetarefas.model.Tarefa;
-
 import Exceptions.ArgumentoInvalidoException;
 import Exceptions.ObjetoInexistenteException;
+import model.Projeto;
+import model.Status;
+import model.Tarefa;
 
 
 

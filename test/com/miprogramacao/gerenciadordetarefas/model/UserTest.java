@@ -8,6 +8,10 @@ import org.junit.Test;
 
 import Exceptions.ArgumentoInvalidoException;
 import Exceptions.ObjetoInexistenteException;
+import model.Projeto;
+import model.Status;
+import model.Tarefa;
+import model.User;
 
 
 

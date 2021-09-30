@@ -1,4 +1,4 @@
-package com.miprogramacao.gerenciadordetarefas.model;
+package model;
 
 import Exceptions.ArgumentoInvalidoException;
 import Exceptions.ObjetoInexistenteException;

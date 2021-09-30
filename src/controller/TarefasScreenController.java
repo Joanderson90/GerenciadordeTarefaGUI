@@ -26,7 +26,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import com.miprogramacao.gerenciadordetarefas.model.*;
+import model.*;
 
 /**
  *
