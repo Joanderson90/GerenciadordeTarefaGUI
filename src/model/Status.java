@@ -1,4 +1,4 @@
-package com.miprogramacao.gerenciadordetarefas.model;
+package model;
 
 public enum Status {
 
