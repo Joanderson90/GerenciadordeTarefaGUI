@@ -6,9 +6,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.Projeto;
-import model.Tarefa;
-
 	
 
 public class ProjetoTest {
@@ -21,9 +18,10 @@ public class ProjetoTest {
 	public void setUp() throws Exception {
 		
 		 projeto = new Projeto("Café dourado", "Aprimoramento do café");
+		 
 		 t1 = new Tarefa("Plantar", "Plantar no vale", "19/10/2021");
 		 t2 = new Tarefa("Germinar", "Germinação NaClO", "19/10/2021");
-		 t1 = new Tarefa("Colheita", "Colher", "19/10/2021");
+		 t3 = new Tarefa("Colheita", "Colher", "19/10/2021");
 	}
 	
 	@Test

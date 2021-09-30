@@ -1,4 +1,4 @@
-package model;
+package com.miprogramacao.gerenciadordetarefas.model;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

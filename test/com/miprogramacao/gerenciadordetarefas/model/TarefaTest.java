@@ -9,11 +9,8 @@ import java.text.ParseException;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.Status;
-import model.Tarefa;
 
-
-public class TarefaTeste {
+public class TarefaTest {
 	
 	private Tarefa tarefa;
 	

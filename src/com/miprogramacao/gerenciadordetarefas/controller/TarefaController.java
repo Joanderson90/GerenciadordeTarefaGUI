@@ -1,4 +1,4 @@
-package controll;
+package com.miprogramacao.gerenciadordetarefas.controller;
 /**
  * Sample Skeleton for 'CadastroTarefas.fxml' Controller Class
  */
