@@ -9,6 +9,11 @@ public class Tarefa {
 	private String validade;
 	private Status status;
 	
+	public Tarefa() {};
+		
+		
+	
+	
 	public Tarefa(String titulo, String descricao, String validade) {
 		
 		this.titulo = titulo;
