@@ -1,7 +1,9 @@
 package com.miprogramacao.gerenciadordetarefas.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
 
 public class Projeto {
 	
@@ -51,15 +53,128 @@ public class Projeto {
 	}
 	
 	public boolean equals(Object obj) {
+		
+		   
+		boolean objIsEqual = false;
         
         if (obj instanceof Projeto){
+        	
+        	boolean tituloIsEqual = false;
+            boolean descricaoIsEqual = false;
+            boolean tarefasIsEqual = false;
+
             Projeto projetoASerComparado = (Projeto) obj;
             
-            return (this.descricao == projetoASerComparado.getDescricao() && this.titulo == projetoASerComparado.getTitulo() &&
-            		this.tarefas.equals(projetoASerComparado.getTarefas()));
+            String tituloProjetoASerComparado =  projetoASerComparado.getTitulo();
+            String descricaoProjetoASerComparado = projetoASerComparado.getDescricao();
+            List<Tarefa> tarefasProjetoASerComparado = projetoASerComparado.getTarefas();
+            
+            if(tituloProjetoASerComparado == this.getTitulo()) tituloIsEqual = true;
+            
+            if(descricaoProjetoASerComparado == this.getDescricao()) descricaoIsEqual = true;
+            
+            if(tarefasProjetoASerComparado.equals(this.getTarefas())) tarefasIsEqual = true;
+            
+            
+            
+            if(tituloIsEqual && descricaoIsEqual && tarefasIsEqual) {
+            	
+            	objIsEqual = true;
+            }
+            
+            
+
         }
         
-        return false;
+        return objIsEqual;
 	}
 
+	@Override
+	public String toString() {
+		
+		return "Titulo:" + titulo + "\n" + "Descrição:" + descricao;
+	}
+	
+	
+	public List<Tarefa> getTarefasPendentes(){
+		
+		List<Tarefa> tarefasCadastradas = this.getTarefas();
+		List<Tarefa> tarefasPendentes = new ArrayList<>();
+		
+		Iterator<Tarefa> it = tarefasCadastradas.iterator();
+		
+		Tarefa tarefaCadastrada = new Tarefa();
+		Status statusPendente = Status.PENDENTE;
+		
+		boolean isTarefaPendente;
+		
+		while(it.hasNext()) {
+			
+			tarefaCadastrada = it.next();
+			
+			isTarefaPendente = tarefaCadastrada.getStatus() == statusPendente;
+			
+			if(isTarefaPendente) tarefasPendentes.add(tarefaCadastrada);
+			
+		}
+		
+		return tarefasPendentes;
+		
+	}
+	
+	
+	public List<Tarefa> getTarefasEmExecucao(){
+		
+		List<Tarefa> tarefasCadastradas = this.getTarefas();
+		List<Tarefa> tarefasEmExecucao = new ArrayList<>();
+		
+		Iterator<Tarefa> it = tarefasCadastradas.iterator();
+		
+		Tarefa tarefaCadastrada = new Tarefa();
+		Status statusEmExecucao = Status.EM_EXECUCAO;
+		
+		boolean isTarefaEmExecucao;
+		
+		while(it.hasNext()) {
+			
+			tarefaCadastrada = it.next();
+			
+			isTarefaEmExecucao = tarefaCadastrada.getStatus() == statusEmExecucao;
+			
+			if(isTarefaEmExecucao) tarefasEmExecucao.add(tarefaCadastrada);
+			
+		}
+		
+		return tarefasEmExecucao;
+		
+	}
+	
+	public List<Tarefa> getTarefasConcluidas(){
+		
+		List<Tarefa> tarefasCadastradas = this.getTarefas();
+		List<Tarefa> tarefasConcluidas = new ArrayList<>();
+		
+		Iterator<Tarefa> it = tarefasCadastradas.iterator();
+		
+		Tarefa tarefaCadastrada = new Tarefa();
+		Status statusConcluida = Status.CONCLUIDA;
+		
+		boolean isTarefaConcluida;
+		
+		while(it.hasNext()) {
+			
+			tarefaCadastrada = it.next();
+			
+			isTarefaConcluida = tarefaCadastrada.getStatus() == statusConcluida;
+			
+			if(isTarefaConcluida) tarefasConcluidas.add(tarefaCadastrada);
+			
+		}
+		
+		return tarefasConcluidas;
+		
+	}
+
+	
+	
 }
