@@ -11,7 +11,9 @@ import Interface.UserI;
 public class User implements UserI{
 	
 	private  List<Projeto> projetos = new ArrayList<>();
+
 	private RenameTaskManager renameTaskManager = new RenameTaskManager();
+
 	
 	public User() {}
 		
@@ -28,6 +30,68 @@ public class User implements UserI{
 
 
 	@Override
+	public boolean renomearTituloProjeto(Projeto p, String newTitulo) throws ArgumentoInvalidoException {
+		
+		if(newTitulo == "" || newTitulo == null) {
+			
+			throw new ArgumentoInvalidoException();
+			
+		}else {
+			
+			boolean isProjetoRenomeado;
+			
+			try {
+				
+				Projeto temp  = buscarProjetoPorTitulo(p.getTitulo());
+				
+				temp.setTitulo(newTitulo);
+				
+				isProjetoRenomeado = true;
+				
+			} catch (Exception e) {
+				
+				isProjetoRenomeado = false;
+				
+			}
+			
+			return isProjetoRenomeado;
+		}
+			
+			
+	}
+
+	@Override
+	public boolean renomearDescricaoProjeto(Projeto p, String newDescricao) throws ArgumentoInvalidoException {
+		
+		if(newDescricao == "" || newDescricao == null) {
+			
+			throw new ArgumentoInvalidoException();
+			
+		}else {
+			
+			boolean isProjetoRenomeado;
+			
+			try {
+				
+				Projeto temp  = buscarProjetoPorTitulo(p.getTitulo());
+				
+				temp.setDescricao(newDescricao);
+				
+				isProjetoRenomeado = true;
+				
+			} catch (Exception e) {
+				
+				isProjetoRenomeado = false;
+				
+			}
+			
+			return isProjetoRenomeado;
+		}
+		
+	}
+
+
+	@Override
 	public boolean excluirProjeto(Projeto p) {
 		
 		boolean isAllTarefasConcluidas = verificarTodasTarefasConcluidas(p);
@@ -41,8 +105,10 @@ public class User implements UserI{
 	}
 	
 	public boolean verificarTodasTarefasConcluidas(Projeto p) {
-	
-			
+
+		
+		boolean hasTarefaConcluida = true;
+		
 		Tarefa tarefaCadastrada;
 		Status statusTarefaCadastrada, pendente, emExecucao;
 		
@@ -52,7 +118,11 @@ public class User implements UserI{
 		List<Tarefa> tarefas = p.getTarefas();
 		Iterator<Tarefa> it = tarefas.iterator();
 		
+
 		while(it.hasNext()) {
+
+		while(it.hasNext() && hasTarefaConcluida) {
+
 			
 			tarefaCadastrada = it.next();
 			statusTarefaCadastrada = tarefaCadastrada.getStatus();
@@ -68,6 +138,7 @@ public class User implements UserI{
 	}
 
 	@Override
+
 	public boolean renomearTitulo(Object obj, String newTitulo) throws ArgumentoInvalidoException{
 		
 		boolean isRenomeado = false;
@@ -155,6 +226,63 @@ public class User implements UserI{
 		
 		return isRenomeado;
 		
+
+	public boolean renomearTituloTarefa(Tarefa t, String newTitulo) throws ArgumentoInvalidoException {
+		
+		if(newTitulo == "" || newTitulo == null) {
+			
+			throw new ArgumentoInvalidoException();
+			
+		}else {
+			
+			boolean isTarefaRenomeada;
+			
+			try {
+				
+				Tarefa temp  = buscarTarefaPorTitulo(t.getTitulo());
+				
+				temp.setTitulo(newTitulo);
+				
+				isTarefaRenomeada = true;
+				
+			} catch (Exception e) {
+				
+				isTarefaRenomeada = false;
+				
+			}
+			
+			return isTarefaRenomeada;
+		}
+	}
+
+	@Override
+	public boolean renomearDescricaoTarefa(Tarefa t, String newDescricao) throws ArgumentoInvalidoException {
+		
+		if(newDescricao == "" || newDescricao == null) {
+			
+			throw new ArgumentoInvalidoException();
+			
+		}else {
+			
+			boolean isTarefaRenomeado;
+			
+			try {
+				
+				Tarefa temp  = buscarTarefaPorTitulo(t.getTitulo());
+				
+				temp.setDescricao(newDescricao);
+				
+				isTarefaRenomeado = true;
+				
+			} catch (Exception e) {
+				
+				isTarefaRenomeado = false;
+				
+			}
+			
+			return isTarefaRenomeado;
+		}
+
 	}
 
 	@Override
@@ -206,8 +334,12 @@ public class User implements UserI{
 		
 		try {
 			
+
 			Projeto projetoQuePossuiTarefa  = buscarProjetoQuePossuiTarefa(t);
 			
+
+			Projeto projetoQuePossuiTarefa  = buscarPrjetoQuePossuiTarefa(t);
+
 			projetoQuePossuiTarefa.getTarefas().remove(t);
 			
 			return true;
@@ -251,7 +383,11 @@ public class User implements UserI{
 	
 
 
+
 	public Projeto buscarProjetoQuePossuiTarefa(Tarefa t) throws ObjetoInexistenteException {
+
+	public Projeto buscarPrjetoQuePossuiTarefa(Tarefa t) throws ObjetoInexistenteException {
+
 		
 		Tarefa tarefaCadastrada;
 		Projeto projetoCadastrado;
