@@ -1,8 +1,9 @@
-/view/
-/com/
+/AllTests.class
 /Exceptions/
 /Interface/
 /Main/
-/controller/
-/model/
+/com/
 /controll/
+/helloFx/
+/model/
+/view/
