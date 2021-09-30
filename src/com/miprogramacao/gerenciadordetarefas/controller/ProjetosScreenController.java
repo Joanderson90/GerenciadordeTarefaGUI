@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controll;
+package com.miprogramacao.gerenciadordetarefas.controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,8 +27,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.*;
-
+import com.miprogramacao.gerenciadordetarefas.model.*;
 
 /**
  *

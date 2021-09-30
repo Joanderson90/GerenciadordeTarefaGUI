@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controll;
+package com.miprogramacao.gerenciadordetarefas.controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,7 +64,7 @@ public class MainScreenController implements Initializable {
     
     public void openNewScreen(String path, String title) throws IOException{
         
-        Parent form = FXMLLoader.load(getClass().getResource("/view/"+path+".fxml"));
+        Parent form = FXMLLoader.load(getClass().getResource("/com.miprogramacao.gerenciadordetarefas.view/"+path+".fxml"));
         
         Stage stage = new Stage();
         stage.setScene(new Scene(form));
