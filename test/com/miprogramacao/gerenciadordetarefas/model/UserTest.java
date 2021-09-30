@@ -10,6 +10,8 @@ import Exceptions.ArgumentoInvalidoException;
 import Exceptions.ObjetoInexistenteException;
 
 
+
+
 public class UserTest {
 
 	private User user;

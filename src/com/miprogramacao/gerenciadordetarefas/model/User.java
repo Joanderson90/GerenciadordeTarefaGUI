@@ -335,12 +335,12 @@ public class User implements UserI{
 		try {
 			
 
-			Projeto projetoQuePossuiTarefa  = buscarProjetoQuePossuiTarefa(t);
+			Projeto projetoQuePossuiTarefa  = buscarPrjetoQuePossuiTarefa(t);
 			
 
-			Projeto projetoQuePossuiTarefa  = buscarPrjetoQuePossuiTarefa(t);
+			Projeto projetoQuePossuiTarefa1  = buscarPrjetoQuePossuiTarefa(t);
 
-			projetoQuePossuiTarefa.getTarefas().remove(t);
+			projetoQuePossuiTarefa1.getTarefas().remove(t);
 			
 			return true;
 			
@@ -384,7 +384,6 @@ public class User implements UserI{
 
 
 
-	public Projeto buscarProjetoQuePossuiTarefa(Tarefa t) throws ObjetoInexistenteException {
 
 	public Projeto buscarPrjetoQuePossuiTarefa(Tarefa t) throws ObjetoInexistenteException {
 

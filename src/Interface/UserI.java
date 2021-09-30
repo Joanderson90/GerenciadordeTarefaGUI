@@ -8,6 +8,7 @@ import Exceptions.ArgumentoInvalidoException;
 import Exceptions.ObjetoInexistenteException;
 
 
+
 public interface UserI {
 	
 	public abstract boolean renomearTituloProjeto(Projeto p, String newTitulo)throws ArgumentoInvalidoException;
