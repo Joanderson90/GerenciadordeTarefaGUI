@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -55,6 +56,15 @@ public class ProjetosScreenController implements Initializable {
     @FXML
     private Button editarProjetoBTN;
     
+    @FXML
+    private MenuButton menuBTN;
+
+    @FXML
+    private MenuItem menuItemNome;
+
+    @FXML
+    private MenuItem menuItemDescricao;
+    
     private  ObservableList<Projeto> obsProjetos;
     
     private static User user = new User();
@@ -83,9 +93,10 @@ public class ProjetosScreenController implements Initializable {
     	
     	
     }
-
+    
+    
     @FXML
-    void editarProjeto(ActionEvent event) throws IOException {
+    void editarDescricao(ActionEvent event) throws IOException {
     	
     	projetoSelecionado = lvProjetos.getSelectionModel().getSelectedItem();
     	
@@ -98,13 +109,33 @@ public class ProjetosScreenController implements Initializable {
     	else {
     		
     		MainScreenController tempMainScreen = new MainScreenController();
-        	tempMainScreen.openNewScreen("FormularioProjetoScreenEdit", "Edição de Projetos");
+        	tempMainScreen.openNewScreen("ProjetoEdicaoDescricao", "Edição de Descrição");
+    		
+    	}
+
+    }
+
+    @FXML
+    void editarNome(ActionEvent event) throws IOException {
+    	
+    	projetoSelecionado = lvProjetos.getSelectionModel().getSelectedItem();
+    	
+    	if(projetoSelecionado == null) {
+    		
+    		this.msgAlert.getMessageProjetoNaoSelecionada();
     		
     	}
     	
-    	
+    	else {
+    		
+    		MainScreenController tempMainScreen = new MainScreenController();
+        	tempMainScreen.openNewScreen("ProjetoEdicaoNomeScreen", "Edição de nome");
+    		
+    	}
+
     }
     
+   
     
 
     @FXML
