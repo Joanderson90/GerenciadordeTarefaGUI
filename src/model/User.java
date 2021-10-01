@@ -1,4 +1,4 @@
-package com.miprogramacao.gerenciadordetarefas.model;
+package model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,6 +11,9 @@ import Interface.UserI;
 public class User implements UserI{
 	
 	private  List<Projeto> projetos = new ArrayList<>();
+
+	private RenameTaskManager renameTaskManager = new RenameTaskManager();
+
 	
 	public User() {}
 		
@@ -25,66 +28,8 @@ public class User implements UserI{
 	}
 	
 
-	@Override
-	public boolean renomearTituloProjeto(Projeto p, String newTitulo) throws ArgumentoInvalidoException {
-		
-		if(newTitulo == "" || newTitulo == null) {
-			
-			throw new ArgumentoInvalidoException();
-			
-		}else {
-			
-			boolean isProjetoRenomeado;
-			
-			try {
-				
-				Projeto temp  = buscarProjetoPorTitulo(p.getTitulo());
-				
-				temp.setTitulo(newTitulo);
-				
-				isProjetoRenomeado = true;
-				
-			} catch (Exception e) {
-				
-				isProjetoRenomeado = false;
-				
-			}
-			
-			return isProjetoRenomeado;
-		}
-			
-			
-	}
+	
 
-	@Override
-	public boolean renomearDescricaoProjeto(Projeto p, String newDescricao) throws ArgumentoInvalidoException {
-		
-		if(newDescricao == "" || newDescricao == null) {
-			
-			throw new ArgumentoInvalidoException();
-			
-		}else {
-			
-			boolean isProjetoRenomeado;
-			
-			try {
-				
-				Projeto temp  = buscarProjetoPorTitulo(p.getTitulo());
-				
-				temp.setDescricao(newDescricao);
-				
-				isProjetoRenomeado = true;
-				
-			} catch (Exception e) {
-				
-				isProjetoRenomeado = false;
-				
-			}
-			
-			return isProjetoRenomeado;
-		}
-		
-	}
 
 	@Override
 	public boolean excluirProjeto(Projeto p) {
@@ -100,6 +45,7 @@ public class User implements UserI{
 	}
 	
 	public boolean verificarTodasTarefasConcluidas(Projeto p) {
+
 		
 		boolean hasTarefaConcluida = true;
 		
@@ -112,22 +58,115 @@ public class User implements UserI{
 		List<Tarefa> tarefas = p.getTarefas();
 		Iterator<Tarefa> it = tarefas.iterator();
 		
-		while(it.hasNext() && hasTarefaConcluida) {
-			
-			tarefaCadastrada = it.next();
-			statusTarefaCadastrada = tarefaCadastrada.getStatus();
-			
-			if(statusTarefaCadastrada == pendente || statusTarefaCadastrada == emExecucao ) {
+
+		while(it.hasNext()) {
+
+			while(it.hasNext() && hasTarefaConcluida) {
 				
-				return false;
+				tarefaCadastrada = it.next();
+				statusTarefaCadastrada = tarefaCadastrada.getStatus();
+				
+				if(statusTarefaCadastrada == pendente || statusTarefaCadastrada == emExecucao ) {
+					
+					return false;
+				}
+				
 			}
-			
+		
 		}
 		
 		return true;
 	}
 
 	@Override
+	public boolean renomearTitulo(Object obj, String newTitulo) throws ArgumentoInvalidoException{
+		
+		boolean isRenomeado = false;
+		boolean isUserContemObj = this.userContemObj(obj);
+		
+		if(isUserContemObj) {
+			
+			try {
+				 
+				 this.renameTaskManager.titleRename(obj, newTitulo);
+				 
+				 isRenomeado = true;
+		
+				
+			} catch (ArgumentoInvalidoException e) {
+				
+				throw new ArgumentoInvalidoException();
+				
+			} catch (ObjetoInexistenteException e) {}
+		}
+		
+		
+		return isRenomeado;
+						
+		
+	}
+	
+	public  boolean userContemObj(Object obj) {
+		
+		boolean userContemObj = false;
+		
+		if(obj instanceof Tarefa) {
+			
+			Tarefa temp  = (Tarefa) obj;
+			
+			try {
+				
+				this.buscarTarefaPorTitulo(temp.getTitulo());
+				
+				userContemObj = true;
+				
+			} catch (ObjetoInexistenteException e) {}
+				
+		}
+		
+		else if(obj instanceof Projeto) {
+			
+			Projeto temp  = (Projeto) obj;
+			
+			try {
+				
+				this.buscarProjetoPorTitulo(temp.getTitulo());
+				
+				userContemObj = true;
+				
+			} catch (ObjetoInexistenteException e) {}
+				
+		}
+		
+		return userContemObj;
+	}
+
+	@Override
+	public boolean renomearDescricao(Object obj, String newDescricao) throws ArgumentoInvalidoException {
+		
+		boolean isRenomeado = false;
+		boolean UserContemObj = this.userContemObj(obj);
+		
+		if(UserContemObj) {
+			
+			try {
+				
+				 this.renameTaskManager.descriptionRename(obj, newDescricao);
+				 
+				 isRenomeado = true;
+		
+				
+			} catch (ArgumentoInvalidoException e) {
+				
+				throw new ArgumentoInvalidoException();
+				
+			} catch (ObjetoInexistenteException e) {}
+		}
+		
+		
+		return isRenomeado;
+	}	
+
 	public boolean renomearTituloTarefa(Tarefa t, String newTitulo) throws ArgumentoInvalidoException {
 		
 		if(newTitulo == "" || newTitulo == null) {
@@ -156,35 +195,7 @@ public class User implements UserI{
 		}
 	}
 
-	@Override
-	public boolean renomearDescricaoTarefa(Tarefa t, String newDescricao) throws ArgumentoInvalidoException {
-		
-		if(newDescricao == "" || newDescricao == null) {
-			
-			throw new ArgumentoInvalidoException();
-			
-		}else {
-			
-			boolean isTarefaRenomeado;
-			
-			try {
-				
-				Tarefa temp  = buscarTarefaPorTitulo(t.getTitulo());
-				
-				temp.setDescricao(newDescricao);
-				
-				isTarefaRenomeado = true;
-				
-			} catch (Exception e) {
-				
-				isTarefaRenomeado = false;
-				
-			}
-			
-			return isTarefaRenomeado;
-		}
-		
-	}
+	
 
 	@Override
 	public boolean mudarValidadeTarefa(Tarefa t, String newValidade) {
@@ -235,7 +246,9 @@ public class User implements UserI{
 		
 		try {
 			
-			Projeto projetoQuePossuiTarefa  = buscarPrjetoQuePossuiTarefa(t);
+		
+			Projeto projetoQuePossuiTarefa  = buscarProjetoQuePossuiTarefa(t);
+
 			projetoQuePossuiTarefa.getTarefas().remove(t);
 			
 			return true;
@@ -279,7 +292,10 @@ public class User implements UserI{
 	
 
 
-	public Projeto buscarPrjetoQuePossuiTarefa(Tarefa t) throws ObjetoInexistenteException {
+
+
+	public Projeto buscarProjetoQuePossuiTarefa(Tarefa t) throws ObjetoInexistenteException {
+
 		
 		Tarefa tarefaCadastrada;
 		Projeto projetoCadastrado;
@@ -352,3 +368,5 @@ public class User implements UserI{
 		
 	
 }
+
+

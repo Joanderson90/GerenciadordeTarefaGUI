@@ -6,6 +6,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import model.Projeto;
+import model.Tarefa;
+
 	
 
 public class ProjetoTest {

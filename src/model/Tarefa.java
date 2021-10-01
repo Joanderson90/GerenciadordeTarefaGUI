@@ -1,4 +1,4 @@
-package com.miprogramacao.gerenciadordetarefas.model;
+package model;
 
 import java.util.Date;
 
@@ -8,6 +8,11 @@ public class Tarefa {
 	private String descricao;
 	private String validade;
 	private Status status;
+	
+	public Tarefa() {};
+		
+		
+	
 	
 	public Tarefa(String titulo, String descricao, String validade) {
 		
@@ -80,4 +85,6 @@ public class Tarefa {
 		
 		
 	}
+	
+	
 }

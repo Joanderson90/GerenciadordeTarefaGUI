@@ -8,6 +8,12 @@ import org.junit.Test;
 
 import Exceptions.ArgumentoInvalidoException;
 import Exceptions.ObjetoInexistenteException;
+import model.Projeto;
+import model.Status;
+import model.Tarefa;
+import model.User;
+
+
 
 
 public class UserTest {
@@ -169,15 +175,15 @@ public class UserTest {
 		user.setProjeto(p2);
 		user.setProjeto(p3);
 		
-		assertTrue(user.renomearTituloProjeto(p1, newTituloP1));
+		assertTrue(user.renomearTitulo(p1, newTituloP1));
 		
 		assertEquals(newTituloP1, p1.getTitulo());
 		
-		assertTrue(user.renomearTituloProjeto(p2, newTituloP2));
+		assertTrue(user.renomearTitulo(p2, newTituloP2));
 		
 		assertEquals(newTituloP2, p2.getTitulo());
 		
-		assertTrue(user.renomearTituloProjeto(p3, newTituloP3));
+		assertTrue(user.renomearTitulo(p3, newTituloP3));
 		
 		assertEquals(newTituloP3, p3.getTitulo());
 		
@@ -189,7 +195,7 @@ public class UserTest {
 		
 		Projeto projetoNaoCadastrado = new  Projeto("Arroz vermelho");
 		
-		assertFalse(user.renomearTituloProjeto(projetoNaoCadastrado, "Arroz"));
+		assertFalse(user.renomearTitulo(projetoNaoCadastrado, "Arroz"));
 		
 		assertEquals("Arroz vermelho", projetoNaoCadastrado.getTitulo());
 			
@@ -203,11 +209,11 @@ public class UserTest {
 		user.setProjeto(p1);
 
 		assertThrows(ArgumentoInvalidoException.class,
-				() -> user.renomearTituloProjeto(p1, null));
+				() -> user.renomearTitulo(p1, null));
 		
 		
 		assertThrows(ArgumentoInvalidoException.class,
-				() -> user.renomearTituloProjeto(p1, ""));
+				() -> user.renomearTitulo(p1, ""));
 		
 		assertEquals("Café dourado", p1.getTitulo());	
 	}
@@ -224,15 +230,15 @@ public class UserTest {
 		user.setProjeto(p2);
 		user.setProjeto(p3);
 		
-		assertTrue(user.renomearDescricaoProjeto(p1, newDescricaoP1));
+		assertTrue(user.renomearDescricao(p1, newDescricaoP1));
 		
 		assertEquals(newDescricaoP1, p1.getDescricao());
 		
-		assertTrue(user.renomearDescricaoProjeto(p2, newDescricaoP2));
+		assertTrue(user.renomearDescricao(p2, newDescricaoP2));
 		
 		assertEquals(newDescricaoP2, p2.getDescricao());
 		
-		assertTrue(user.renomearDescricaoProjeto(p3, newDescricaoP3));
+		assertTrue(user.renomearDescricao(p3, newDescricaoP3));
 		
 		assertEquals(newDescricaoP3, p3.getDescricao());
 		
@@ -333,11 +339,11 @@ public class UserTest {
 		
 		user.setProjeto(p1);
 		
-		assertTrue(user.renomearDescricaoTarefa(t1, newDescricaoT1));
+		assertTrue(user.renomearDescricao(t1, newDescricaoT1));
 		
 		assertEquals(newDescricaoT1, t1.getDescricao());
 		
-		assertTrue(user.renomearDescricaoTarefa(t2, newDescricaoT2));
+		assertTrue(user.renomearDescricao(t2, newDescricaoT2));
 		
 		assertEquals(newDescricaoT2, t2.getDescricao());	
 		
