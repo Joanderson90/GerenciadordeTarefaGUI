@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FormularioTarefaScreenEditController">
+   <children>
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Título">
+                     <VBox.margin>
+                        <Insets left="6.0" top="12.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="txtTitulo">
+                     <VBox.margin>
+                        <Insets left="6.0" top="3.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+               <children>
+                  <Label text="Descrição">
+                     <VBox.margin>
+                        <Insets left="6.0" top="12.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextArea fx:id="txtDescricao" prefHeight="200.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="6.0" top="3.0" />
+                     </VBox.margin>
+                  </TextArea>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+               <children>
+                  <Label text="Validade">
+                     <VBox.margin>
+                        <Insets left="6.0" top="12.0" />
+                     </VBox.margin>
+                  </Label>
+                  <DatePicker fx:id="txtValidade">
+                     <VBox.margin>
+                        <Insets left="6.0" top="3.0" />
+                     </VBox.margin>
+                  </DatePicker>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+               <children>
+                  <Button fx:id="salvarEditTarefaBTN" mnemonicParsing="false" onAction="#salvarEditTarefa" text="Salvar" />
+               </children>
+            </HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+               <children>
+                  <Label text="Status">
+                     <VBox.margin>
+                        <Insets left="6.0" top="12.0" />
+                     </VBox.margin>
+                  </Label>
+                  <RadioButton mnemonicParsing="false" selected="true" text="Pendente">
+                     <VBox.margin>
+                        <Insets left="6.0" top="3.0" />
+                     </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="group" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" text="Concluída" toggleGroup="$group">
+                     <VBox.margin>
+                        <Insets left="6.0" top="3.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" text="Em execução" toggleGroup="$group">
+                     <VBox.margin>
+                        <Insets left="6.0" top="3.0" />
+                     </VBox.margin>
+                  </RadioButton>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

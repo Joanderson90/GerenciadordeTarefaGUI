@@ -167,34 +167,6 @@ public class User implements UserI{
 		return isRenomeado;
 	}	
 
-	public boolean renomearTituloTarefa(Tarefa t, String newTitulo) throws ArgumentoInvalidoException {
-		
-		if(newTitulo == "" || newTitulo == null) {
-			
-			throw new ArgumentoInvalidoException();
-			
-		}else {
-			
-			boolean isTarefaRenomeada;
-			
-			try {
-				
-				Tarefa temp  = buscarTarefaPorTitulo(t.getTitulo());
-				
-				temp.setTitulo(newTitulo);
-				
-				isTarefaRenomeada = true;
-				
-			} catch (Exception e) {
-				
-				isTarefaRenomeada = false;
-				
-			}
-			
-			return isTarefaRenomeada;
-		}
-	}
-
 	
 
 	@Override

@@ -318,11 +318,11 @@ public class UserTest {
 		
 		user.setProjeto(p1);
 		
-		assertTrue(user.renomearTituloTarefa(t1, newTituloT1));
+		assertTrue(user.renomearTitulo(t1, newTituloT1));
 		
 		assertEquals(newTituloT1, t1.getTitulo());
 		
-		assertTrue(user.renomearTituloTarefa(t2, newTituloT2));
+		assertTrue(user.renomearTitulo(t2, newTituloT2));
 		
 		assertEquals(newTituloT2, t2.getTitulo());	
 		

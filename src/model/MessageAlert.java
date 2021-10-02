@@ -56,4 +56,42 @@ public class MessageAlert {
 		
 		alert.show();
 	}
+
+	public void getMessageTarefaSalva() {
+		
+		alert = new Alert(AlertType.CONFIRMATION);
+		alert.setContentText("Tarefa salva com Sucesso!");
+		
+		alert.show();
+		
+	}
+
+	public void getMessageTarefaEditada() {
+		
+		alert = new Alert(AlertType.CONFIRMATION);
+		alert.setContentText("Tarefa editada com Sucesso!");
+		
+		alert.show();
+		
+	}
+
+	public void getMessageTarefaNaoSelecionada() {
+		
+		alert = new Alert(AlertType.WARNING);
+		alert.setContentText("Por favor selecione uma Tarefa!");
+		
+		alert.show();
+		
+	}
+
+	public void getMessageTarefaExcluida() {
+	
+		
+		alert = new Alert(AlertType.CONFIRMATION);
+		alert.setContentText("Tarefa excluído com Sucesso!");
+		
+		alert.show();
+	}
+		
+	
 }
