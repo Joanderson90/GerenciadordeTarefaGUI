@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import Exceptions.ArgumentoInvalidoException;
+import Exceptions.ObjetoInexistenteException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,7 +48,7 @@ public class TarefasScreenController implements Initializable {
     private static ObservableList<Tarefa> obsTarefasPendentes;
     private static ObservableList<Tarefa> obsTarefasConcluidas;
     private static ObservableList<Tarefa> obsTarefasEmExecucao;
-
+    private static Tarefa tarefaSelecionada;
     @FXML
     private Button addNovaTarefaBTN;
 
@@ -60,7 +61,7 @@ public class TarefasScreenController implements Initializable {
     @FXML
     private Button attTarefasBTN;
 	
-    private Projeto projetoQueDetemTarefas = ProjetosScreenController.getProjetoSelecionado();
+    private static Projeto projetoQueDetemTarefas = ProjetosScreenController.getProjetoSelecionado();
     
     private MessageAlert msgAlert = new MessageAlert();
     
@@ -75,24 +76,48 @@ public class TarefasScreenController implements Initializable {
 
     @FXML
     void atualizarTarefas(ActionEvent event) {
-
+    	
+    	loadTarefas();
     }
 
     @FXML
-    void editarTarefa(ActionEvent event) {
+    void editarTarefa(ActionEvent event) throws IOException {
+    	
+    	if(tarefaSelecionada != null) {
+    		
+    		MainScreenController tempMainScreen = new MainScreenController();
+        	tempMainScreen.openNewScreen("FormularioTarefaScreenEdit", "Cadastro Tarefas");
+    	}
+    	
+    	else {
+			
+			this.msgAlert.getMessageTarefaNaoSelecionada();
+		}
 
     }
 
     @FXML
     void excluirTarefa(ActionEvent event) {
+    	
+    	if(tarefaSelecionada != null) {
+    		
+    		projetoQueDetemTarefas.getTarefas().remove(tarefaSelecionada);
+    		
+    		loadTarefas();
+    		
+    		this.msgAlert.getMessageTarefaExcluida();
+    	}
+    	
+    	else {
+			
+			this.msgAlert.getMessageTarefaNaoSelecionada();
+		}
 
     }
     
     
     public void loadTarefas() {
-    	
-    
-    	
+    	    	
     	List<Tarefa> tarefasPendentes  = projetoQueDetemTarefas.getTarefasPendentes();
     	List<Tarefa> tarefasEmExecucao  = projetoQueDetemTarefas.getTarefasEmExecucao();
     	List<Tarefa> tarefasConcluidas  = projetoQueDetemTarefas.getTarefasConcluidas();
@@ -105,6 +130,48 @@ public class TarefasScreenController implements Initializable {
     	lvTarefasPendentes.setItems(obsTarefasPendentes);
     	lvTarefasEmExecucao.setItems(obsTarefasEmExecucao);
     	lvTarefasConcluidas.setItems(obsTarefasConcluidas);
+    }
+    
+    public static void setTarefaSalva(Tarefa newTarefa) {
+    	
+    	projetoQueDetemTarefas.setTarefa(newTarefa);
+    }
+    
+    public static void setTarefaSalva(Tarefa newTarefa, String title) throws ObjetoInexistenteException {
+    	
+    	User userTemp = ProjetosScreenController.getUser();
+    	Tarefa tarefaNaoEditada = userTemp.buscarTarefaPorTitulo(title);
+    	
+    	projetoQueDetemTarefas.getTarefas().remove(tarefaNaoEditada);
+    	
+    	projetoQueDetemTarefas.setTarefa(newTarefa);
+    }
+    
+    public static Tarefa getTarefaSelecionada() {
+    	
+    	return tarefaSelecionada;
+   
+    }
+    
+    
+    @FXML
+    void listInViewConcluidas() {
+    	
+    	
+    	tarefaSelecionada = lvTarefasConcluidas.getSelectionModel().getSelectedItem();
+    }
+    
+
+    @FXML
+    void listInViewEmExecucao() {
+    	
+    	tarefaSelecionada = lvTarefasEmExecucao.getSelectionModel().getSelectedItem();
+    }
+    @FXML
+     void listInViewPendentes() {
+    	 
+    	tarefaSelecionada = lvTarefasPendentes.getSelectionModel().getSelectedItem();
+
     }
 
    

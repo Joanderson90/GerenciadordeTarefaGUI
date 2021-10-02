@@ -63,17 +63,17 @@
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" />
-            <ListView fx:id="lvTarefasPendentes" prefHeight="317.0" prefWidth="166.0" GridPane.rowIndex="1">
+            <ListView fx:id="lvTarefasPendentes" onMouseClicked="#listInViewPendentes" prefHeight="317.0" prefWidth="166.0" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="3.0" left="3.0" />
                </GridPane.margin>
             </ListView>
-            <ListView fx:id="lvTarefasEmExecucao" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ListView fx:id="lvTarefasEmExecucao" onMouseClicked="#listInViewEmExecucao" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="3.0" />
                </GridPane.margin>
             </ListView>
-            <ListView fx:id="lvTarefasConcluidas" prefHeight="200.0" prefWidth="129.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ListView fx:id="lvTarefasConcluidas" onMouseClicked="#listInViewConcluidas" prefHeight="200.0" prefWidth="129.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="3.0" />
                </GridPane.margin>

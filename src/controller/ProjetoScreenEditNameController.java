@@ -66,6 +66,7 @@ public class ProjetoScreenEditNameController implements Initializable {
     		
    		
         	temp.setTitulo(titulo);
+        	temp.setDescricao(projetoSelecionado.getDescricao());
 
         	
         	ProjetosScreenController.setProjetoEditado(temp, projetoSelecionado.getTitulo());

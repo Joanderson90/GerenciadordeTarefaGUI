@@ -67,7 +67,9 @@ public class FormularioProjetoScreenEditController implements Initializable {
         	
         	ProjetosScreenController.setProjetoEditado(temp, projetoSelecionado.getTitulo());
         	
-        	this.msgAlert.getMessageProjetoEditado();;
+        	cleanInfoProjeto();
+        	
+        	this.msgAlert.getMessageProjetoEditado();
         	
         	
     	}
@@ -78,8 +80,21 @@ public class FormularioProjetoScreenEditController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+    	loadInfoProjeto();
         
     }    
+    
+    public void loadInfoProjeto() {
+    	
+    	txtTitulo.setText(projetoSelecionado.getTitulo());
+    	txtDescricao.setText(projetoSelecionado.getDescricao());
+    }
+    
+    public void cleanInfoProjeto() {
+    	
+    	txtTitulo.setText("");
+    	txtDescricao.setText("");
+    }
     
  
 
