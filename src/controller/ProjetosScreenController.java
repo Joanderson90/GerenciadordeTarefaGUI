@@ -96,7 +96,7 @@ public class ProjetosScreenController implements Initializable {
     
     
     @FXML
-    void editarDescricao(ActionEvent event) throws IOException {
+    void editarProjeto(ActionEvent event) throws IOException {
     	
     	projetoSelecionado = lvProjetos.getSelectionModel().getSelectedItem();
     	
@@ -109,31 +109,14 @@ public class ProjetosScreenController implements Initializable {
     	else {
     		
     		MainScreenController tempMainScreen = new MainScreenController();
-        	tempMainScreen.openNewScreen("ProjetoEdicaoDescricao", "Edição de Descrição");
+        	tempMainScreen.openNewScreen("FormularioProjetoScreenEdit", "Edição de Projeto");
     		
     	}
 
     }
 
-    @FXML
-    void editarNome(ActionEvent event) throws IOException {
-    	
-    	projetoSelecionado = lvProjetos.getSelectionModel().getSelectedItem();
-    	
-    	if(projetoSelecionado == null) {
-    		
-    		this.msgAlert.getMessageProjetoNaoSelecionada();
-    		
-    	}
-    	
-    	else {
-    		
-    		MainScreenController tempMainScreen = new MainScreenController();
-        	tempMainScreen.openNewScreen("ProjetoEdicaoNomeScreen", "Edição de nome");
-    		
-    	}
-
-    }
+  
+    
     
    
     
@@ -155,6 +138,9 @@ public class ProjetosScreenController implements Initializable {
     		boolean isProjetoExcluido = user.excluirProjeto(projetoAlvo);
     		
     		if(isProjetoExcluido) {
+    			
+    			
+    			loadProjetos();
     			
     			this.msgAlert.getMessageProjetoExcluida();;
     			
@@ -227,6 +213,10 @@ public class ProjetosScreenController implements Initializable {
 		
 		
 	}    
+	
+	public static User getUser() {
+		return user;
+	}
     
        
     

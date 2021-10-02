@@ -65,11 +65,20 @@ public class FormularioProjetoScreenController implements Initializable {
         	
         	ProjetosScreenController.setProjetoSalvo(temp);
         	
+        	cleanInfoProjeto();
+        	
         	this.msgAlert.getMessageProjetoSalvo();
         	
         	
     	}
     	
+    	
+    }
+    
+    public void cleanInfoProjeto() {
+    	
+    	txtTitulo.setText("");
+    	txtDescricao.setText("");
     	
     }
   

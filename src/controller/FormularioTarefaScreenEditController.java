@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Exceptions.ArgumentoInvalidoException;
+import Exceptions.ObjetoInexistenteException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +22,10 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -30,6 +33,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.MessageAlert;
 import model.Projeto;
+import model.Status;
 import model.Tarefa;
 
 
@@ -38,7 +42,7 @@ import model.Tarefa;
  * @author User
  */
 
-public class FormularioTarefaScreenController implements Initializable {
+public class FormularioTarefaScreenEditController implements Initializable {
 	
 	@FXML
     private TextField txtTitulo;
@@ -48,18 +52,20 @@ public class FormularioTarefaScreenController implements Initializable {
 
     @FXML
     private DatePicker txtValidade;
-
- 
+    
+    @FXML
+    private Button salvarEditTarefaBTN;
 
     @FXML
-    private Button addNovaTarefa;
-    
+    private ToggleGroup group;
+   
     private MessageAlert msgAlert = new MessageAlert();
     
-    private Tarefa newTarefa;
+
+    
 
     @FXML
-    void salvarNovaTarefa(ActionEvent event) {
+    void salvarEditTarefa(ActionEvent event) throws ObjetoInexistenteException {
     	
     	boolean isCampoAnyEmpty  = verificarCampoAnyEmpty();
     	
@@ -70,18 +76,26 @@ public class FormularioTarefaScreenController implements Initializable {
     	
     	else {
     		
-    		String titleTarefa = txtTitulo.getText();
+    		Tarefa tarefaSelecionada = TarefasScreenController.getTarefaSelecionada();
+    		
+
+			String titleTarefa = txtTitulo.getText();
     		String descriptionTarefa = txtDescricao.getText();
     		String dateTarefa = txtValidade.getEditor().getText();
+    		Status statusSelecionado = getStatusSelecionado();
     		
-    		newTarefa = new Tarefa(titleTarefa, descriptionTarefa, dateTarefa);
+    		Tarefa newTarefaEdit = new Tarefa(titleTarefa, descriptionTarefa, dateTarefa);
+    		newTarefaEdit.setStatus(statusSelecionado);
     		
-    		TarefasScreenController.setTarefaSalva(newTarefa);
+    		TarefasScreenController.setTarefaSalva(newTarefaEdit, tarefaSelecionada.getTitulo());
     		
     		cleanInfoTarefa();
     		
-    		this.msgAlert.getMessageTarefaSalva();
+    		this.msgAlert.getMessageTarefaEditada();
     		
+    		
+    		
+	
     	}
     }
   
@@ -106,6 +120,38 @@ public class FormularioTarefaScreenController implements Initializable {
     		
 		return isCampoAnyEmpty;
 	}
+	
+	public Status getStatusSelecionado() {
+		
+		Status statusSelecionado;
+		
+		RadioButton radio = (RadioButton) group.getSelectedToggle();
+		
+		if(radio.getText().equals("Pendente")) {
+			
+			
+			statusSelecionado = Status.PENDENTE;
+		}
+		
+		else if(radio.getText().equals("Concluída")) {
+			
+			
+			statusSelecionado = Status.CONCLUIDA;
+		}
+		
+		else {
+			
+			statusSelecionado = Status.EM_EXECUCAO;
+		}
+		
+		
+		
+		return statusSelecionado;
+		
+		
+	}
+	
+	
 
 	@Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -11,11 +11,13 @@ public class Projeto {
 	private List<Tarefa> tarefas;
 	
 	public Projeto(String titulo) {
+		
 		this.titulo = titulo;
 		this.tarefas = new ArrayList<Tarefa>();
 	}
 	
 	public Projeto(String titulo, String descricao) {
+		
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.tarefas = new ArrayList<Tarefa>();

@@ -85,6 +85,21 @@ public class Tarefa {
 		
 		
 	}
+
+
+
+
+	@Override
+	public String toString() {
+		
+		return "Título: "    +  this.getTitulo()  + "\n" +
+			   "Descrição: " + this.getDescricao() + "\n" +
+			   "Validade: " + this.getValidade();
+			   
+			
+	}
+	
+	
 	
 	
 }
