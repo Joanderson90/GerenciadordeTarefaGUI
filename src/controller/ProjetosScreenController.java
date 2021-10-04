@@ -16,18 +16,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import model.*;
 
 /**
@@ -40,7 +33,6 @@ public class ProjetosScreenController implements Initializable {
 	@FXML
     private  ListView<Projeto> lvProjetos;
 	
-
     @FXML
     private Button novoProjetoBTN;
     
@@ -72,9 +64,7 @@ public class ProjetosScreenController implements Initializable {
     
     private MessageAlert msgAlert = new MessageAlert();
     
-    
-    
-    
+ 
     public void loadProjetos() {
     	
     	List<Projeto> projetosCadastrados = user.getProjetos();
@@ -89,9 +79,7 @@ public class ProjetosScreenController implements Initializable {
     	
     	MainScreenController tempMainScreen = new MainScreenController();
     	tempMainScreen.openNewScreen("FormularioProjetoScreen", "Cadastro Projetos");
-    	
-    	
-    	
+    	 	
     }
     
     
@@ -112,15 +100,9 @@ public class ProjetosScreenController implements Initializable {
         	tempMainScreen.openNewScreen("FormularioProjetoScreenEdit", "Edição de Projeto");
     		
     	}
-
     }
 
   
-    
-    
-   
-    
-
     @FXML
     void excluirProjeto(ActionEvent event) {
     	
@@ -131,9 +113,7 @@ public class ProjetosScreenController implements Initializable {
     		
     		this.msgAlert.getMessageProjetoNaoSelecionada();
     		
-    	}
-    	
-    	else {
+    	} else {
     		
     		boolean isProjetoExcluido = user.excluirProjeto(projetoAlvo);
     		
@@ -151,9 +131,6 @@ public class ProjetosScreenController implements Initializable {
     			this.msgAlert.getMessageTarefasNaoConcluidas();
     		}
     	}
-    	
-    	
-
     }
     
     @FXML
@@ -168,14 +145,10 @@ public class ProjetosScreenController implements Initializable {
 			MainScreenController tempMainScreen = new MainScreenController();
 	    	tempMainScreen.openNewScreen("TarefasScreen", "Tarefas");
 			
-		}
-		
-		else {
+		} else {
 			
 			this.msgAlert.getMessageProjetoNaoSelecionada();
 		}
-    	
-
     }
     
     public static Projeto getProjetoSelecionado() {
@@ -186,10 +159,7 @@ public class ProjetosScreenController implements Initializable {
     public static void setProjetoSalvo(Projeto projeto) throws ArgumentoInvalidoException {
     	
     	user.setProjeto(projeto);
-    	
-    	
     }
-    
     
     @FXML
     void atualizarProjetos(ActionEvent event) {
@@ -211,14 +181,10 @@ public class ProjetosScreenController implements Initializable {
 		
 		user.setProjeto(projetoEditado);
 		
-		
 	}    
 	
 	public static User getUser() {
 		return user;
 	}
-    
-       
-    
     
 }

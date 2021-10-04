@@ -9,10 +9,10 @@ public class Tarefa {
 	private String validade;
 	private Status status;
 	
-	public Tarefa() {};
+	public Tarefa() {
 		
-		
-	
+	}
+			
 	
 	public Tarefa(String titulo, String descricao, String validade) {
 		
@@ -86,9 +86,6 @@ public class Tarefa {
 		
 	}
 
-
-
-
 	@Override
 	public String toString() {
 		
@@ -96,10 +93,6 @@ public class Tarefa {
 			   "Descrição: " + this.getDescricao() + "\n" +
 			   "Validade: " + this.getValidade();
 			   
-			
 	}
-	
-	
-	
 	
 }
