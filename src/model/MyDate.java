@@ -1,7 +1,7 @@
 package model;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class MyDate {
@@ -9,8 +9,6 @@ public class MyDate {
 	private Date date;
 	private SimpleDateFormat dateFormat;
 	
-		
-		
 	
 	public MyDate() {
 		
@@ -46,7 +44,16 @@ public class MyDate {
 	
 	public int compareTo(String date1, String date2) {
 		
-		date1 = date1.replace("/", "");
+		LocalDate ld = LocalDate.of(Integer.parseInt(date1.substring(6, 10)), Integer.parseInt(date1.substring(3, 5)), Integer.parseInt(date1.substring(0, 2)));
+		LocalDate ld2 = LocalDate.of(Integer.parseInt(date2.substring(6, 10)), Integer.parseInt(date2.substring(3, 5)), Integer.parseInt(date2.substring(0, 2)));
+		int valComparete = ld2.compareTo(ld);
+		
+		if(valComparete <  0) 
+			return -1;
+		else if(valComparete > 0) 
+			return 1;
+		
+		/*date1 = date1.replace("/", "");
 		date2 = date2.replace("/", "");
 		
 		int d1 = Integer.parseInt(date1);
@@ -55,7 +62,7 @@ public class MyDate {
 		
 		if(d1 > d2) valComparete = 1;
 		else if(d1 < d2) valComparete = -1;
-		else valComparete = 0;
+		else valComparete = 0;*/
 		
 		return valComparete;
 	}

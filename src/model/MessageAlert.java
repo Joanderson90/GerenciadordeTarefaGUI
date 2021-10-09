@@ -88,7 +88,7 @@ public class MessageAlert {
 	
 		
 		alert = new Alert(AlertType.CONFIRMATION);
-		alert.setContentText("Tarefa excluído com Sucesso!");
+		alert.setContentText("Tarefa excluída com Sucesso!");
 		
 		alert.show();
 	}
