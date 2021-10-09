@@ -11,21 +11,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProjetosScreenController">
    <children>
-      <HBox alignment="CENTER" layoutX="175.0" layoutY="7.0" prefHeight="35.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER" layoutX="175.0" layoutY="7.0" prefHeight="36.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label text="Projetos">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <VBox alignment="CENTER" layoutX="14.0" layoutY="84.0" prefHeight="339.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0">
+      <VBox alignment="CENTER" layoutX="14.0" layoutY="84.0" prefHeight="314.0" prefWidth="594.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="86.0">
          <children>
-            <ListView fx:id="lvProjetos" prefHeight="329.0" prefWidth="296.0" />
+            <ListView fx:id="lvProjetos" prefHeight="316.0" prefWidth="594.0" />
          </children>
       </VBox>
-      <HBox layoutX="298.0" layoutY="140.0" prefHeight="49.0" prefWidth="288.0">
+      <HBox alignment="CENTER" layoutX="8.0" layoutY="50.0" prefHeight="36.0" prefWidth="600.0" AnchorPane.bottomAnchor="314.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="50.0">
          <children>
             <Button fx:id="novoProjetoBTN" mnemonicParsing="false" onAction="#addNovoProjeto" text="Novo">
                <HBox.margin>
@@ -42,10 +42,6 @@
                <HBox.margin>
                   <Insets left="12.0" right="12.0" />
                </HBox.margin></Button>
-         </children>
-      </HBox>
-      <HBox alignment="TOP_CENTER" layoutX="342.0" layoutY="200.0" prefHeight="49.0" prefWidth="200.0">
-         <children>
             <Button fx:id="atualizarProjetosBTN" mnemonicParsing="false" onAction="#atualizarProjetos" text="Atualizar" />
          </children>
       </HBox>

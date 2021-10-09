@@ -60,8 +60,10 @@ public class Tarefa {
 
             Tarefa tarefaASerComparada = (Tarefa) obj;
             
-            return (this.titulo == tarefaASerComparada.getTitulo() && this.descricao == tarefaASerComparada.getDescricao() && 
-    				this.validade == tarefaASerComparada.getValidade() && this.status == tarefaASerComparada.getStatus());
+            return (this.titulo == tarefaASerComparada.getTitulo() &&
+            		this.descricao == tarefaASerComparada.getDescricao() &&           		
+    				this.validade == tarefaASerComparada.getValidade() &&
+    				this.status == tarefaASerComparada.getStatus());
 
         }
         
@@ -70,17 +72,25 @@ public class Tarefa {
 
 	public boolean getIsAtrasada() {
 		
+		Status statusConcluida = Status.CONCLUIDA;
+		
 		boolean isAtrasada = false;
-		MyDate date = new MyDate();
+		boolean isTarefaConcluida = (this.status == statusConcluida);
 		
-		String currentDate = date.getCurrentDate();
-		String dateTarefa = this.validade;
-		
-		
-		int valComp = date.compareTo(currentDate, dateTarefa);//Método similar ao CompareTo da classe String
-		
-		if(valComp == 1) isAtrasada = true; //Data atual > Data tarefa
-		
+		if(!isTarefaConcluida) {
+			
+			MyDate date = new MyDate();
+			
+			String currentDate = date.getCurrentDate();
+			String dateTarefa = this.validade;
+			
+			
+			int valComp = date.compareTo(currentDate, dateTarefa);//Método similar ao CompareTo da classe String
+			
+			if(valComp >= 1) isAtrasada = true; //Data atual > Data tarefa
+		}
+	
+				
 		return isAtrasada;
 		
 		
@@ -89,9 +99,20 @@ public class Tarefa {
 	@Override
 	public String toString() {
 		
+		boolean isTarefaAtrasada = this.getIsAtrasada();
+		
+		String marcacaoAtrasada = "";
+		
+
+		if(isTarefaAtrasada)  marcacaoAtrasada = " [Atrasada!]";
+		
 		return "Título: "    +  this.getTitulo()  + "\n" +
 			   "Descrição: " + this.getDescricao() + "\n" +
-			   "Validade: " + this.getValidade();
+			   "Validade: " + this.getValidade() + 
+			   marcacaoAtrasada;
+
+		
+		
 			   
 	}
 	

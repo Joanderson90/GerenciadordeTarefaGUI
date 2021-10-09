@@ -77,7 +77,7 @@ public class TarefasScreenController implements Initializable {
     	if(tarefaSelecionada != null) {
     		
     		MainScreenController tempMainScreen = new MainScreenController();
-        	tempMainScreen.openNewScreen("FormularioTarefaScreenEdit", "Cadastro Tarefas");
+        	tempMainScreen.openNewScreen("FormularioTarefaScreenEdit", "Edição Tarefas");
     	}
     	
     	else {
@@ -108,7 +108,8 @@ public class TarefasScreenController implements Initializable {
     
     
     public void loadTarefas() {
-    	    	
+    	
+    	
     	List<Tarefa> tarefasPendentes  = projetoQueDetemTarefas.getTarefasPendentes();
     	List<Tarefa> tarefasEmExecucao  = projetoQueDetemTarefas.getTarefasEmExecucao();
     	List<Tarefa> tarefasConcluidas  = projetoQueDetemTarefas.getTarefasConcluidas();
