@@ -46,7 +46,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
     private ToggleGroup group;
    
     private MessageAlert msgAlert = new MessageAlert();
-    
+    private Tarefa tarefaSelecionada = TarefasScreenController.getTarefaSelecionada();
 
     @FXML
     void salvarEditTarefa(ActionEvent event) throws ObjetoInexistenteException {
@@ -59,8 +59,6 @@ public class FormularioTarefaScreenEditController implements Initializable {
     	}
     	
     	else {
-    		
-    		Tarefa tarefaSelecionada = TarefasScreenController.getTarefaSelecionada();
     		
 			String titleTarefa = txtTitulo.getText();
     		String descriptionTarefa = txtDescricao.getText();
@@ -132,7 +130,10 @@ public class FormularioTarefaScreenEditController implements Initializable {
 
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+		
+		txtTitulo.setText(tarefaSelecionada.getTitulo());
+    	txtDescricao.setText(tarefaSelecionada.getDescricao());
+    	txtValidade.getEditor().setText(tarefaSelecionada.getValidade());
         
     }    
     
