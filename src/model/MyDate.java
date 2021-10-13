@@ -44,23 +44,29 @@ public class MyDate {
 	
 	public int compareTo(String date1, String date2) {
 		
-		LocalDate ld = LocalDate.of(
-				Integer.parseInt(date1.substring(6, 10)),
-				Integer.parseInt(date1.substring(3, 5)),
-				Integer.parseInt(date1.substring(0, 2)));
-		
-		LocalDate ld2 = LocalDate.of(
-				Integer.parseInt(date2.substring(6, 10)),
-				Integer.parseInt(date2.substring(3, 5)), 
-				Integer.parseInt(date2.substring(0, 2)));
-		
-		
-		
-		int valComparete = ld.compareTo(ld2);
+		LocalDate localDate1 = getLocalDate(date1);
+		LocalDate localDate2 = getLocalDate(date2);
+
+		int valComparete = localDate1.compareTo(localDate2);
 		
 		return valComparete;
 	}
 	
+	private LocalDate getLocalDate(String date) {
+		
+		LocalDate localDate;
+		
+		//Format date day/dayOfMonth/year  example: 12/08/2021
+		
+		int year = Integer.parseInt(date.substring(6, 10));
+		int month = Integer.parseInt(date.substring(3, 5));
+		int dayOfMonth = Integer.parseInt(date.substring(0, 2));
+		
+		localDate = LocalDate.of(year, month, dayOfMonth);
+		
+		return localDate;
+	}
+
 	public Date getDate() {
 		return date;
 	}
