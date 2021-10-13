@@ -29,6 +29,6 @@
             <Button mnemonicParsing="false" onAction="#addAlteracao" text="Salvar" />
          </children>
       </VBox>
+      <Button fx:id="btnVoltar" layoutX="276.0" layoutY="324.0" mnemonicParsing="false" onAction="#closeScreen" text="Voltar" />
    </children>
 </AnchorPane>
-

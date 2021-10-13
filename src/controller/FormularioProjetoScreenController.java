@@ -12,8 +12,10 @@ import Exceptions.ArgumentoInvalidoException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.*;
 
 
@@ -29,6 +31,9 @@ public class FormularioProjetoScreenController implements Initializable {
 
     @FXML
     private TextArea txtDescricao;
+    
+    @FXML
+    private Button btnVoltar;
     
     private MessageAlert msgAlert = new MessageAlert();
     
@@ -57,6 +62,15 @@ public class FormularioProjetoScreenController implements Initializable {
         	
     	}
     	
+    }
+    
+    @FXML
+    void closeScreen(ActionEvent event) {
+    	
+    	Stage stage = (Stage) btnVoltar.getScene().getWindow();
+    	
+    	stage.close();
+
     }
     
     public void cleanInfoProjeto() {
