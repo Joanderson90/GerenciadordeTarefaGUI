@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import model.*;
 
 /**
@@ -32,7 +33,7 @@ public class TarefasScreenController implements Initializable {
 
     @FXML
     private ListView<Tarefa> lvTarefasEmExecucao;
-
+    
     @FXML
     private ListView<Tarefa> lvTarefasConcluidas;
     
@@ -42,7 +43,10 @@ public class TarefasScreenController implements Initializable {
     private static Tarefa tarefaSelecionada;
     @FXML
     private Button addNovaTarefaBTN;
-
+    
+    @FXML
+    private Button projetosBTN;
+    
     @FXML
     private Button editarTarefaBTN;
 
@@ -70,7 +74,15 @@ public class TarefasScreenController implements Initializable {
     	
     	loadTarefas();
     }
-
+    
+    @FXML
+    void backToScreenProjetos(ActionEvent event) {
+    	
+    	Stage stage = (Stage) projetosBTN.getScene().getWindow();
+    	
+    	stage.close();
+    }
+    
     @FXML
     void editarTarefa(ActionEvent event) throws IOException {
     	

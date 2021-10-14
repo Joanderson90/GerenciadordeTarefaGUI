@@ -80,18 +80,23 @@
             </ListView>
             <VBox prefHeight="352.0" prefWidth="194.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="addNovaTarefaBTN" mnemonicParsing="false" onAction="#addNovaTarefa" text="Nova" />
-                  <Button fx:id="editarTarefaBTN" mnemonicParsing="false" onAction="#editarTarefa" text="Editar">
+                  <Button fx:id="addNovaTarefaBTN" mnemonicParsing="false" onAction="#addNovaTarefa" prefHeight="25.0" prefWidth="68.0" text="Nova" />
+                  <Button fx:id="editarTarefaBTN" mnemonicParsing="false" onAction="#editarTarefa" prefHeight="25.0" prefWidth="68.0" text="Editar">
                      <VBox.margin>
                         <Insets bottom="24.0" top="24.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="excluirTarefaBTN" mnemonicParsing="false" onAction="#excluirTarefa" text="Excluir">
+                  <Button fx:id="excluirTarefaBTN" mnemonicParsing="false" onAction="#excluirTarefa" prefHeight="25.0" prefWidth="68.0" text="Excluir">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="attTarefasBTN" mnemonicParsing="false" onAction="#atualizarTarefas" text="Atualizar">
+                  <Button fx:id="attTarefasBTN" mnemonicParsing="false" onAction="#atualizarTarefas" prefHeight="25.0" prefWidth="68.0" text="Atualizar">
+                     <VBox.margin>
+                        <Insets top="24.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="projetosBTN" mnemonicParsing="false" onAction="#backToScreenProjetos" prefHeight="25.0" prefWidth="68.0" text="Projetos">
                      <VBox.margin>
                         <Insets top="24.0" />
                      </VBox.margin>
