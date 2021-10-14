@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import model.MessageAlert;
@@ -31,6 +32,9 @@ public class FormularioTarefaScreenController implements Initializable {
 
     @FXML
     private TextArea txtDescricao;
+    
+    @FXML
+    private Button btnVoltar;
 
     @FXML
     private DatePicker txtValidade;
@@ -76,6 +80,15 @@ public class FormularioTarefaScreenController implements Initializable {
     	txtValidade.getEditor().setText("");
 		
 	}
+    
+    @FXML
+    void closeScreen(ActionEvent event) {
+    	
+    	Stage stage = (Stage) btnVoltar.getScene().getWindow();
+    	
+    	stage.close();
+
+    }
 
 	private boolean verificarCampoAnyEmpty() {
     	

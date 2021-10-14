@@ -45,9 +45,6 @@ public class User implements UserI{
 	}
 	
 	public boolean verificarTodasTarefasConcluidas(Projeto p) {
-
-		
-		boolean hasTarefaConcluida = true;
 		
 		Tarefa tarefaCadastrada;
 		Status statusTarefaCadastrada, pendente, emExecucao;
@@ -60,17 +57,14 @@ public class User implements UserI{
 		
 
 		while(it.hasNext()) {
-
-			while(it.hasNext() && hasTarefaConcluida) {
 				
-				tarefaCadastrada = it.next();
-				statusTarefaCadastrada = tarefaCadastrada.getStatus();
+			tarefaCadastrada = it.next();
+			
+			statusTarefaCadastrada = tarefaCadastrada.getStatus();
+			
+			if(statusTarefaCadastrada == pendente || statusTarefaCadastrada == emExecucao) {
 				
-				if(statusTarefaCadastrada == pendente || statusTarefaCadastrada == emExecucao ) {
-					
-					return false;
-				}
-				
+				return false;
 			}
 		
 		}
@@ -170,13 +164,13 @@ public class User implements UserI{
 	
 
 	@Override
-	public boolean mudarValidadeTarefa(Tarefa t, String newValidade) {
+	public boolean mudarValidadeTarefa(Tarefa tarefa, String newValidade) {
 		
 		boolean isValidadeMudada;
 		
 		try {
 			
-			Tarefa temp  = buscarTarefaPorTitulo(t.getTitulo());
+			Tarefa temp  = buscarTarefaPorTitulo(tarefa.getTitulo());
 			
 			temp.setValidade(newValidade);
 			
@@ -192,13 +186,13 @@ public class User implements UserI{
 	}
 
 	@Override
-	public boolean mudarStatusTarefa(Tarefa t, Status newStatus) {
+	public boolean mudarStatusTarefa(Tarefa tarefa, Status newStatus) {
 		
 		boolean isStatusMudado;
 		
 		try {
 			
-			Tarefa temp  = buscarTarefaPorTitulo(t.getTitulo());
+			Tarefa temp  = buscarTarefaPorTitulo(tarefa.getTitulo());
 			
 			temp.setStatus(newStatus);
 			
@@ -214,14 +208,13 @@ public class User implements UserI{
 	}
 
 	@Override
-	public boolean excluirTarefa(Tarefa t) throws ObjetoInexistenteException {
+	public boolean excluirTarefa(Tarefa tarefa) throws ObjetoInexistenteException {
 		
 		try {
 			
-		
-			Projeto projetoQuePossuiTarefa  = buscarProjetoQuePossuiTarefa(t);
+			Projeto projetoQuePossuiTarefa  = buscarProjetoQuePossuiTarefa(tarefa);
 
-			projetoQuePossuiTarefa.getTarefas().remove(t);
+			projetoQuePossuiTarefa.getTarefas().remove(tarefa);
 			
 			return true;
 			
@@ -232,9 +225,37 @@ public class User implements UserI{
 		}
 		
 	}
+	
+	public Projeto buscarProjetoQuePossuiTarefa(Tarefa tarefaTarget) throws ObjetoInexistenteException {
 
+		
+		Tarefa tarefaCadastrada;
+		Projeto projetoCadastrado;
+		
+		Iterator<Tarefa> itTarefasCadastradas;
+		Iterator<Projeto> itProjetosCadastrados = projetos.iterator();
+		
+		while(itProjetosCadastrados.hasNext()) {
+			
+			projetoCadastrado = itProjetosCadastrados.next();
+			
+			itTarefasCadastradas = projetoCadastrado.getTarefas().iterator();
+			
+			while(itTarefasCadastradas.hasNext()) {
+				
+				tarefaCadastrada = itTarefasCadastradas.next();
+					
+				if(tarefaCadastrada == tarefaTarget) return projetoCadastrado;
+			}
+				
+		}
+		
+		throw new ObjetoInexistenteException();
+	}
+
+	
 	@Override
-	public Tarefa buscarTarefaPorTitulo(String titulo) throws ObjetoInexistenteException {
+	public Tarefa buscarTarefaPorTitulo(String tituloTarget) throws ObjetoInexistenteException {
 		
 		Tarefa tarefaCadastrada;
 		String tituloTarefaCadastrada;
@@ -246,14 +267,16 @@ public class User implements UserI{
 		while(itProjetosCadastrados.hasNext()) {
 			
 			projetoCadastrado = itProjetosCadastrados.next();
+			
 			itTarefasCadastradas = projetoCadastrado.getTarefas().iterator();
 			
 			while(itTarefasCadastradas.hasNext()) {
 				
 				tarefaCadastrada = itTarefasCadastradas.next();
+				
 				tituloTarefaCadastrada = tarefaCadastrada.getTitulo();
 				
-				if(tituloTarefaCadastrada == titulo) return tarefaCadastrada;
+				if(tituloTarefaCadastrada == tituloTarget) return tarefaCadastrada;
 			}
 				
 			
@@ -262,40 +285,10 @@ public class User implements UserI{
 		throw new ObjetoInexistenteException();
 	}
 	
-
-
-
-
-	public Projeto buscarProjetoQuePossuiTarefa(Tarefa t) throws ObjetoInexistenteException {
-
-		
-		Tarefa tarefaCadastrada;
-		Projeto projetoCadastrado;
-		
-		Iterator<Tarefa> itTarefasCadastradas;
-		Iterator<Projeto> itProjetosCadastrados = projetos.iterator();
-		
-		while(itProjetosCadastrados.hasNext()) {
-			
-			projetoCadastrado = itProjetosCadastrados.next();
-			itTarefasCadastradas = projetoCadastrado.getTarefas().iterator();
-			
-			while(itTarefasCadastradas.hasNext()) {
-				
-				tarefaCadastrada = itTarefasCadastradas.next();
 	
-				
-				if(tarefaCadastrada == t) return projetoCadastrado;
-			}
-				
-			
-		}
-		
-		throw new ObjetoInexistenteException();
-	}
-
+	
 	@Override
-	public Projeto buscarProjetoPorTitulo(String titulo) throws ObjetoInexistenteException{
+	public Projeto buscarProjetoPorTitulo(String tituloTarget) throws ObjetoInexistenteException{
 		
 	
 		String tituloProjetoCadastrado;
@@ -308,7 +301,7 @@ public class User implements UserI{
 			projetoCadastrado = it.next();
 			tituloProjetoCadastrado = projetoCadastrado.getTitulo();
 			
-			if(tituloProjetoCadastrado == titulo) {
+			if(tituloProjetoCadastrado == tituloTarget) {
 				
 				return projetoCadastrado;
 			}

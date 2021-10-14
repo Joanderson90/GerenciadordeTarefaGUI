@@ -1,7 +1,4 @@
 package model;
-
-import java.util.Date;
-
 public class Tarefa {
 	
 	private String titulo;
@@ -23,6 +20,7 @@ public class Tarefa {
 	}
 	
 	public Tarefa(String titulo, String validade) {
+		
 		this.titulo = titulo;
 		this.descricao = "";
 		this.validade = validade;

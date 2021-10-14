@@ -71,11 +71,6 @@
                   </DatePicker>
                </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
-               <children>
-                  <Button fx:id="salvarEditTarefaBTN" mnemonicParsing="false" onAction="#salvarEditTarefa" text="Salvar" />
-               </children>
-            </HBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
                <children>
                   <Label text="Status">
@@ -103,6 +98,20 @@
                   </RadioButton>
                </children>
             </VBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+               <children>
+                  <Button fx:id="addNovaTarefa" mnemonicParsing="false" onAction="#salvarEditTarefa" text="Salvar">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#closeScreen" text="Voltar">
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </GridPane>
    </children>

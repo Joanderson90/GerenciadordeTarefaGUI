@@ -16,6 +16,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import model.MessageAlert;
@@ -35,6 +36,9 @@ public class FormularioTarefaScreenEditController implements Initializable {
 
     @FXML
     private TextArea txtDescricao;
+    
+    @FXML
+    private Button btnVoltar;
 
     @FXML
     private DatePicker txtValidade;
@@ -75,6 +79,15 @@ public class FormularioTarefaScreenEditController implements Initializable {
     		this.msgAlert.getMessageTarefaEditada();
     		
     	}
+    }
+    
+    @FXML
+    void closeScreen(ActionEvent event) {
+    	
+    	Stage stage = (Stage) btnVoltar.getScene().getWindow();
+    	
+    	stage.close();
+
     }
   
     private void cleanInfoTarefa() {

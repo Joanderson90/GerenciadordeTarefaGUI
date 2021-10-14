@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.server.LoaderHandler;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -159,7 +160,12 @@ public class ProjetosScreenController implements Initializable {
     public static void setProjetoSalvo(Projeto projeto) throws ArgumentoInvalidoException {
     	
     	user.setProjeto(projeto);
+    	
     }
+    
+
+   
+    
     
     @FXML
     void atualizarProjetos(ActionEvent event) {
