@@ -27,22 +27,22 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="8.0" layoutY="50.0" prefHeight="36.0" prefWidth="625.0" AnchorPane.bottomAnchor="365.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="50.0">
          <children>
-            <Button fx:id="novoProjetoBTN" mnemonicParsing="false" onAction="#addNovoProjeto" prefHeight="25.0" prefWidth="68.0" text="Novo">
+            <Button fx:id="novoProjetoBTN" mnemonicParsing="false" onAction="#addNovoProjeto" text="Novo">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button fx:id="excluirProjetoBTN" mnemonicParsing="false" onAction="#excluirProjeto" prefHeight="25.0" prefWidth="68.0" text="Excluir">
+            <Button fx:id="excluirProjetoBTN" mnemonicParsing="false" onAction="#excluirProjeto" text="Excluir">
                <HBox.margin>
                   <Insets left="12.0" right="12.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="editarProjetoBTN" mnemonicParsing="false" onAction="#editarProjeto" prefHeight="25.0" prefWidth="68.0" text="Editar" />
-            <Button fx:id="openTarefasBTN" mnemonicParsing="false" onAction="#openTarefas" prefHeight="25.0" prefWidth="68.0" text="Tarefas">
+            <Button fx:id="editarProjetoBTN" mnemonicParsing="false" onAction="#editarProjeto" text="Editar" />
+            <Button fx:id="openTarefasBTN" mnemonicParsing="false" onAction="#openTarefas" text="Tarefas">
                <HBox.margin>
                   <Insets left="12.0" right="12.0" />
                </HBox.margin></Button>
-            <Button fx:id="atualizarProjetosBTN" mnemonicParsing="false" onAction="#atualizarProjetos" prefHeight="25.0" prefWidth="68.0" text="Atualizar" />
+            <Button fx:id="atualizarProjetosBTN" mnemonicParsing="false" onAction="#atualizarProjetos" text="Atualizar" />
          </children>
       </HBox>
    </children>

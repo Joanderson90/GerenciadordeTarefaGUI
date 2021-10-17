@@ -164,8 +164,6 @@ public class ProjetosScreenController implements Initializable {
     }
     
 
-   
-    
     
     @FXML
     void atualizarProjetos(ActionEvent event) {
