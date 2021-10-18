@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import Exceptions.ObjetoInexistenteException;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
@@ -44,7 +45,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
     private DatePicker txtValidade;
     
     @FXML
-    private Button salvarEditTarefaBTN;
+    private Button btnAddNovaTarefa;
 
     @FXML
     private ToggleGroup group;
@@ -52,8 +53,8 @@ public class FormularioTarefaScreenEditController implements Initializable {
     private MessageAlert msgAlert = new MessageAlert();
     private Tarefa tarefaSelecionada = TarefasScreenController.getTarefaSelecionada();
 
-    @FXML
-    void salvarEditTarefa(ActionEvent event) throws ObjetoInexistenteException {
+
+    public void salvarEditTarefa() throws ObjetoInexistenteException {
     	
     	boolean isCampoAnyEmpty  = verificarCampoAnyEmpty();
     	
@@ -81,8 +82,8 @@ public class FormularioTarefaScreenEditController implements Initializable {
     	}
     }
     
-    @FXML
-    void closeScreen(ActionEvent event) {
+   
+   public void closeScreen() {
     	
     	Stage stage = (Stage) btnVoltar.getScene().getWindow();
     	
@@ -151,6 +152,82 @@ public class FormularioTarefaScreenEditController implements Initializable {
     }    
     
  
+	public void addButtonsListener(EventHandler<ActionEvent> listener){
+		   
+		btnAddNovaTarefa.setOnAction(listener);
+    	btnVoltar.setOnAction(listener);
+    }
+
+
+	public TextField getTxtTitulo() {
+		return txtTitulo;
+	}
+
+
+	public void setTxtTitulo(TextField txtTitulo) {
+		this.txtTitulo = txtTitulo;
+	}
+
+
+	public TextArea getTxtDescricao() {
+		return txtDescricao;
+	}
+
+
+	public void setTxtDescricao(TextArea txtDescricao) {
+		this.txtDescricao = txtDescricao;
+	}
+
+
+	public Button getBtnVoltar() {
+		return btnVoltar;
+	}
+
+
+	public void setBtnVoltar(Button btnVoltar) {
+		this.btnVoltar = btnVoltar;
+	}
+
+
+	public DatePicker getTxtValidade() {
+		return txtValidade;
+	}
+
+
+	public void setTxtValidade(DatePicker txtValidade) {
+		this.txtValidade = txtValidade;
+	}
+
+
+	
+	public ToggleGroup getGroup() {
+		return group;
+	}
+
+
+	public void setGroup(ToggleGroup group) {
+		this.group = group;
+	}
+
+
+	public Tarefa getTarefaSelecionada() {
+		return tarefaSelecionada;
+	}
+
+
+	public void setTarefaSelecionada(Tarefa tarefaSelecionada) {
+		this.tarefaSelecionada = tarefaSelecionada;
+	}
+
+
+	public Button getBtnAddNovaTarefa() {
+		return btnAddNovaTarefa;
+	}
+
+
+	public void setBtnAddNovaTarefa(Button btnAddNovaTarefa) {
+		this.btnAddNovaTarefa = btnAddNovaTarefa;
+	}
 
     
     

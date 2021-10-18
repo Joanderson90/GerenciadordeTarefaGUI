@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import Exceptions.ArgumentoInvalidoException;
 import Exceptions.ObjetoInexistenteException;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -36,13 +37,15 @@ public class FormularioProjetoScreenEditController implements Initializable {
     @FXML
     private Button btnVoltar;
     
+    @FXML
+    private Button btnSalvar;
+    
     private MessageAlert msgAlert = new MessageAlert();
     
     private Projeto temp = new Projeto("temp");
     private Projeto projetoSelecionado = ProjetosScreenController.getProjetoSelecionado();
 
-    @FXML
-    void addAlteracao(ActionEvent event) throws ArgumentoInvalidoException, ObjetoInexistenteException {
+    public void addProjetoEditado() throws ArgumentoInvalidoException, ObjetoInexistenteException {
     	
     	String titulo = txtTitulo.getText();
     	String descricao = txtDescricao.getText();
@@ -71,8 +74,8 @@ public class FormularioProjetoScreenEditController implements Initializable {
     	
     }
     
-    @FXML
-    void closeScreen(ActionEvent event) {
+ 
+    void closeScreen() {
     	
     	Stage stage = (Stage) btnVoltar.getScene().getWindow();
     	
@@ -98,6 +101,44 @@ public class FormularioProjetoScreenEditController implements Initializable {
     	txtTitulo.setText("");
     	txtDescricao.setText("");
     }
+
+    public void addButtonsListener(EventHandler<ActionEvent> listener){
+ 	   
+    	btnSalvar.setOnAction(listener);
+    	btnVoltar.setOnAction(listener);
+    }
+
+	public String getTxtTitulo() {
+		return txtTitulo.getText();
+	}
+
+	public void setTxtTitulo(TextField txtTitulo) {
+		this.txtTitulo = txtTitulo;
+	}
+
+	public String getTxtDescricao() {
+		return txtDescricao.getText();
+	}
+
+	public void setTxtDescricao(TextArea txtDescricao) {
+		this.txtDescricao = txtDescricao;
+	}
+
+	public Button getBtnVoltar() {
+		return btnVoltar;
+	}
+
+	public void setBtnVoltar(Button btnVoltar) {
+		this.btnVoltar = btnVoltar;
+	}
+
+	public Button getBtnSalvar() {
+		return btnSalvar;
+	}
+
+	public void setBtnSalvar(Button btnSalvar) {
+		this.btnSalvar = btnSalvar;
+	}
     
  
 

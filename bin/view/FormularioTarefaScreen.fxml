@@ -70,11 +70,11 @@
             </VBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
-                  <Button fx:id="addNovaTarefa" mnemonicParsing="false" onAction="#salvarNovaTarefa" text="Salvar">
+                  <Button fx:id="btnAddNovaTarefa" mnemonicParsing="false" text="Salvar">
                      <HBox.margin>
                         <Insets left="6.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#closeScreen" text="Voltar">
+                  <Button fx:id="btnVoltar" mnemonicParsing="false" text="Voltar">
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>

@@ -7,7 +7,6 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.rmi.server.LoaderHandler;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -16,23 +15,26 @@ import Exceptions.ObjetoInexistenteException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import model.*;
+import model.MessageAlert;
+import model.Projeto;
+import model.User;
 
 /**
  *
  * @author User
  */
 
-public class ProjetosScreenController implements Initializable {
+public class ProjetosScreenController implements Initializable, EventHandler<ActionEvent> {
 	
 	@FXML
-    private  ListView<Projeto> lvProjetos;
+    private ListView<Projeto> lvProjetos;
 	
     @FXML
     private Button novoProjetoBTN;
@@ -58,20 +60,23 @@ public class ProjetosScreenController implements Initializable {
     @FXML
     private MenuItem menuItemDescricao;
     
-    private  ObservableList<Projeto> obsProjetos;
+    private ObservableList<Projeto> obsProjetos;
     
     private static User user = new User();
     private static Projeto projetoSelecionado;
     
     private MessageAlert msgAlert = new MessageAlert();
     
+    private FormularioProjetoScreenController formularioController;
+    private FormularioProjetoScreenEditController formularioControllerEdit;
  
     public void loadProjetos() {
+    	
     	
     	List<Projeto> projetosCadastrados = user.getProjetos();
     	
     	obsProjetos = FXCollections.observableArrayList(projetosCadastrados);
-    	
+    
     	lvProjetos.setItems(obsProjetos);
     }
 
@@ -79,10 +84,16 @@ public class ProjetosScreenController implements Initializable {
     void addNovoProjeto(ActionEvent event) throws IOException, ArgumentoInvalidoException {
     	
     	MainScreenController tempMainScreen = new MainScreenController();
-    	tempMainScreen.openNewScreen("FormularioProjetoScreen", "Cadastro Projetos");
+    	
+    	Object fxmlLoader = tempMainScreen.openNewScreen("FormularioProjetoScreen", "Cadastro Projetos");
+    			
+    	formularioController = (FormularioProjetoScreenController) fxmlLoader;
+    	
+    	formularioController.addButtonsListener(this);
     	 	
     }
     
+    	  
     
     @FXML
     void editarProjeto(ActionEvent event) throws IOException {
@@ -98,7 +109,12 @@ public class ProjetosScreenController implements Initializable {
     	else {
     		
     		MainScreenController tempMainScreen = new MainScreenController();
-        	tempMainScreen.openNewScreen("FormularioProjetoScreenEdit", "Edição de Projeto");
+        	
+        	Object fxmlLoader = tempMainScreen.openNewScreen("FormularioProjetoScreenEdit", "Edição Projetos");
+        			
+        	formularioControllerEdit = (FormularioProjetoScreenEditController) fxmlLoader;
+        	
+        	formularioControllerEdit.addButtonsListener(this);
     		
     	}
     }
@@ -163,19 +179,11 @@ public class ProjetosScreenController implements Initializable {
     	
     }
     
-
-   
     
-    
-    @FXML
-    void atualizarProjetos(ActionEvent event) {
-    	
-    	loadProjetos();
-    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+    	 
         loadProjetos();
     }
 
@@ -190,7 +198,61 @@ public class ProjetosScreenController implements Initializable {
 	}    
 	
 	public static User getUser() {
+		
 		return user;
 	}
+
+
+	@Override
+	public void handle(ActionEvent arg0) {
+		
+		if(arg0.getSource() == formularioController.getBntSalvar()) {
+			
+			try {
+				
+				formularioController.addNewProjeto();
+				
+				loadProjetos();
+				
+			} catch (ArgumentoInvalidoException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		
+		else if(arg0.getSource() == formularioController.getBtnVoltar()) {
+			
+			formularioController.closeScreen();
+			
+			
+		}
+		
+		else if(arg0.getSource() == formularioControllerEdit.getBtnSalvar()) {
+			
+			try {
+				
+				formularioControllerEdit.addProjetoEditado();
+				
+				loadProjetos();
+				
+			} catch (ArgumentoInvalidoException | ObjetoInexistenteException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		
+		else if(arg0.getSource() == formularioControllerEdit.getBtnVoltar()) {
+			
+			
+			formularioControllerEdit.closeScreen();
+			
+		}
+		
+		
+	}
+	
+	
     
 }

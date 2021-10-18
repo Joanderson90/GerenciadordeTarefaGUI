@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -38,24 +39,24 @@ public class FormularioTarefaScreenController implements Initializable {
 
     @FXML
     private DatePicker txtValidade;
-
  
 
     @FXML
-    private Button addNovaTarefa;
+    private Button btnAddNovaTarefa;
     
     private MessageAlert msgAlert = new MessageAlert();
     
     private Tarefa newTarefa;
 
-    @FXML
-    void salvarNovaTarefa(ActionEvent event) {
+
+    public void salvarNovaTarefa() {
     	
     	boolean isCampoAnyEmpty  = verificarCampoAnyEmpty();
     	
     	if(isCampoAnyEmpty) {
     		
     		this.msgAlert.getMessageCampoEmBranco();
+    		
     	} else {
     		
     		String titleTarefa = txtTitulo.getText();
@@ -81,8 +82,8 @@ public class FormularioTarefaScreenController implements Initializable {
 		
 	}
     
-    @FXML
-    void closeScreen(ActionEvent event) {
+ 
+    void closeScreen() {
     	
     	Stage stage = (Stage) btnVoltar.getScene().getWindow();
     	
@@ -103,12 +104,58 @@ public class FormularioTarefaScreenController implements Initializable {
     		
 		return isCampoAnyEmpty;
 	}
+	
+	public void addButtonsListener(EventHandler<ActionEvent> listener){
+	 	   
+    	btnAddNovaTarefa.setOnAction(listener);
+    	btnVoltar.setOnAction(listener);
+    }
 
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
         
         
-    }    
+    }
+
+	public String getTxtTitulo() {
+		return txtTitulo.getText();
+	}
+
+	public void setTxtTitulo(TextField txtTitulo) {
+		this.txtTitulo = txtTitulo;
+	}
+
+	public String getTxtDescricao() {
+		return txtDescricao.getText();
+	}
+
+	public void setTxtDescricao(TextArea txtDescricao) {
+		this.txtDescricao = txtDescricao;
+	}
+
+	public Button getBtnVoltar() {
+		return btnVoltar;
+	}
+
+	public void setBtnVoltar(Button btnVoltar) {
+		this.btnVoltar = btnVoltar;
+	}
+
+	public DatePicker getTxtValidade() {
+		return txtValidade;
+	}
+
+	public void setTxtValidade(DatePicker txtValidade) {
+		this.txtValidade = txtValidade;
+	}
+
+	public Button getBtnAddNovaTarefa() {
+		return btnAddNovaTarefa;
+	}
+
+	public void setBtnAddNovaTarefa(Button btnAddNovaTarefa) {
+		this.btnAddNovaTarefa = btnAddNovaTarefa;
+	}    
     
  
 

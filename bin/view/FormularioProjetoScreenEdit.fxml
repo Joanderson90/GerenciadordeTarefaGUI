@@ -26,9 +26,9 @@
       </VBox>
       <VBox layoutX="14.0" layoutY="324.0" prefHeight="55.0" prefWidth="100.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#addAlteracao" text="Salvar" />
+            <Button fx:id="btnSalvar" mnemonicParsing="false" text="Salvar" />
          </children>
       </VBox>
-      <Button fx:id="btnVoltar" layoutX="276.0" layoutY="324.0" mnemonicParsing="false" onAction="#closeScreen" text="Voltar" />
+      <Button fx:id="btnVoltar" layoutX="276.0" layoutY="324.0" mnemonicParsing="false" text="Voltar" />
    </children>
 </AnchorPane>
