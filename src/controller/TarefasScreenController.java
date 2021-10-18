@@ -65,7 +65,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     private ScreenManager screenManager = new ScreenManager();
 
 	
-    private static Projeto projetoQueDetemTarefas = ProjetosScreenController.getProjetoSelecionado();
+    private static Projeto projetoQueDetemTarefas;
     
     private FormularioTarefaScreenController formularioTarefaController;
     private FormularioTarefaScreenEditController formularioTarefaControllerEdit;
@@ -122,11 +122,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 		
 	}
 
-	@FXML
-    void atualizarTarefas(ActionEvent event) {
-    	
-    	loadTarefas();
-    }
+
     
     @FXML
     void backToScreenProjetos(ActionEvent event) {
@@ -222,6 +218,8 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    	
+    	projetoQueDetemTarefas = ProjetosScreenController.getProjetoSelecionado();
         
         loadTarefas();
     }

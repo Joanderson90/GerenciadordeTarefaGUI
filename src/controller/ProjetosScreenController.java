@@ -169,6 +169,7 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     	
     	projetoSelecionado = lvProjetos.getSelectionModel().getSelectedItem();
     	
+    	
     	boolean isProjetoSelecionado = projetoSelecionado != null;
     	
 		if(isProjetoSelecionado) {
