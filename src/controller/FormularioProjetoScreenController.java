@@ -42,10 +42,12 @@ public class FormularioProjetoScreenController implements Initializable {
     
     private MessageAlert msgAlert = new MessageAlert();
     
-    private Projeto temp = new Projeto("temp");
+    private Projeto temp;
     
    
     public void addNewProjeto() throws ArgumentoInvalidoException {
+    	
+    	 temp = new Projeto("temp");
     	
     	String titulo = txtTitulo.getText();
     	String descricao = txtDescricao.getText();
@@ -102,8 +104,6 @@ public class FormularioProjetoScreenController implements Initializable {
         
     }    
     
-    
-
     
    public void addButtonsListener(EventHandler<ActionEvent> listener){
 	   

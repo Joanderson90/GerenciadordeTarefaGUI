@@ -45,7 +45,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
     private DatePicker txtValidade;
     
     @FXML
-    private Button btnAddNovaTarefa;
+    private Button btnAddNovaTarefaEdit;
 
     @FXML
     private ToggleGroup group;
@@ -154,7 +154,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
  
 	public void addButtonsListener(EventHandler<ActionEvent> listener){
 		   
-		btnAddNovaTarefa.setOnAction(listener);
+		btnAddNovaTarefaEdit.setOnAction(listener);
     	btnVoltar.setOnAction(listener);
     }
 
@@ -220,14 +220,17 @@ public class FormularioTarefaScreenEditController implements Initializable {
 	}
 
 
-	public Button getBtnAddNovaTarefa() {
-		return btnAddNovaTarefa;
+	public Button getBtnAddNovaTarefaEdit() {
+		return btnAddNovaTarefaEdit;
 	}
 
 
-	public void setBtnAddNovaTarefa(Button btnAddNovaTarefa) {
-		this.btnAddNovaTarefa = btnAddNovaTarefa;
+	public void setBtnAddNovaTarefaEdit(Button btnAddNovaTarefaEdit) {
+		this.btnAddNovaTarefaEdit = btnAddNovaTarefaEdit;
 	}
+
+
+	
 
     
     

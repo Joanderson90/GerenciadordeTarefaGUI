@@ -22,6 +22,7 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import model.MessageAlert;
 import model.Projeto;
+import model.ScreenManager;
 import model.Tarefa;
 import model.User;
 
@@ -45,6 +46,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     private static ObservableList<Tarefa> obsTarefasConcluidas;
     private static ObservableList<Tarefa> obsTarefasEmExecucao;
     private static Tarefa tarefaSelecionada;
+    
     @FXML
     private Button addNovaTarefaBTN;
     
@@ -59,33 +61,68 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
     @FXML
     private Button attTarefasBTN;
-	
-    private static Projeto projetoQueDetemTarefas = ProjetosScreenController.getProjetoSelecionado();
     
-    private FormularioTarefaScreenController formularioController;
-    private FormularioTarefaScreenEditController formularioControllerEdit;
+    private ScreenManager screenManager = new ScreenManager();
+
+	
+    private static Projeto projetoQueDetemTarefas;
+    
+    private FormularioTarefaScreenController formularioTarefaController;
+    private FormularioTarefaScreenEditController formularioTarefaControllerEdit;
     
     private MessageAlert msgAlert = new MessageAlert();
     
     
     
     @FXML
-    void addNovaTarefa(ActionEvent event) throws IOException {
+    void openFormularioTarefaScreen(ActionEvent event) throws IOException {
     	
-    	MainScreenController tempMainScreen = new MainScreenController();
+    	screenManager.openNewScreen("FormularioTarefaScreen", "Cadastro Tarefas");
     	
-    	Object fxmlLoader = tempMainScreen.openNewScreen("FormularioTarefaScreen", "Cadastro Tarefas");
-    			
-    	formularioController = (FormularioTarefaScreenController) fxmlLoader;
+    	setReferenciaFormularioTarefaController();	
     	
-    	formularioController.addButtonsListener(this);
     }
+    
 
-    @FXML
-    void atualizarTarefas(ActionEvent event) {
+    private void setReferenciaFormularioTarefaController() {
+		
+    	Object currentController = screenManager.getCurrenController();
     	
-    	loadTarefas();
+    	formularioTarefaController = (FormularioTarefaScreenController) currentController;
+    	
+    	formularioTarefaController.addButtonsListener(this);
+		
+	}
+
+    
+    @FXML
+    void openFormularioTarefaScreenEdit(ActionEvent event) throws IOException {
+    	
+    	if(tarefaSelecionada != null) {
+        	
+        	screenManager.openNewScreen("FormularioTarefaScreenEdit", "Edição Tarefas");
+        			
+        	setReferenciaFormularioTarefaControllerEdit();	
+    	}
+    	
+    	else {
+			
+			this.msgAlert.getMessageTarefaNaoSelecionada();
+		}
+
     }
+    
+    private void setReferenciaFormularioTarefaControllerEdit() {
+		
+    	Object currentController = screenManager.getCurrenController();
+    	
+    	formularioTarefaControllerEdit = (FormularioTarefaScreenEditController) currentController;
+    	
+    	formularioTarefaControllerEdit.addButtonsListener(this);
+		
+	}
+
+
     
     @FXML
     void backToScreenProjetos(ActionEvent event) {
@@ -95,28 +132,9 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     	stage.close();
     }
     
-    @FXML
-    void editarTarefa(ActionEvent event) throws IOException {
-    	
-    	if(tarefaSelecionada != null) {
-    		
-    		MainScreenController tempMainScreen = new MainScreenController();
-        	
-        	Object fxmlLoader = tempMainScreen.openNewScreen("FormularioTarefaScreenEdit", "Edição Tarefas");
-        			
-        	formularioControllerEdit = (FormularioTarefaScreenEditController) fxmlLoader;
-        	
-        	formularioControllerEdit.addButtonsListener(this);
-    	}
-    	
-    	else {
-			
-			this.msgAlert.getMessageTarefaNaoSelecionada();
-		}
+   
 
-    }
-
-    @FXML
+	@FXML
     void excluirTarefa(ActionEvent event) {
     	
     	if(tarefaSelecionada != null) {
@@ -188,6 +206,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     	
     	tarefaSelecionada = lvTarefasEmExecucao.getSelectionModel().getSelectedItem();
     }
+    
     @FXML
      void listInViewPendentes() {
     	 
@@ -197,16 +216,14 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
    
     
-    
-    
-    @FXML
-    void atualizarProjetos(ActionEvent event) {
-    	
-    	loadTarefas();
-    }
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    	
+    	projetoQueDetemTarefas = ProjetosScreenController.getProjetoSelecionado();
+    	
+    	 
+        formularioTarefaController = new FormularioTarefaScreenController();
+        formularioTarefaControllerEdit = new FormularioTarefaScreenEditController();
         
         loadTarefas();
     }
@@ -214,29 +231,26 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 	@Override
 	public void handle(ActionEvent arg0) {
 		
-
-		if(arg0.getSource() == formularioController.getBtnAddNovaTarefa()) {
+		if(arg0.getSource() == formularioTarefaController.getBtnAddNovaTarefa()) {
 				
-			formularioController.salvarNovaTarefa();;
+			formularioTarefaController.salvarNovaTarefa();;
 			
 			loadTarefas();
-				
+			
+		}
+		
+		else if(arg0.getSource() == formularioTarefaController.getBtnVoltar()) {
+			
+			formularioTarefaController.closeScreen();
 			
 			
 		}
 		
-		else if(arg0.getSource() == formularioController.getBtnVoltar()) {
-			
-			formularioController.closeScreen();
-			
-			
-		}
-		
-		else if(arg0.getSource() == formularioControllerEdit.getBtnAddNovaTarefa()) {
+		else if(arg0.getSource() == formularioTarefaControllerEdit.getBtnAddNovaTarefaEdit()) {
 			
 			try {
 				
-				formularioControllerEdit.salvarEditTarefa();
+				formularioTarefaControllerEdit.salvarEditTarefa();
 				
 				loadTarefas();
 				
@@ -247,10 +261,10 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 			
 		}
 		
-		else if(arg0.getSource() == formularioControllerEdit.getBtnVoltar()) {
+		else if(arg0.getSource() == formularioTarefaControllerEdit.getBtnVoltar()) {
 			
 			
-			formularioControllerEdit.closeScreen();
+			formularioTarefaControllerEdit.closeScreen();
 			
 		}
 		

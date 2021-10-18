@@ -1,8 +1,8 @@
-/model/
-/controller/
-/view/
 /Exceptions/
 /Interface/
 /Main/
 /com/
+/controller/
 /helloFx/
+/model/
+/view/
