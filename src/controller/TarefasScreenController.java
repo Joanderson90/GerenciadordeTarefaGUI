@@ -220,6 +220,10 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     public void initialize(URL url, ResourceBundle rb) {
     	
     	projetoQueDetemTarefas = ProjetosScreenController.getProjetoSelecionado();
+    	
+    	 
+        formularioTarefaController = new FormularioTarefaScreenController();
+        formularioTarefaControllerEdit = new FormularioTarefaScreenEditController();
         
         loadTarefas();
     }
@@ -227,7 +231,6 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 	@Override
 	public void handle(ActionEvent arg0) {
 		
-
 		if(arg0.getSource() == formularioTarefaController.getBtnAddNovaTarefa()) {
 				
 			formularioTarefaController.salvarNovaTarefa();;
@@ -243,7 +246,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 			
 		}
 		
-		else if(arg0.getSource() == formularioTarefaControllerEdit.getBtnAddNovaTarefa()) {
+		else if(arg0.getSource() == formularioTarefaControllerEdit.getBtnAddNovaTarefaEdit()) {
 			
 			try {
 				
