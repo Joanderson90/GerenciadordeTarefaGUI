@@ -45,7 +45,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
     private DatePicker txtValidade;
     
     @FXML
-    private Button btnAddNovaTarefa;
+    private Button btnEditTarefa;
 
     @FXML
     private ToggleGroup group;
@@ -73,7 +73,12 @@ public class FormularioTarefaScreenEditController implements Initializable {
     		Tarefa newTarefaEdit = new Tarefa(titleTarefa, descriptionTarefa, dateTarefa);
     		newTarefaEdit.setStatus(statusSelecionado);
     		
-    		TarefasScreenController.setTarefaSalva(newTarefaEdit, tarefaSelecionada.getTitulo());
+    		//TarefasScreenController.setTarefaSalva(newTarefaEdit, tarefaSelecionada.getTitulo());
+    		
+    		tarefaSelecionada.setTitulo(titleTarefa);
+    		tarefaSelecionada.setDescricao(descriptionTarefa);
+    		tarefaSelecionada.setValidade(dateTarefa);
+    		tarefaSelecionada.setStatus(statusSelecionado);
     		
     		cleanInfoTarefa();
     		
@@ -154,7 +159,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
  
 	public void addButtonsListener(EventHandler<ActionEvent> listener){
 		   
-		btnAddNovaTarefa.setOnAction(listener);
+		btnEditTarefa.setOnAction(listener);
     	btnVoltar.setOnAction(listener);
     }
 
@@ -221,12 +226,12 @@ public class FormularioTarefaScreenEditController implements Initializable {
 
 
 	public Button getBtnAddNovaTarefa() {
-		return btnAddNovaTarefa;
+		return btnEditTarefa;
 	}
 
 
-	public void setBtnAddNovaTarefa(Button btnAddNovaTarefa) {
-		this.btnAddNovaTarefa = btnAddNovaTarefa;
+	public void setBtnAddNovaTarefa(Button btnEditTarefa) {
+		this.btnEditTarefa = btnEditTarefa;
 	}
 
     

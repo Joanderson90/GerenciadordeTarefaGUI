@@ -22,6 +22,10 @@ public class Projeto {
 		this.descricao = descricao;
 		this.tarefas = new ArrayList<Tarefa>();
 	}
+	
+	public Projeto() {
+		this.tarefas = new ArrayList<Tarefa>();
+	}
 
 	public String getTitulo() {
 		return titulo;
@@ -174,9 +178,6 @@ public class Projeto {
 		
 		return tarefasConcluidas;
 		
-	}
-
-	
-	
+	}	
 	
 }

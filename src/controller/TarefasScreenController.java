@@ -16,9 +16,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.MessageAlert;
 import model.Projeto;
@@ -60,7 +62,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     @FXML
     private Button attTarefasBTN;
 	
-    private static Projeto projetoQueDetemTarefas = ProjetosScreenController.getProjetoSelecionado();
+    private static Projeto projetoQueDetemTarefas;
     
     private FormularioTarefaScreenController formularioController;
     private FormularioTarefaScreenEditController formularioControllerEdit;
@@ -137,13 +139,11 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     
     
     public void loadTarefas() {
-    	
-    	
+    	  	
     	List<Tarefa> tarefasPendentes  = projetoQueDetemTarefas.getTarefasPendentes();
     	List<Tarefa> tarefasEmExecucao  = projetoQueDetemTarefas.getTarefasEmExecucao();
     	List<Tarefa> tarefasConcluidas  = projetoQueDetemTarefas.getTarefasConcluidas();
-    	
-    	
+    	   	
     	obsTarefasPendentes = FXCollections.observableArrayList(tarefasPendentes);
     	obsTarefasEmExecucao = FXCollections.observableArrayList(tarefasEmExecucao);
     	obsTarefasConcluidas = FXCollections.observableArrayList(tarefasConcluidas);
@@ -194,10 +194,6 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     	tarefaSelecionada = lvTarefasPendentes.getSelectionModel().getSelectedItem();
 
     }
-
-   
-    
-    
     
     @FXML
     void atualizarProjetos(ActionEvent event) {
@@ -207,7 +203,11 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+    	projetoQueDetemTarefas = ProjetosScreenController.getProjetoSelecionado();
+    	
+    	formularioControllerEdit = new FormularioTarefaScreenEditController();
+    	
+    	formularioController = new FormularioTarefaScreenController();
         loadTarefas();
     }
 
@@ -220,9 +220,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 			formularioController.salvarNovaTarefa();;
 			
 			loadTarefas();
-				
-			
-			
+		
 		}
 		
 		else if(arg0.getSource() == formularioController.getBtnVoltar()) {
@@ -247,18 +245,10 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 			
 		}
 		
-		else if(arg0.getSource() == formularioControllerEdit.getBtnVoltar()) {
-			
+		else if(arg0.getSource() == formularioControllerEdit.getBtnVoltar()) {			
 			
 			formularioControllerEdit.closeScreen();
 			
 		}
-		
-		
-			
 	}    
-    
-       
-    
-    
 }

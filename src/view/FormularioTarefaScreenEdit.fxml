@@ -100,7 +100,7 @@
             </VBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
-                  <Button fx:id="btnAddNovaTarefa" mnemonicParsing="false" text="Salvar">
+                  <Button fx:id="btnEditTarefa" mnemonicParsing="false" text="Salvar">
                      <HBox.margin>
                         <Insets left="6.0" />
                      </HBox.margin>

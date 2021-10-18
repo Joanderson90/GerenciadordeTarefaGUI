@@ -15,7 +15,9 @@ public class User implements UserI{
 	private RenameTaskManager renameTaskManager = new RenameTaskManager();
 
 	
-	public User() {}
+	public User() {
+		//initialize();
+	}
 		
 	public User(Projeto projeto) {
 		
@@ -27,9 +29,25 @@ public class User implements UserI{
 		this.projetos = projetos;
 	}
 	
-
-	
-
+	private void initialize() {
+		Projeto p = new Projeto();
+		Projeto p2 = new Projeto();
+		
+		Tarefa t1 = new Tarefa();
+		t1 = new Tarefa("PBL", "Sistema Gerenciador de tarefas", "19/10/2021");
+		
+		Tarefa t2 = new Tarefa("Task Manager", "Problema 2", "29/10/2021");
+        
+		p.setDescricao("Serviço de delivery");
+		p.setTitulo("PBL1");
+		p.setTarefa(t1);
+		projetos.add(p);
+		
+		p2.setDescricao("Sistema Gerenciador de tarefas");
+		p2.setTitulo("PBL2");
+		p2.setTarefa(t2);
+		projetos.add(p2);
+	}
 
 	@Override
 	public boolean excluirProjeto(Projeto p) {

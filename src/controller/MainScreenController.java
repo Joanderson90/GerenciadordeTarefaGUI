@@ -46,20 +46,18 @@ public class MainScreenController implements Initializable {
     }
 
     @FXML
-    void acessSobreSistema(ActionEvent event) {
+    void acessSobreSistema(ActionEvent event) throws IOException {
+    	
+    	openNewScreen("SobreScreen", "Sobre");
 
 	}
   
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
         
     }    
-    
- 
-
     
     
     public Object openNewScreen(String path, String title) throws IOException{
