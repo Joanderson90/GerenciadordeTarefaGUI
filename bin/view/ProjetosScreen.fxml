@@ -27,7 +27,7 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="8.0" layoutY="50.0" prefHeight="36.0" prefWidth="625.0" AnchorPane.bottomAnchor="365.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="50.0">
          <children>
-            <Button fx:id="novoProjetoBTN" mnemonicParsing="false" onAction="#addNovoProjeto" text="Novo">
+            <Button fx:id="novoProjetoBTN" mnemonicParsing="false" onAction="#openFormularioProjetoScreen" text="Novo">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -37,7 +37,7 @@
                   <Insets left="12.0" right="12.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="editarProjetoBTN" mnemonicParsing="false" onAction="#editarProjeto" text="Editar" />
+            <Button fx:id="editarProjetoBTN" mnemonicParsing="false" onAction="#openFormularioProjetoScreenEdit" text="Editar" />
             <Button fx:id="openTarefasBTN" mnemonicParsing="false" onAction="#openTarefas" text="Tarefas">
                <HBox.margin>
                   <Insets left="12.0" right="12.0" />
