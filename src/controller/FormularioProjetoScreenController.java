@@ -103,8 +103,6 @@ public class FormularioProjetoScreenController implements Initializable {
     }    
     
     
-
-    
    public void addButtonsListener(EventHandler<ActionEvent> listener){
 	   
     	btnSalvar.setOnAction(listener);
