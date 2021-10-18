@@ -24,6 +24,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import model.MessageAlert;
 import model.Projeto;
+import model.ScreenManager;
 import model.User;
 
 /**
@@ -62,13 +63,15 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     
     private ObservableList<Projeto> obsProjetos;
     
+    private ScreenManager screenManager = new ScreenManager();
+    
     private static User user = new User();
     private static Projeto projetoSelecionado;
     
     private MessageAlert msgAlert = new MessageAlert();
     
-    private FormularioProjetoScreenController formularioController;
-    private FormularioProjetoScreenEditController formularioControllerEdit;
+    private FormularioProjetoScreenController formularioProjetoController;
+    private FormularioProjetoScreenEditController formularioProjetoControllerEdit;
  
     public void loadProjetos() {
     	
@@ -81,22 +84,27 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     }
 
     @FXML
-    void addNovoProjeto(ActionEvent event) throws IOException, ArgumentoInvalidoException {
+    void openFormularioProjetoScreen(ActionEvent event) throws IOException, ArgumentoInvalidoException {
     	
-    	MainScreenController tempMainScreen = new MainScreenController();
     	
-    	Object fxmlLoader = tempMainScreen.openNewScreen("FormularioProjetoScreen", "Cadastro Projetos");
-    			
-    	formularioController = (FormularioProjetoScreenController) fxmlLoader;
+    	screenManager.openNewScreen("FormularioProjetoScreen", "Cadastro Projetos");
     	
-    	formularioController.addButtonsListener(this);
+    	setReferenciaFormularioProjetoController();
     	 	
     }
-    
     	  
     
-    @FXML
-    void editarProjeto(ActionEvent event) throws IOException {
+    private void setReferenciaFormularioProjetoController() {
+    	
+    	Object currentController = screenManager.getCurrenController();
+    	
+    	formularioProjetoController = (FormularioProjetoScreenController) currentController;
+    	
+    	formularioProjetoController.addButtonsListener(this);
+	}
+
+	@FXML
+    void openFormularioProjetoScreenEdit(ActionEvent event) throws IOException {
     	
     	projetoSelecionado = lvProjetos.getSelectionModel().getSelectedItem();
     	
@@ -107,20 +115,26 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     	}
     	
     	else {
+        	
+    		screenManager.openNewScreen("FormularioProjetoScreenEdit", "Edição Projetos");
     		
-    		MainScreenController tempMainScreen = new MainScreenController();
-        	
-        	Object fxmlLoader = tempMainScreen.openNewScreen("FormularioProjetoScreenEdit", "Edição Projetos");
-        			
-        	formularioControllerEdit = (FormularioProjetoScreenEditController) fxmlLoader;
-        	
-        	formularioControllerEdit.addButtonsListener(this);
+    		setReferenciaFormularioProjetoControllerEdit();
     		
     	}
     }
 
   
-    @FXML
+    private void setReferenciaFormularioProjetoControllerEdit() {
+    	
+    	Object currentController = screenManager.getCurrenController();
+    	
+    	formularioProjetoControllerEdit = (FormularioProjetoScreenEditController) currentController;
+    	
+    	formularioProjetoControllerEdit.addButtonsListener(this);
+		
+	}
+
+	@FXML
     void excluirProjeto(ActionEvent event) {
     	
     	Projeto projetoAlvo = lvProjetos.getSelectionModel().getSelectedItem();
@@ -158,9 +172,8 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     	boolean isProjetoSelecionado = projetoSelecionado != null;
     	
 		if(isProjetoSelecionado) {
-			
-			MainScreenController tempMainScreen = new MainScreenController();
-	    	tempMainScreen.openNewScreen("TarefasScreen", "Tarefas");
+
+	    	screenManager.openNewScreen("TarefasScreen", "Tarefas");
 			
 		} else {
 			
@@ -206,11 +219,11 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 	@Override
 	public void handle(ActionEvent arg0) {
 		
-		if(arg0.getSource() == formularioController.getBntSalvar()) {
+		if(arg0.getSource() == formularioProjetoController.getBntSalvar()) {
 			
 			try {
 				
-				formularioController.addNewProjeto();
+				formularioProjetoController.addNewProjeto();
 				
 				loadProjetos();
 				
@@ -221,18 +234,18 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 			
 		}
 		
-		else if(arg0.getSource() == formularioController.getBtnVoltar()) {
+		else if(arg0.getSource() == formularioProjetoController.getBtnVoltar()) {
 			
-			formularioController.closeScreen();
+			formularioProjetoController.closeScreen();
 			
 			
 		}
 		
-		else if(arg0.getSource() == formularioControllerEdit.getBtnSalvar()) {
+		else if(arg0.getSource() == formularioProjetoControllerEdit.getBtnSalvar()) {
 			
 			try {
 				
-				formularioControllerEdit.addProjetoEditado();
+				formularioProjetoControllerEdit.addProjetoEditado();
 				
 				loadProjetos();
 				
@@ -243,10 +256,10 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 			
 		}
 		
-		else if(arg0.getSource() == formularioControllerEdit.getBtnVoltar()) {
+		else if(arg0.getSource() == formularioProjetoControllerEdit.getBtnVoltar()) {
 			
 			
-			formularioControllerEdit.closeScreen();
+			formularioProjetoControllerEdit.closeScreen();
 			
 		}
 		

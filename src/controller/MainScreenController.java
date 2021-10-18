@@ -11,14 +11,10 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import model.ScreenManager;
 
 /**
  *
@@ -38,11 +34,13 @@ public class MainScreenController implements Initializable {
 
     @FXML
     private MenuItem menuItemSistema;
+    
+    private ScreenManager screenManager = new ScreenManager();
 
     @FXML
     void acessProjetos(ActionEvent event) throws IOException {
     	
-    	openNewScreen("ProjetosScreen", "Projetos");
+    	screenManager.openNewScreen("ProjetosScreen", "Projetos");
     }
 
     @FXML
@@ -60,43 +58,6 @@ public class MainScreenController implements Initializable {
     
  
 
-    
-    
-    public Object openNewScreen(String path, String title) throws IOException{
-        
-        //Parent form = FXMLLoader.load(getClass().getResource("/view/"+path+".fxml"));
-        
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Pane p = fxmlLoader.load(getClass().getResource("/view/"+path+".fxml").openStream());
-        
-        Object controller =  fxmlLoader.getController();
-        
-        Stage stage = new Stage();
-        stage.setScene(new Scene(p));
-        
-        stage.setTitle(title);
-        stage.setResizable(false);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
-        
-        return controller;
-        
-    }
-    
-    /*public Object getController(String path) throws IOException{
-        
-        
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Pane p = fxmlLoader.load(getClass().getResource("/view/"+path+".fxml").openStream());
-        
-        Object fooController =  fxmlLoader.getController();
-       
-       
-        
-        return fooController;
-        
-    }
-     */
     
     
     
