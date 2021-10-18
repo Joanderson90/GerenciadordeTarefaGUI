@@ -22,10 +22,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import model.MessageAlert;
+import message.MessageAlert;
 import model.Projeto;
-import model.ScreenManager;
 import model.User;
+import screenManager.ScreenManager;
 
 /**
  *

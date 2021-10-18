@@ -15,9 +15,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import message.MessageAlert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import model.MessageAlert;
 import model.Tarefa;
 
 

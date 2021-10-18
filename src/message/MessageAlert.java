@@ -9,24 +9,40 @@ de outra autoria que não a minha está destacado com uma citação para o autor e a
 do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
 ******************************************************************************************/
 
-package model;
+package message;
 
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * A Classe <b>MessageAlert</b> representa a modelagem de <b>mensagens</b> de <b>alerta</b> 
+ * referente à GUI do <b>Gerenciador de Tarefas</b>.
+ * @since 2021
+ * @author Joanderson Santos e Dicego Cerqueira
+ */
 public class MessageAlert {
 	
 	private Alert alert;
 	
+	/**
+	 * Apresenta uma <b>mensagem</b> de aviso na tela.<br>
+	 * Conteúdo da mensagem: "Por favor preencha os campos primeiro".
+	 */
+	
 	public void getMessageCampoEmBranco() {
 		
 		alert = new Alert(AlertType.WARNING);
-		alert.setContentText("Por favor preenche os campos primeiro");
+		alert.setContentText("Por favor preencha os campos primeiro");
 		
 		alert.show();
 		
 	}
+	
+	/**
+	 * Apresenta uma <b>mensagem</b> de aviso na tela.<br>
+	 * Conteúdo da mensagem: "As tarefas devem estar concluídas para que um projeto seja excluído".
+	 */
 	
 	public void getMessageTarefasNaoConcluidas() {
 		
@@ -37,6 +53,11 @@ public class MessageAlert {
 		
 	}
 	
+	/**
+	 * Apresenta uma <b>mensagem</b> de confirmação na tela.<br>
+	 * Conteúdo da mensagem: "Projeto Salvo com Sucesso".
+	 */
+	
 	public void getMessageProjetoSalvo() {
 		
 		alert = new Alert(AlertType.CONFIRMATION);
@@ -44,6 +65,11 @@ public class MessageAlert {
 		
 		alert.show();
 	}
+	
+	/**
+	 * Apresenta uma <b>mensagem</b> de confirmação na tela.<br>
+	 * Conteúdo da mensagem: "Projeto Editado com Sucesso".
+	 */
 	
 	public void getMessageProjetoEditado() {
 		
@@ -53,6 +79,11 @@ public class MessageAlert {
 		alert.show();
 	}
 	
+	/**
+	 * Apresenta uma <b>mensagem</b> de aviso na tela.<br>
+	 * Conteúdo da mensagem: "Por favor selecione um projeto primeiro!".
+	 */
+	
 	public void getMessageProjetoNaoSelecionada() {
 		
 		alert = new Alert(AlertType.WARNING);
@@ -61,6 +92,11 @@ public class MessageAlert {
 		alert.show();
 	}
 	
+	/**
+	 * Apresenta uma <b>mensagem</b> de confirmação na tela.<br>
+	 * Conteúdo da mensagem: "Projeto excluído com Sucesso!".
+	 */
+	
 	public void getMessageProjetoExcluida() {
 		
 		alert = new Alert(AlertType.CONFIRMATION);
@@ -68,6 +104,11 @@ public class MessageAlert {
 		
 		alert.show();
 	}
+	
+	/**
+	 * Apresenta uma <b>mensagem</b> de confirmação na tela.<br>
+	 * Conteúdo da mensagem: "Tarefa salva com Sucesso!".
+	 */
 
 	public void getMessageTarefaSalva() {
 		
@@ -77,6 +118,11 @@ public class MessageAlert {
 		alert.show();
 		
 	}
+	
+	/**
+	 * Apresenta uma <b>mensagem</b> de confirmação na tela.<br>
+	 * Conteúdo da mensagem: "Tarefa editada com Sucesso!".
+	 */
 
 	public void getMessageTarefaEditada() {
 		
@@ -86,6 +132,11 @@ public class MessageAlert {
 		alert.show();
 		
 	}
+	
+	/**
+	 * Apresenta uma <b>mensagem</b> de aviso na tela.<br>
+	 * Conteúdo da mensagem: "Por favor selecione uma Tarefa!".
+	 */
 
 	public void getMessageTarefaNaoSelecionada() {
 		
@@ -95,7 +146,12 @@ public class MessageAlert {
 		alert.show();
 		
 	}
-
+	
+	/**
+	 * Apresenta uma <b>mensagem</b> de confirmação na tela.<br>
+	 * Conteúdo da mensagem: "Tarefa excluída com Sucesso!".
+	 */
+	
 	public void getMessageTarefaExcluida() {
 	
 		

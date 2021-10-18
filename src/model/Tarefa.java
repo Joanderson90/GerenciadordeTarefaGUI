@@ -1,4 +1,7 @@
 package model;
+
+import date.MyDate;
+
 public class Tarefa {
 	
 	private String titulo;

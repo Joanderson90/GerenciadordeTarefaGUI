@@ -20,10 +20,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import model.MessageAlert;
+import message.MessageAlert;
 import model.Projeto;
-import model.ScreenManager;
 import model.Tarefa;
+import screenManager.ScreenManager;
 
 /**
  *
