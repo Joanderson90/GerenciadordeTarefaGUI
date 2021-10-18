@@ -46,7 +46,7 @@ public class MainScreenController implements Initializable {
     @FXML
     void acessSobreSistema(ActionEvent event) throws IOException {
     	
-    	openNewScreen("SobreScreen", "Sobre");
+    	screenManager.openNewScreen("SobreScreen", "Sobre");
 
 	}
   
