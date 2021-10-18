@@ -48,7 +48,7 @@ public class FormularioProjetoScreenController implements Initializable {
     public void addNewProjeto() throws ArgumentoInvalidoException {
     	
     	Projeto projeto = new Projeto();
-    	
+
     	String titulo = txtTitulo.getText();
     	String descricao = txtDescricao.getText();
     	
@@ -58,10 +58,10 @@ public class FormularioProjetoScreenController implements Initializable {
     		
     	} else {
     		
-    		projeto.setTitulo(titulo);
-    		projeto.setDescricao(descricao);
+        	temp.setTitulo(titulo);
+        	temp.setDescricao(descricao);
         	
-        	ProjetosScreenController.setProjetoSalvo(projeto);
+        	ProjetosScreenController.setProjetoSalvo(temp);
         	        		
         
         	cleanInfoProjeto();

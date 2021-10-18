@@ -45,7 +45,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
     private DatePicker txtValidade;
     
     @FXML
-    private Button btnEditTarefa;
+    private Button btnAddNovaTarefaEdit;
 
     @FXML
     private ToggleGroup group;
@@ -73,12 +73,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
     		Tarefa newTarefaEdit = new Tarefa(titleTarefa, descriptionTarefa, dateTarefa);
     		newTarefaEdit.setStatus(statusSelecionado);
     		
-    		//TarefasScreenController.setTarefaSalva(newTarefaEdit, tarefaSelecionada.getTitulo());
-    		
-    		tarefaSelecionada.setTitulo(titleTarefa);
-    		tarefaSelecionada.setDescricao(descriptionTarefa);
-    		tarefaSelecionada.setValidade(dateTarefa);
-    		tarefaSelecionada.setStatus(statusSelecionado);
+    		TarefasScreenController.setTarefaSalva(newTarefaEdit, tarefaSelecionada.getTitulo());
     		
     		cleanInfoTarefa();
     		
@@ -130,7 +125,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
 			statusSelecionado = Status.PENDENTE;
 		}
 		
-		else if(radio.getText().equals("Concluída")) {
+		else if(radio.getText().equals("Concluï¿½da")) {
 			
 			
 			statusSelecionado = Status.CONCLUIDA;
@@ -159,7 +154,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
  
 	public void addButtonsListener(EventHandler<ActionEvent> listener){
 		   
-		btnEditTarefa.setOnAction(listener);
+		btnAddNovaTarefaEdit.setOnAction(listener);
     	btnVoltar.setOnAction(listener);
     }
 
@@ -225,22 +220,13 @@ public class FormularioTarefaScreenEditController implements Initializable {
 	}
 
 
-	public Button getBtnAddNovaTarefa() {
-		return btnEditTarefa;
+	public Button getBtnAddNovaTarefaEdit() {
+		return btnAddNovaTarefaEdit;
 	}
 
 
-	public void setBtnAddNovaTarefa(Button btnEditTarefa) {
-		this.btnEditTarefa = btnEditTarefa;
+	public void setBtnAddNovaTarefaEdit(Button btnAddNovaTarefaEdit) {
+		this.btnAddNovaTarefaEdit = btnAddNovaTarefaEdit;
 	}
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
