@@ -72,9 +72,9 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     
     private FormularioProjetoScreenController formularioProjetoController;
     private FormularioProjetoScreenEditController formularioProjetoControllerEdit;
+    
  
     public void loadProjetos() {
-    	
     	
     	List<Projeto> projetosCadastrados = user.getProjetos();
     	
@@ -85,7 +85,6 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 
     @FXML
     void openFormularioProjetoScreen(ActionEvent event) throws IOException, ArgumentoInvalidoException {
-    	
     	
     	screenManager.openNewScreen("FormularioProjetoScreen", "Cadastro Projetos");
     	
@@ -150,7 +149,6 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     		
     		if(isProjetoExcluido) {
     			
-    			
     			loadProjetos();
     			
     			this.msgAlert.getMessageProjetoExcluida();;
@@ -187,7 +185,7 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     	return projetoSelecionado;
     }
     
-    public static void setProjetoSalvo(Projeto projeto) throws ArgumentoInvalidoException {
+    public static void setNewProjeto(Projeto projeto) throws ArgumentoInvalidoException {
     	
     	user.setProjeto(projeto);
     	
@@ -200,17 +198,7 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     	 
         loadProjetos();
     }
-
-	public static void setProjetoEditado(Projeto projetoEditado, String titulo) throws ObjetoInexistenteException, ArgumentoInvalidoException {
-		
-		Projeto projetoNaoEditado = user.buscarProjetoPorTitulo(titulo);
-		
-		user.excluirProjeto(projetoNaoEditado);
-		
-		user.setProjeto(projetoEditado);
-		
-	}    
-	
+    
 	public static User getUser() {
 		
 		return user;

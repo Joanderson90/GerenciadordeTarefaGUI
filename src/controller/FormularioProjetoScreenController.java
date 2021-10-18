@@ -42,12 +42,11 @@ public class FormularioProjetoScreenController implements Initializable {
     
     private MessageAlert msgAlert = new MessageAlert();
     
-    private Projeto temp;
+  
     
    
     public void addNewProjeto() throws ArgumentoInvalidoException {
     	
-    	temp = new Projeto();
 
     	String titulo = txtTitulo.getText();
     	String descricao = txtDescricao.getText();
@@ -58,10 +57,12 @@ public class FormularioProjetoScreenController implements Initializable {
     		
     	} else {
     		
-        	temp.setTitulo(titulo);
-        	temp.setDescricao(descricao);
+    		Projeto newProjeto = new Projeto();
+    		
+        	newProjeto.setTitulo(titulo);
+        	newProjeto.setDescricao(descricao);
         	
-        	ProjetosScreenController.setProjetoSalvo(temp);
+        	ProjetosScreenController.setNewProjeto(newProjeto);
         	        		
         
         	cleanInfoProjeto();
@@ -91,7 +92,6 @@ public class FormularioProjetoScreenController implements Initializable {
     
     public  Button getBntSalvar() {
     	
-    	
     	return btnSalvar; 
     	
     }
@@ -105,7 +105,6 @@ public class FormularioProjetoScreenController implements Initializable {
     }    
     
     
-
     
    public void addButtonsListener(EventHandler<ActionEvent> listener){
 	   

@@ -51,7 +51,8 @@ public class FormularioTarefaScreenEditController implements Initializable {
     private ToggleGroup group;
    
     private MessageAlert msgAlert = new MessageAlert();
-    private Tarefa tarefaSelecionada = TarefasScreenController.getTarefaSelecionada();
+    
+    private Tarefa tarefaSelecionada;
 
 
     public void salvarEditTarefa() throws ObjetoInexistenteException {
@@ -70,11 +71,11 @@ public class FormularioTarefaScreenEditController implements Initializable {
     		String dateTarefa = txtValidade.getEditor().getText();
     		Status statusSelecionado = getStatusSelecionado();
     		
-    		Tarefa newTarefaEdit = new Tarefa(titleTarefa, descriptionTarefa, dateTarefa);
-    		newTarefaEdit.setStatus(statusSelecionado);
-    		
-    		TarefasScreenController.setTarefaSalva(newTarefaEdit, tarefaSelecionada.getTitulo());
-    		
+    		tarefaSelecionada.setTitulo(titleTarefa);
+    		tarefaSelecionada.setDescricao(descriptionTarefa);
+    		tarefaSelecionada.setValidade(dateTarefa);
+    		tarefaSelecionada.setStatus(statusSelecionado);
+    		  		
     		cleanInfoTarefa();
     		
     		this.msgAlert.getMessageTarefaEditada();
@@ -125,7 +126,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
 			statusSelecionado = Status.PENDENTE;
 		}
 		
-		else if(radio.getText().equals("Concluï¿½da")) {
+		else if(radio.getText().equals("Concluída")) {
 			
 			
 			statusSelecionado = Status.CONCLUIDA;
@@ -144,6 +145,8 @@ public class FormularioTarefaScreenEditController implements Initializable {
 
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
+		
+		tarefaSelecionada = TarefasScreenController.getTarefaSelecionada();
 		
 		txtTitulo.setText(tarefaSelecionada.getTitulo());
     	txtDescricao.setText(tarefaSelecionada.getDescricao());

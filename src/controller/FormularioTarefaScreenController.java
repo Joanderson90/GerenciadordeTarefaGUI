@@ -46,7 +46,6 @@ public class FormularioTarefaScreenController implements Initializable {
     
     private MessageAlert msgAlert = new MessageAlert();
     
-    private Tarefa newTarefa;
 
 
     public void salvarNovaTarefa() {
@@ -58,6 +57,8 @@ public class FormularioTarefaScreenController implements Initializable {
     		this.msgAlert.getMessageCampoEmBranco();
     		
     	} else {
+    		
+    		Tarefa newTarefa;
     		
     		String titleTarefa = txtTitulo.getText();
     		String descriptionTarefa = txtDescricao.getText();
