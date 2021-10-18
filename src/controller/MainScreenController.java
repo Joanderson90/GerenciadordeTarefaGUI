@@ -14,7 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-import model.ScreenManager;
+import screenManager.ScreenManager;
 
 /**
  *
@@ -46,7 +46,7 @@ public class MainScreenController implements Initializable {
     @FXML
     void acessSobreSistema(ActionEvent event) throws IOException {
     	
-    	openNewScreen("SobreScreen", "Sobre");
+    	screenManager.openNewScreen("SobreScreen", "Sobre");
 
 	}
   

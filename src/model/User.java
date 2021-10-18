@@ -7,6 +7,7 @@ import java.util.List;
 import Exceptions.ArgumentoInvalidoException;
 import Exceptions.ObjetoInexistenteException;
 import Interface.UserI;
+import renameManager.RenameTaskManager;
 
 public class User implements UserI{
 	

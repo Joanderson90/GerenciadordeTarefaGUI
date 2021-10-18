@@ -15,9 +15,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import message.MessageAlert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import model.MessageAlert;
 import model.Tarefa;
 
 
@@ -46,7 +46,6 @@ public class FormularioTarefaScreenController implements Initializable {
     
     private MessageAlert msgAlert = new MessageAlert();
     
-    private Tarefa newTarefa;
 
 
     public void salvarNovaTarefa() {
@@ -58,6 +57,8 @@ public class FormularioTarefaScreenController implements Initializable {
     		this.msgAlert.getMessageCampoEmBranco();
     		
     	} else {
+    		
+    		Tarefa newTarefa;
     		
     		String titleTarefa = txtTitulo.getText();
     		String descriptionTarefa = txtDescricao.getText();

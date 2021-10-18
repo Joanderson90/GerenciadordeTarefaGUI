@@ -17,7 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.MessageAlert;
+import message.MessageAlert;
 import model.Projeto;
 
 
@@ -42,12 +42,11 @@ public class FormularioProjetoScreenController implements Initializable {
     
     private MessageAlert msgAlert = new MessageAlert();
     
-    private Projeto temp = new Projeto("temp");
+  
     
    
     public void addNewProjeto() throws ArgumentoInvalidoException {
     	
-    	Projeto projeto = new Projeto();
 
     	String titulo = txtTitulo.getText();
     	String descricao = txtDescricao.getText();
@@ -58,10 +57,12 @@ public class FormularioProjetoScreenController implements Initializable {
     		
     	} else {
     		
-        	temp.setTitulo(titulo);
-        	temp.setDescricao(descricao);
+    		Projeto newProjeto = new Projeto();
+    		
+        	newProjeto.setTitulo(titulo);
+        	newProjeto.setDescricao(descricao);
         	
-        	ProjetosScreenController.setProjetoSalvo(temp);
+        	ProjetosScreenController.setNewProjeto(newProjeto);
         	        		
         
         	cleanInfoProjeto();
@@ -91,7 +92,6 @@ public class FormularioProjetoScreenController implements Initializable {
     
     public  Button getBntSalvar() {
     	
-    	
     	return btnSalvar; 
     	
     }
@@ -105,7 +105,6 @@ public class FormularioProjetoScreenController implements Initializable {
     }    
     
     
-
     
    public void addButtonsListener(EventHandler<ActionEvent> listener){
 	   

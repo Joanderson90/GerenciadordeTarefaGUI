@@ -16,17 +16,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.MessageAlert;
+import message.MessageAlert;
 import model.Projeto;
-import model.ScreenManager;
 import model.Tarefa;
-import model.User;
+import screenManager.ScreenManager;
 
 /**
  *
@@ -177,15 +174,6 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     	projetoQueDetemTarefas.setTarefa(newTarefa);
     }
     
-    public static void setTarefaSalva(Tarefa newTarefa, String title) throws ObjetoInexistenteException {
-    	
-    	User userTemp = ProjetosScreenController.getUser();
-    	Tarefa tarefaNaoEditada = userTemp.buscarTarefaPorTitulo(title);
-    	
-    	projetoQueDetemTarefas.getTarefas().remove(tarefaNaoEditada);
-    	
-    	projetoQueDetemTarefas.setTarefa(newTarefa);
-    }
     
     public static Tarefa getTarefaSelecionada() {
     	
@@ -196,8 +184,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     
     @FXML
     void listInViewConcluidas() {
-    	
-    	
+    		
     	tarefaSelecionada = lvTarefasConcluidas.getSelectionModel().getSelectedItem();
     }
     
@@ -215,16 +202,16 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
     }
 
-   
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
     	projetoQueDetemTarefas = ProjetosScreenController.getProjetoSelecionado();
 
-    	formularioControllerEdit = new FormularioTarefaScreenEditController();
+    	formularioTarefaControllerEdit = new FormularioTarefaScreenEditController();
 
-    	formularioController = new FormularioTarefaScreenController();
+    	formularioTarefaController = new FormularioTarefaScreenController();
+    	
         loadTarefas();
     }
 
@@ -234,7 +221,6 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 		if (arg0.getSource() == formularioTarefaController.getBtnAddNovaTarefa()) {
 
 			formularioTarefaController.salvarNovaTarefa();
-			;
 
 			loadTarefas();
 

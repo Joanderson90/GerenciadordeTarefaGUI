@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import message.MessageAlert;
 import model.*;
 
 
@@ -42,8 +43,7 @@ public class FormularioProjetoScreenEditController implements Initializable {
     
     private MessageAlert msgAlert = new MessageAlert();
     
-    private Projeto temp = new Projeto("temp");
-    private Projeto projetoSelecionado = ProjetosScreenController.getProjetoSelecionado();
+    private Projeto projetoSelecionado;
 
     public void addProjetoEditado() throws ArgumentoInvalidoException, ObjetoInexistenteException {
     	
@@ -59,11 +59,9 @@ public class FormularioProjetoScreenEditController implements Initializable {
     	else {
     		
     		
-        	temp.setTitulo(titulo);
-        	temp.setDescricao(descricao);
-        	
-        	ProjetosScreenController.setProjetoEditado(temp, projetoSelecionado.getTitulo());
-        	
+        	projetoSelecionado.setTitulo(titulo);
+        	projetoSelecionado.setDescricao(descricao);
+       
         	cleanInfoProjeto();
         	
         	this.msgAlert.getMessageProjetoEditado();
@@ -85,7 +83,9 @@ public class FormularioProjetoScreenEditController implements Initializable {
   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+    	
+    	projetoSelecionado = ProjetosScreenController.getProjetoSelecionado();
+    	
     	loadInfoProjeto();
         
     }    
