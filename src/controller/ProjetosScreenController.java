@@ -39,8 +39,9 @@ import model.User;
 import screenManager.ScreenManager;
 
 /**
- *
+ * Classe controladora da página de projetos
  * @author Diego Cerqueira e Joanderson Santos
+ * @since 2021
  */
 
 public class ProjetosScreenController implements Initializable, EventHandler<ActionEvent> {
@@ -85,6 +86,9 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     private FormularioProjetoScreenEditController formularioProjetoControllerEdit;
     
  
+    /**
+     * Metodo que carrega os projetos na tela
+     */
     public void loadProjetos() {
     	
     	List<Projeto> projetosCadastrados = user.getProjetos();
@@ -94,6 +98,12 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     	lvProjetos.setItems(obsProjetos);
     }
 
+    /**
+     * Metodo que abre o formulário  de cadastro de projetos
+     * @param event
+     * @throws IOException
+     * @throws ArgumentoInvalidoException
+     */
     @FXML
     void openFormularioProjetoScreen(ActionEvent event) throws IOException, ArgumentoInvalidoException {
     	
@@ -104,6 +114,9 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     }
     	  
     
+    /**
+     * Metodo que pega a referência de um projeto a ser excluido
+     */
     private void setReferenciaFormularioProjetoController() {
     	
     	Object currentController = screenManager.getCurrenController();
@@ -113,6 +126,11 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     	formularioProjetoController.addButtonsListener(this);
 	}
 
+	/**
+	 * Metodo que abre o formulário de edição de projetos
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
     void openFormularioProjetoScreenEdit(ActionEvent event) throws IOException {
     	
@@ -122,9 +140,7 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     		
     		this.msgAlert.getMessageProjetoNaoSelecionada();
     		
-    	}
-    	
-    	else {
+    	}else {
         	
     		screenManager.openNewScreen("FormularioProjetoScreenEdit", "Edição Projetos");
     		
@@ -133,7 +149,9 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     	}
     }
 
-  
+    /**
+     * Metodo que pega a referência do projeto selecionado para editar
+     */
     private void setReferenciaFormularioProjetoControllerEdit() {
     	
     	Object currentController = screenManager.getCurrenController();
@@ -144,6 +162,10 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 		
 	}
 
+	/**
+	 * Evento para excluir um projeto
+	 * @param event
+	 */
 	@FXML
     void excluirProjeto(ActionEvent event) {
     	
@@ -164,15 +186,18 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     			
     			this.msgAlert.getMessageProjetoExcluida();;
     			
-    		}
-    		
-    		else {
+    		} else {
     			
     			this.msgAlert.getMessageTarefasNaoConcluidas();
     		}
     	}
     }
     
+    /**
+     * Evento para abrir as tarefas relacionadas a um projeto selecionado
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void openTarefas(ActionEvent event) throws IOException {
     	
@@ -191,31 +216,51 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 		}
     }
     
+    /**
+     * Metodo que retorna qual projeto foi selecionado
+     * @return Projeto
+     */
     public static Projeto getProjetoSelecionado() {
     	
     	return projetoSelecionado;
     }
     
+    /**
+     * Metodo que insere um novo projeto
+     * @param projeto
+     * @throws ArgumentoInvalidoException
+     */
     public static void setNewProjeto(Projeto projeto) throws ArgumentoInvalidoException {
     	
     	user.setProjeto(projeto);
     	
     }
     
-    
-    
+    /**
+     * Metodo da interface Initializable
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     	 
         loadProjetos();
     }
     
+	/**
+	 * Retorna o usuário da aplicação
+	 * @return User
+	 */
 	public static User getUser() {
 		
 		return user;
 	}
 
 
+	/**
+	 * Metodo que verifica qual botão foi clicado
+	 * @param arg0
+	 */
 	@Override
 	public void handle(ActionEvent arg0) {
 		
@@ -232,12 +277,9 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 				e.printStackTrace();
 			}
 			
-		}
-		
-		else if(arg0.getSource() == formularioProjetoController.getBtnVoltar()) {
+		}else if(arg0.getSource() == formularioProjetoController.getBtnVoltar()) {
 			
 			formularioProjetoController.closeScreen();
-			
 			
 		}
 		
@@ -254,18 +296,10 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 				e.printStackTrace();
 			}
 			
-		}
-		
-		else if(arg0.getSource() == formularioProjetoControllerEdit.getBtnVoltar()) {
-			
+		}else if(arg0.getSource() == formularioProjetoControllerEdit.getBtnVoltar()) {
 			
 			formularioProjetoControllerEdit.closeScreen();
 			
 		}
-		
-		
 	}
-	
-	
-    
 }

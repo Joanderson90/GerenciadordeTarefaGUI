@@ -37,8 +37,9 @@ import model.Tarefa;
 import screenManager.ScreenManager;
 
 /**
- *
+ * Classe controladora da tela de Tarefas
  * @author Diego Cerqueira e Joanderson Santos
+ * @since 2021
  */
 
 public class TarefasScreenController implements Initializable, EventHandler<ActionEvent> {
@@ -84,6 +85,11 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     
     
     
+    /**
+     * Evento que abre formulário de criação de tarefas
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void openFormularioTarefaScreen(ActionEvent event) throws IOException {
     	
@@ -94,6 +100,9 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     }
 
 
+    /**
+     *  Metodo que pega a referência da tarefa selecionada para exclusão
+     */
     private void setReferenciaFormularioTarefaController() {
 
     	Object currentController = screenManager.getCurrenController();
@@ -104,6 +113,11 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
 	}
 
+    /**
+     * Evento que abre formulário de edição de tarefas
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void openFormularioTarefaScreenEdit(ActionEvent event) throws IOException {
     	
@@ -112,15 +126,16 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
         	screenManager.openNewScreen("FormularioTarefaScreenEdit", "Ediï¿½ï¿½o Tarefas");
 
         	setReferenciaFormularioTarefaControllerEdit();
-    	}
-
-    	else {
+    	}else {
 
 			this.msgAlert.getMessageTarefaNaoSelecionada();
 		}
 
     }
 
+    /**
+     * Metodo que pega a referência da tarefa selecionada para ser editada
+     */
     private void setReferenciaFormularioTarefaControllerEdit() {
 
     	Object currentController = screenManager.getCurrenController();
@@ -131,8 +146,10 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
 	}
 
-
-
+    /**
+     * Evento para voltar a tela de projetos
+     * @param event
+     */
     @FXML
     void backToScreenProjetos(ActionEvent event) {
     	
@@ -141,8 +158,10 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     	stage.close();
     }
     
-
-
+	/**
+	 * Evento para excluir uma tarefa
+	 * @param event
+	 */
 	@FXML
     void excluirTarefa(ActionEvent event) {
     	
@@ -162,14 +181,14 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
     }
     
-    
+    /**
+     * Metodo que dado um projeto carrega suas tarefas na tela
+     */
     public void loadTarefas() {
-    	
     	
     	List<Tarefa> tarefasPendentes  = projetoQueDetemTarefas.getTarefasPendentes();
     	List<Tarefa> tarefasEmExecucao  = projetoQueDetemTarefas.getTarefasEmExecucao();
     	List<Tarefa> tarefasConcluidas  = projetoQueDetemTarefas.getTarefasConcluidas();
-    	
     	
     	obsTarefasPendentes = FXCollections.observableArrayList(tarefasPendentes);
     	obsTarefasEmExecucao = FXCollections.observableArrayList(tarefasEmExecucao);
@@ -180,19 +199,27 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     	lvTarefasConcluidas.setItems(obsTarefasConcluidas);
     }
     
+    /**
+     * metodo que insere uma nova tarefa
+     * @param newTarefa
+     */
     public static void setTarefaSalva(Tarefa newTarefa) {
     	
     	projetoQueDetemTarefas.setTarefa(newTarefa);
     }
     
-    
+    /**
+     * Retorna a tarefa selecionada pelo usuário
+     * @return Tarefa
+     */
     public static Tarefa getTarefaSelecionada() {
     	
     	return tarefaSelecionada;
-   
     }
     
-    
+    /**
+     * Metodo que verifica se uma tarefa da lista de concluidas foi selecionada
+     */
     @FXML
     void listInViewConcluidas() {
     		
@@ -200,12 +227,18 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     }
     
 
+    /**
+     * Metodo que verifica se uma tarefa da lista de em execução foi selecionada
+     */
     @FXML
     void listInViewEmExecucao() {
     	
     	tarefaSelecionada = lvTarefasEmExecucao.getSelectionModel().getSelectedItem();
     }
 
+    /**
+     * Metodo que verifica se uma tarefa da lista de pendentes foi selecionada
+     */
     @FXML
      void listInViewPendentes() {
     	 
@@ -214,6 +247,11 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     }
 
 
+    /**
+     * Metodo da interface Initializable
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -226,6 +264,10 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
         loadTarefas();
     }
 
+	/**
+	 * Metodo que verifica qual botão foi clicado
+	 * @param arg0
+	 */
 	@Override
 	public void handle(ActionEvent arg0) {
 

@@ -28,8 +28,9 @@ import javafx.scene.control.MenuItem;
 import screenManager.ScreenManager;
 
 /**
- *
+ * Controlador da tela inicial
  * @author Diego Cerqueira e Joanderson Santos
+ * @since 2021
  */
 
 public class MainScreenController implements Initializable {
@@ -48,28 +49,36 @@ public class MainScreenController implements Initializable {
     
     private ScreenManager screenManager = new ScreenManager();
 
+    /**
+     * Evento para abrir a tela de projetos
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void acessProjetos(ActionEvent event) throws IOException {
     	
     	screenManager.openNewScreen("ProjetosScreen", "Projetos");
     }
 
+    /**
+     * Evento para abrir a tela de informações do sistema
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void acessSobreSistema(ActionEvent event) throws IOException {
     	
     	screenManager.openNewScreen("SobreScreen", "Sobre");
 
 	}
-  
     
+    /**
+     * Metodo da interface Initializable
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        
     }    
-    
-    
-    
-    
-    
 }

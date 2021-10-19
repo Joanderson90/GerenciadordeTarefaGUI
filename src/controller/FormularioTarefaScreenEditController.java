@@ -37,8 +37,9 @@ import model.Tarefa;
 
 
 /**
- *
+ * Classe controladora da tela de edição de tarefas
  * @author Diego Cerqueira e Joanderson Santos
+ * @since 2021
  */
 
 public class FormularioTarefaScreenEditController implements Initializable {
@@ -66,6 +67,10 @@ public class FormularioTarefaScreenEditController implements Initializable {
     private Tarefa tarefaSelecionada;
 
 
+    /**
+     * Metodo para salvar as alterações em uma tarefa
+     * @throws ObjetoInexistenteException
+     */
     public void salvarEditTarefa() throws ObjetoInexistenteException {
     	
     	boolean isCampoAnyEmpty  = verificarCampoAnyEmpty();
@@ -73,9 +78,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
     	if(isCampoAnyEmpty) {
     		
     		this.msgAlert.getMessageCampoEmBranco();
-    	}
-    	
-    	else {
+    	} else {
     		
 			String titleTarefa = txtTitulo.getText();
     		String descriptionTarefa = txtDescricao.getText();
@@ -94,8 +97,10 @@ public class FormularioTarefaScreenEditController implements Initializable {
     	}
     }
     
-   
-   public void closeScreen() {
+    /**
+     * Metodo para fechar a tela de edição de tarefas e voltar a tela com a listagem das tarefas
+ 	 */
+    public void closeScreen() {
     	
     	Stage stage = (Stage) btnVoltar.getScene().getWindow();
     	
@@ -103,6 +108,9 @@ public class FormularioTarefaScreenEditController implements Initializable {
 
     }
   
+    /**
+     * Metodo que limpa os campos do formulário de edição de tarefa
+     */
     private void cleanInfoTarefa() {
 		
     	txtTitulo.setText("");
@@ -111,6 +119,10 @@ public class FormularioTarefaScreenEditController implements Initializable {
 		
 	}
 
+	/**
+	 * Metodo que verifica se os campos do formulário estão vazios
+	 * @return boolean
+	 */
 	private boolean verificarCampoAnyEmpty() {
     	
     	boolean isCampoAnyEmpty = false;
@@ -125,6 +137,10 @@ public class FormularioTarefaScreenEditController implements Initializable {
 		return isCampoAnyEmpty;
 	}
 	
+	/**
+	 * Retorna qual o status selecionado no formulário
+	 * @return Status
+	 */
 	public Status getStatusSelecionado() {
 		
 		Status statusSelecionado;
@@ -135,15 +151,11 @@ public class FormularioTarefaScreenEditController implements Initializable {
 			
 			
 			statusSelecionado = Status.PENDENTE;
-		}
-		
-		else if(radio.getText().equals("Concluída")) {
+		} else if(radio.getText().equals("Concluída")) {
 			
 			
 			statusSelecionado = Status.CONCLUIDA;
-		}
-		
-		else {
+		} else {
 			
 			statusSelecionado = Status.EM_EXECUCAO;
 		}
@@ -152,8 +164,11 @@ public class FormularioTarefaScreenEditController implements Initializable {
 		
 	}
 	
-	
-
+	/**
+	 * Metodo da interface Initializable
+	 * @param url
+	 * @param rb
+	 */
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
 		
@@ -165,80 +180,122 @@ public class FormularioTarefaScreenEditController implements Initializable {
         
     }    
     
- 
+	/**
+	 * Metodo para "ouvir" a ação de um botão
+	 * @param listener
+	 */
 	public void addButtonsListener(EventHandler<ActionEvent> listener){
 		   
 		btnAddNovaTarefaEdit.setOnAction(listener);
     	btnVoltar.setOnAction(listener);
     }
 
-
+	/**
+	 * Retorna o titulo da tarefa editada
+	 * @return TextField
+	 */
 	public TextField getTxtTitulo() {
 		return txtTitulo;
 	}
 
-
+	/**
+	 * Metodo que insere um novo titulo a tarefa
+	 * @param txtTitulo
+	 */
 	public void setTxtTitulo(TextField txtTitulo) {
 		this.txtTitulo = txtTitulo;
 	}
 
-
+	/**
+	 * Metodo que retorna a nova descrição da tarefa
+	 * @return TextArea
+	 */
 	public TextArea getTxtDescricao() {
 		return txtDescricao;
 	}
 
-
+	/**
+	 * Metodo que insere uma nova descrição na tarefa
+	 * @param txtDescricao
+	 */
 	public void setTxtDescricao(TextArea txtDescricao) {
 		this.txtDescricao = txtDescricao;
 	}
 
-
+	/**
+	 * Retorna o botão de voltar
+	 * @return Button
+	 */
 	public Button getBtnVoltar() {
 		return btnVoltar;
 	}
 
-
+	/**
+	 * insere o botão de voltar
+	 * @param btnVoltar
+	 */
 	public void setBtnVoltar(Button btnVoltar) {
 		this.btnVoltar = btnVoltar;
 	}
 
-
+	/**
+	 * Retorna uma data
+	 * @return DatePicker
+	 */
 	public DatePicker getTxtValidade() {
 		return txtValidade;
 	}
 
-
+	/**
+	 * Metodo de inserir uma data de validade
+	 * @param txtValidade
+	 */
 	public void setTxtValidade(DatePicker txtValidade) {
 		this.txtValidade = txtValidade;
 	}
 
-
-	
+	/**
+	 * @return ToggleGroup
+	 */
 	public ToggleGroup getGroup() {
 		return group;
 	}
 
-
+	/**
+	 * @param group
+	 */
 	public void setGroup(ToggleGroup group) {
 		this.group = group;
 	}
 
-
+	/**
+	 * Retorna a tarefa selecionada
+	 * @return Tarefa
+	 */
 	public Tarefa getTarefaSelecionada() {
 		return tarefaSelecionada;
 	}
 
-
+	/**
+	 * Metodo que insere uma tarefa selecionada
+	 * @param tarefaSelecionada
+	 */
 	public void setTarefaSelecionada(Tarefa tarefaSelecionada) {
 		this.tarefaSelecionada = tarefaSelecionada;
 	}
 
-
+	/**
+	 * Retorna o botão de editar tarefa
+	 * @return Button
+	 */
 	public Button getBtnAddNovaTarefaEdit() {
 		return btnAddNovaTarefaEdit;
 	}
 
-
+	/**
+	 * Insere um botão de edição de tarefa
+	 * @param btnAddNovaTarefaEdit
+	 */
 	public void setBtnAddNovaTarefaEdit(Button btnAddNovaTarefaEdit) {
 		this.btnAddNovaTarefaEdit = btnAddNovaTarefaEdit;
 	}

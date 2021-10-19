@@ -33,8 +33,9 @@ import model.Tarefa;
 
 
 /**
- *
+ * Classe controladora do formulário de criação de tarefa
  * @author Diego Cerqueira e Joanderson Santos
+ * @since 2021
  */
 
 public class FormularioTarefaScreenController implements Initializable {
@@ -57,8 +58,9 @@ public class FormularioTarefaScreenController implements Initializable {
     
     private MessageAlert msgAlert = new MessageAlert();
     
-
-
+    /**
+     * Metodo para salvar uma nova tarefa
+     */
     public void salvarNovaTarefa() {
     	
     	boolean isCampoAnyEmpty  = verificarCampoAnyEmpty();
@@ -86,6 +88,9 @@ public class FormularioTarefaScreenController implements Initializable {
     	}
     }
   
+    /**
+     * Metodo para limpar os campos do formulário
+     */
     private void cleanInfoTarefa() {
 		
     	txtTitulo.setText("");
@@ -94,7 +99,9 @@ public class FormularioTarefaScreenController implements Initializable {
 		
 	}
     
- 
+    /**
+     * Metodo que fecha a tela do formulário e volta para a listagem de tarefas
+     */
     void closeScreen() {
     	
     	Stage stage = (Stage) btnVoltar.getScene().getWindow();
@@ -103,6 +110,10 @@ public class FormularioTarefaScreenController implements Initializable {
 
     }
 
+	/**
+	 * Verifica se os campos estão vazios
+	 * @return boolean
+	 */
 	private boolean verificarCampoAnyEmpty() {
     	
     	boolean isCampoAnyEmpty = false;
@@ -117,67 +128,102 @@ public class FormularioTarefaScreenController implements Initializable {
 		return isCampoAnyEmpty;
 	}
 	
+	/**
+	 * Metodo para "ouvir" as ações dos botões
+	 * @param listener
+	 */
 	public void addButtonsListener(EventHandler<ActionEvent> listener){
 	 	   
     	btnAddNovaTarefa.setOnAction(listener);
     	btnVoltar.setOnAction(listener);
     }
 
+	/**
+	 * Metodo da interface Initializable
+	 */
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        
     }
 
+	/**
+	 * Retorna o titulo da tarefa
+	 * @return String
+	 */
 	public String getTxtTitulo() {
 		return txtTitulo.getText();
 	}
 
+	/**
+	 * Insere um titulo a tarefa
+	 * @param txtTitulo
+	 */
 	public void setTxtTitulo(TextField txtTitulo) {
 		this.txtTitulo = txtTitulo;
 	}
 
+	/**
+	 * Metodo que retorna a descrição da tarefa
+	 * @return String
+	 */
 	public String getTxtDescricao() {
 		return txtDescricao.getText();
 	}
 
+	/**
+	 * Metodo que insere a descrição da tarefa
+	 * @param txtDescricao
+	 */
 	public void setTxtDescricao(TextArea txtDescricao) {
 		this.txtDescricao = txtDescricao;
 	}
 
+	/**
+	 * Pega o botão de voltar
+	 * @return Button
+	 */
 	public Button getBtnVoltar() {
 		return btnVoltar;
 	}
 
+	/**
+	 * Insere o botão de voltar
+	 * @param btnVoltar
+	 */
 	public void setBtnVoltar(Button btnVoltar) {
 		this.btnVoltar = btnVoltar;
 	}
 
+	/**
+	 * retorna a validade da tarefa
+	 * @return DatePicker
+	 */
 	public DatePicker getTxtValidade() {
 		return txtValidade;
 	}
 
+	/**
+	 * Insere uma validade para a tarefa
+	 * @param txtValidade
+	 */
 	public void setTxtValidade(DatePicker txtValidade) {
 		this.txtValidade = txtValidade;
 	}
 
+	/**
+	 * Retorna o botão de salvar a tarefa
+	 * @return Button
+	 */
 	public Button getBtnAddNovaTarefa() {
 		return btnAddNovaTarefa;
 	}
 
+	/**
+	 * insere o botão de salvar tarefa
+	 * @param btnAddNovaTarefa
+	 */
 	public void setBtnAddNovaTarefa(Button btnAddNovaTarefa) {
 		this.btnAddNovaTarefa = btnAddNovaTarefa;
 	}    
-    
- 
-
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
