@@ -247,7 +247,10 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    	 
+    	
+    	formularioProjetoController = new FormularioProjetoScreenController();
+    	formularioProjetoControllerEdit = new FormularioProjetoScreenEditController();
+    	
         loadProjetos();
     }
     
