@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /*******************************************************************************
 Autor: Diego Cerqueira e Joanderson Santos
 Componente Curricular: MI Programação
@@ -33,7 +27,7 @@ import message.MessageAlert;
 import model.Projeto;
 
 /**
- * Controlador da tela de formulário de projetos
+ * Controlador da tela de formulário de projetos.
  * @author Diego Cerqueira e Joanderson Santos
  * @since 2021
  */
@@ -55,9 +49,10 @@ public class FormularioProjetoScreenController implements Initializable {
     private MessageAlert msgAlert = new MessageAlert();  
    
     /**
-     * metodo para criar novo projeto
-     * @throws ArgumentoInvalidoException
+     * Método para criar novo projeto.
+     * @throws ArgumentoInvalidoException caso o projeto seja null.
      */
+    
     public void addNewProjeto() throws ArgumentoInvalidoException {
     	
     	String titulo = txtTitulo.getText();
@@ -84,8 +79,9 @@ public class FormularioProjetoScreenController implements Initializable {
     }
    
     /**
-     * Metodo para fechar tela de formulário de projeto
+     * Método para fechar tela de formulário de projeto.
      */
+    
     public void closeScreen() {
     	
     	Stage stage = (Stage) btnVoltar.getScene().getWindow();
@@ -95,14 +91,20 @@ public class FormularioProjetoScreenController implements Initializable {
     }
     
     /**
-     * Metodo para limpar campos de cadastro de projeto
+     * Método para limpar campos de cadastro do projeto.
      */
+    
     public void cleanInfoProjeto() {
     	
     	txtTitulo.setText("");
     	txtDescricao.setText("");
     	
     }
+    
+    /**
+     * Obtém o botão de salvar um Projeto.
+     * @return botão de salvar um Projeto.
+     */
     
     public  Button getBntSalvar() {
     	
@@ -111,17 +113,19 @@ public class FormularioProjetoScreenController implements Initializable {
     }
     
     /**
-     * Metodo vazio da interface Initializable
+     * Método vazio da interface Initializable.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
     }    
     
    /**
-    * Metodo para "ouvir" ação do botão e disparar evento
-    * @param listener
+    * Método para adicionar um "ouvinte", este interesado a mudança de estado dos botões deste Formulário.
+    * @param listener "ouvinte" interesado a mudança de estado dos botões.
  	*/
+    
     public void addButtonsListener(EventHandler<ActionEvent> listener){
 	   
     	btnSalvar.setOnAction(listener);
@@ -129,67 +133,43 @@ public class FormularioProjetoScreenController implements Initializable {
     }
 
 	/**
-	 * retorna o titulo do projeto
-	 * @return String
+	 * Retorna o título do projeto.
+	 * @return String título do projeto.
 	 */
+    
 	public String getTxtTitulo() {
 		return txtTitulo.getText();
 	}
 	
-	/**
-	 * insere o titulo do projeto
-	 * @param txtTitulo
-	 */
-	public void setTxtTitulo(TextField txtTitulo) {
-		this.txtTitulo = txtTitulo;
-	}
 	
 	/**
-	 * retorna a descrição do projeto
-	 * @return String
+	 * Retorna a descrição do projeto.
+	 * @return String descrição do projeto.
 	 */
+	
 	public String getTxtDescricao() {
 		return txtDescricao.getText();
 	}
 	
-	/**
-	 * insere a descrição do projeto
-	 * @param txtDescricao
-	 */
-	public void setTxtDescricao(TextArea txtDescricao) {
-		this.txtDescricao = txtDescricao;
-	}
 	
 	/**
-	 * retorna o botão de salvar um projeto
-	 * @return Button
+	 * Retorna o botão de salvar um projeto.
+	 * @return Button botão de salvar um projeto.
 	 */
 	public Button getBtnSalvar() {
 		return btnSalvar;
 	}
 	
-	/**
-	 * metodo de inserir um botão ao projeto
-	 * @param btnSalvar
-	 */
-	public void setBtnSalvar(Button btnSalvar) {
-		this.btnSalvar = btnSalvar;
-	}
 	
 	/**
-	 * retorna o botão de voltar
-	 * @return Button
+	 * Retorna o botão de voltar.
+	 * @return Button botão de voltar.
 	 */
+	
 	public Button getBtnVoltar() {
 		
 		return btnVoltar;
 	}
 	
-	/**
-	 * insere o botão de voltar
-	 * @param btnVoltar
-	 */
-	public void setBtnVoltar(Button btnVoltar) {
-		this.btnVoltar = btnVoltar;
-	}
+	
 }

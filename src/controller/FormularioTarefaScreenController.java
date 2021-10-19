@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /*******************************************************************************
 Autor: Diego Cerqueira e Joanderson Santos
 Componente Curricular: MI Programação
@@ -33,7 +27,7 @@ import model.Tarefa;
 
 
 /**
- * Classe controladora do formulário de criação de tarefa
+ * Classe controladora do formulário de criação de tarefa.
  * @author Diego Cerqueira e Joanderson Santos
  * @since 2021
  */
@@ -59,8 +53,9 @@ public class FormularioTarefaScreenController implements Initializable {
     private MessageAlert msgAlert = new MessageAlert();
     
     /**
-     * Metodo para salvar uma nova tarefa
+     * Método para salvar uma nova tarefa;
      */
+    
     public void salvarNovaTarefa() {
     	
     	boolean isCampoAnyEmpty  = verificarCampoAnyEmpty();
@@ -89,8 +84,9 @@ public class FormularioTarefaScreenController implements Initializable {
     }
   
     /**
-     * Metodo para limpar os campos do formulário
+     * Método para limpar os campos do formulário.
      */
+    
     private void cleanInfoTarefa() {
 		
     	txtTitulo.setText("");
@@ -100,8 +96,9 @@ public class FormularioTarefaScreenController implements Initializable {
 	}
     
     /**
-     * Metodo que fecha a tela do formulário e volta para a listagem de tarefas
+     * Método que fecha a tela do formulário e volta para a listagem de tarefas.
      */
+    
     void closeScreen() {
     	
     	Stage stage = (Stage) btnVoltar.getScene().getWindow();
@@ -111,9 +108,10 @@ public class FormularioTarefaScreenController implements Initializable {
     }
 
 	/**
-	 * Verifica se os campos estão vazios
-	 * @return boolean
+	 * Verifica se pelo menos um campo está vazio.
+	 * @return boolean true se pelo menos um campo está vazio, ou false se todos os campos estão preenchidos.
 	 */
+    
 	private boolean verificarCampoAnyEmpty() {
     	
     	boolean isCampoAnyEmpty = false;
@@ -129,9 +127,10 @@ public class FormularioTarefaScreenController implements Initializable {
 	}
 	
 	/**
-	 * Metodo para "ouvir" as ações dos botões
-	 * @param listener
+	 * Método para adicionar um "ouvinte", este interesado a mudança de estado dos botões deste Formulário.
+	 * @param listener "ouvinte" interesado a mudança de estado dos botões.
 	 */
+	
 	public void addButtonsListener(EventHandler<ActionEvent> listener){
 	 	   
     	btnAddNovaTarefa.setOnAction(listener);
@@ -139,91 +138,61 @@ public class FormularioTarefaScreenController implements Initializable {
     }
 
 	/**
-	 * Metodo da interface Initializable
+	 * Método da interface Initializable.
 	 */
+	
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
         
     }
 
 	/**
-	 * Retorna o titulo da tarefa
-	 * @return String
+	 * Retorna o título da tarefa.
+	 * @return String título da tarefa.
 	 */
+	
 	public String getTxtTitulo() {
 		return txtTitulo.getText();
 	}
 
-	/**
-	 * Insere um titulo a tarefa
-	 * @param txtTitulo
-	 */
-	public void setTxtTitulo(TextField txtTitulo) {
-		this.txtTitulo = txtTitulo;
-	}
 
 	/**
-	 * Metodo que retorna a descrição da tarefa
-	 * @return String
+	 * Método que retorna a descrição da tarefa.
+	 * @return String descrição da tarefa.
 	 */
+	
 	public String getTxtDescricao() {
 		return txtDescricao.getText();
 	}
+	
 
 	/**
-	 * Metodo que insere a descrição da tarefa
-	 * @param txtDescricao
+	 * Obtém o botão de voltar.
+	 * @return Button botão de voltar.
 	 */
-	public void setTxtDescricao(TextArea txtDescricao) {
-		this.txtDescricao = txtDescricao;
-	}
-
-	/**
-	 * Pega o botão de voltar
-	 * @return Button
-	 */
+	
 	public Button getBtnVoltar() {
 		return btnVoltar;
 	}
 
-	/**
-	 * Insere o botão de voltar
-	 * @param btnVoltar
-	 */
-	public void setBtnVoltar(Button btnVoltar) {
-		this.btnVoltar = btnVoltar;
-	}
+	
 
 	/**
-	 * retorna a validade da tarefa
-	 * @return DatePicker
+	 * Retorna a validade da tarefa.
+	 * @return DatePicker validade da tarefa.
 	 */
+	
 	public DatePicker getTxtValidade() {
 		return txtValidade;
 	}
 
 	/**
-	 * Insere uma validade para a tarefa
-	 * @param txtValidade
+	 * Retorna o botão de salvar a tarefa.
+	 * @return Button botão de salvar a tarefa.
 	 */
-	public void setTxtValidade(DatePicker txtValidade) {
-		this.txtValidade = txtValidade;
-	}
-
-	/**
-	 * Retorna o botão de salvar a tarefa
-	 * @return Button
-	 */
+	
 	public Button getBtnAddNovaTarefa() {
 		return btnAddNovaTarefa;
 	}
 
-	/**
-	 * insere o botão de salvar tarefa
-	 * @param btnAddNovaTarefa
-	 */
-	public void setBtnAddNovaTarefa(Button btnAddNovaTarefa) {
-		this.btnAddNovaTarefa = btnAddNovaTarefa;
-	}    
-    
 }

@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * A Classe <b>Projeto</b> representa a modelagem de um <b>projeto</b> do Sistema.
  * @author Diego Cerqueira e Joanderson Santos
  *
  */
@@ -26,9 +27,10 @@ public class Projeto {
 	private List<Tarefa> tarefas;
 	
 	/**
-	 * Construtor da classe
-	 * @param titulo
+	 * Construtor da classe.
+	 * @param titulo título do projeto a ser inserido.
 	 */
+	
 	public Projeto(String titulo) {
 		
 		this.titulo = titulo;
@@ -36,10 +38,11 @@ public class Projeto {
 	}
 	
 	/**
-	 * Construtor da classe
-	 * @param titulo
-	 * @param descricao
+	 * Construtor da classe.
+	 * @param titulo título do projeto a ser inserido.
+	 * @param descricao descrição do projeto a ser inserida.
 	 */
+	
 	public Projeto(String titulo, String descricao) {
 		
 		this.titulo = titulo;
@@ -48,31 +51,34 @@ public class Projeto {
 	}
 	
 	/**
-	 * Construtor da classe
+	 * Construtor da classe.
 	 */
+	
 	public Projeto() {
 		this.tarefas = new ArrayList<Tarefa>();
 	}
 
 	/**
-	 * retorna o titulo do projeto
-	 * @return String 
+	 * retorna o título do projeto.
+	 * @return String título do projeto.
 	 */
+	
 	public String getTitulo() {
 		return titulo;
 	}
 	
 	/**
-	 * insere um titulo ao projeto
-	 * @param titulo
+	 * insere um título ao projeto.
+	 * @param titulo título do projeto a ser inserido.
 	 */
+	
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 	
 	/**
-	 * retorna a descrição do projeto
-	 * @return String
+	 * retorna a descrição do projeto.
+	 * @return String descrição do projeto.
 	 */
 	public String getDescricao() {
 		return descricao;
@@ -80,32 +86,33 @@ public class Projeto {
 	
 	/**
 	 * insere uma descrição ao projeto
-	 * @param descricao
+	 * @param descricao descrição do projeto a ser inserida.
 	 */
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 	
 	/**
-	 * retorna a lista de tarefas associadas ao projeto
-	 * @return List<Tarefa>
+	 * retorna a lista de tarefas associadas ao projeto.
+	 * @return List<Tarefa> lista de tarefas associadas ao projeto.
 	 */
 	public List<Tarefa> getTarefas() {
 		return tarefas;
 	}
 	
 	/**
-	 * insere uma lista de tarefas
-	 * @param tarefas
+	 * insere uma lista de tarefas.
+	 * @param tarefas lista de tarefas a ser inserida.
 	 */
 	public void setTarefas(List<Tarefa> tarefas) {
 		this.tarefas = tarefas;
 	}
 
 	/**
-	 * adiciona uma tarefa a lista de tarefas
-	 * @param tarefa
+	 * adiciona uma tarefa a lista de tarefas.
+	 * @param tarefa tarefa a ser inserida.
 	 */
+	
 	public void setTarefa(Tarefa tarefa) {
 		
 		this.tarefas.add(tarefa);
@@ -113,8 +120,10 @@ public class Projeto {
 	}
 	
 	/**
-	 * metodo para comparar dois projetos
+	 * Método para comparar dois projetos.
+	 * @return true se os dois projetos são iguais, ou false caso contrário.
 	 */
+	
 	public boolean equals(Object obj) {
 		
 		boolean objIsEqual = false;
@@ -147,8 +156,9 @@ public class Projeto {
 	}
 
 	/**
-	 * metodo para converter um projeto para uma string com seus dados
+	 * Método para converter um projeto para uma string com seus dados.
 	 */
+	
 	@Override
 	public String toString() {
 		
@@ -158,8 +168,9 @@ public class Projeto {
 	
 	/**
 	 * retorna uma lista com as tarefas pendentes
-	 * @return List<Tarefa>
+	 * @return List<Tarefa> lista com as tarefas pendentes.
 	 */
+	
 	public List<Tarefa> getTarefasPendentes(){
 		
 		List<Tarefa> tarefasCadastradas = this.getTarefas();
@@ -188,8 +199,8 @@ public class Projeto {
 	
 	
 	/**
-	 * retorna uma lista com a s tarefas em execução
-	 * @return List<Tarefa>
+	 * retorna uma lista com as tarefas em execução
+	 * @return List<Tarefa> tarefas em execução.
 	 */
 	public List<Tarefa> getTarefasEmExecucao(){
 		
@@ -218,9 +229,10 @@ public class Projeto {
 	}
 	
 	/**
-	 * retorna uma lista com as tarefas concluidas
-	 * @return List<Tarefa>
+	 * retorna uma lista com as tarefas concluídas
+	 * @return List<Tarefa> tarefas concluídas.
 	 */
+	
 	public List<Tarefa> getTarefasConcluidas(){
 		
 		List<Tarefa> tarefasCadastradas = this.getTarefas();

@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /*******************************************************************************
 Autor: Diego Cerqueira e Joanderson Santos
 Componente Curricular: MI Programação
@@ -19,25 +13,24 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Exceptions.ObjetoInexistenteException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import message.MessageAlert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import model.Status;
 import model.Tarefa;
 
 
 /**
- * Classe controladora da tela de edição de tarefas
+ * Classe controladora da tela de edição de tarefas.
  * @author Diego Cerqueira e Joanderson Santos
  * @since 2021
  */
@@ -68,10 +61,11 @@ public class FormularioTarefaScreenEditController implements Initializable {
 
 
     /**
-     * Metodo para salvar as alterações em uma tarefa
-     * @throws ObjetoInexistenteException
+     * Método para salvar as alterações em uma tarefa.
+     * 
      */
-    public void salvarEditTarefa() throws ObjetoInexistenteException {
+    
+    public void salvarEditTarefa() {
     	
     	boolean isCampoAnyEmpty  = verificarCampoAnyEmpty();
     	
@@ -98,8 +92,9 @@ public class FormularioTarefaScreenEditController implements Initializable {
     }
     
     /**
-     * Metodo para fechar a tela de edição de tarefas e voltar a tela com a listagem das tarefas
+     * Método para fechar a tela de edição de tarefas e voltar a tela com a listagem das tarefas.
  	 */
+    
     public void closeScreen() {
     	
     	Stage stage = (Stage) btnVoltar.getScene().getWindow();
@@ -109,8 +104,9 @@ public class FormularioTarefaScreenEditController implements Initializable {
     }
   
     /**
-     * Metodo que limpa os campos do formulário de edição de tarefa
+     * Método que limpa os campos do formulário de edição de tarefa.
      */
+    
     private void cleanInfoTarefa() {
 		
     	txtTitulo.setText("");
@@ -120,9 +116,10 @@ public class FormularioTarefaScreenEditController implements Initializable {
 	}
 
 	/**
-	 * Metodo que verifica se os campos do formulário estão vazios
-	 * @return boolean
+	 * Verifica se pelo menos um campo está vazio.
+	 * @return boolean true se pelo menos um campo está vazio, ou false se todos os campos estão preenchidos.
 	 */
+    
 	private boolean verificarCampoAnyEmpty() {
     	
     	boolean isCampoAnyEmpty = false;
@@ -138,9 +135,10 @@ public class FormularioTarefaScreenEditController implements Initializable {
 	}
 	
 	/**
-	 * Retorna qual o status selecionado no formulário
-	 * @return Status
+	 * Retorna qual o status foi selecionado no formulário.
+	 * @return Status status selecionado no formulário.
 	 */
+	
 	public Status getStatusSelecionado() {
 		
 		Status statusSelecionado;
@@ -165,10 +163,11 @@ public class FormularioTarefaScreenEditController implements Initializable {
 	}
 	
 	/**
-	 * Metodo da interface Initializable
+	 * Método da interface Initializable.
 	 * @param url
 	 * @param rb
 	 */
+	
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
 		
@@ -181,9 +180,10 @@ public class FormularioTarefaScreenEditController implements Initializable {
     }    
     
 	/**
-	 * Metodo para "ouvir" a ação de um botão
-	 * @param listener
+	 * Método para adicionar um "ouvinte", este interesado a mudança de estado dos botões deste Formulário.
+	 * @param listener "ouvinte" interesado a mudança de estado dos botões.
 	 */
+	
 	public void addButtonsListener(EventHandler<ActionEvent> listener){
 		   
 		btnAddNovaTarefaEdit.setOnAction(listener);
@@ -191,113 +191,72 @@ public class FormularioTarefaScreenEditController implements Initializable {
     }
 
 	/**
-	 * Retorna o titulo da tarefa editada
-	 * @return TextField
+	 * Retorna o título da tarefa editada.
+	 * @return TextField título da tarefa editada.
 	 */
+	
 	public TextField getTxtTitulo() {
 		return txtTitulo;
 	}
 
-	/**
-	 * Metodo que insere um novo titulo a tarefa
-	 * @param txtTitulo
-	 */
-	public void setTxtTitulo(TextField txtTitulo) {
-		this.txtTitulo = txtTitulo;
-	}
 
 	/**
-	 * Metodo que retorna a nova descrição da tarefa
-	 * @return TextArea
+	 * Método que retorna a nova descrição da tarefa.
+	 * @return TextArea descrição da tarefa.
 	 */
+	
 	public TextArea getTxtDescricao() {
 		return txtDescricao;
 	}
 
-	/**
-	 * Metodo que insere uma nova descrição na tarefa
-	 * @param txtDescricao
-	 */
-	public void setTxtDescricao(TextArea txtDescricao) {
-		this.txtDescricao = txtDescricao;
-	}
 
 	/**
-	 * Retorna o botão de voltar
-	 * @return Button
+	 * Retorna o botão de voltar.
+	 * @return Button botão de voltar.
 	 */
 	public Button getBtnVoltar() {
 		return btnVoltar;
 	}
 
-	/**
-	 * insere o botão de voltar
-	 * @param btnVoltar
-	 */
-	public void setBtnVoltar(Button btnVoltar) {
-		this.btnVoltar = btnVoltar;
-	}
 
 	/**
-	 * Retorna uma data
-	 * @return DatePicker
+	 * Retorna uma data selecionada.
+	 * @return DatePicker data selecionada.
 	 */
+	
 	public DatePicker getTxtValidade() {
 		return txtValidade;
 	}
 
-	/**
-	 * Metodo de inserir uma data de validade
-	 * @param txtValidade
-	 */
-	public void setTxtValidade(DatePicker txtValidade) {
-		this.txtValidade = txtValidade;
-	}
 
 	/**
+	 * Retorna um ToggleGroup.
 	 * @return ToggleGroup
 	 */
+	
 	public ToggleGroup getGroup() {
 		return group;
 	}
 
+	
 	/**
-	 * @param group
+	 * Retorna a tarefa selecionada.
+	 * @return Tarefa tarefa selecionada.
 	 */
-	public void setGroup(ToggleGroup group) {
-		this.group = group;
-	}
-
-	/**
-	 * Retorna a tarefa selecionada
-	 * @return Tarefa
-	 */
+	
 	public Tarefa getTarefaSelecionada() {
 		return tarefaSelecionada;
 	}
 
-	/**
-	 * Metodo que insere uma tarefa selecionada
-	 * @param tarefaSelecionada
-	 */
-	public void setTarefaSelecionada(Tarefa tarefaSelecionada) {
-		this.tarefaSelecionada = tarefaSelecionada;
-	}
 
 	/**
-	 * Retorna o botão de editar tarefa
-	 * @return Button
+	 * Retorna o botão de editar tarefa.
+	 * @return Button botão de editar tarefa.
 	 */
+	
 	public Button getBtnAddNovaTarefaEdit() {
 		return btnAddNovaTarefaEdit;
 	}
 
-	/**
-	 * Insere um botão de edição de tarefa
-	 * @param btnAddNovaTarefaEdit
-	 */
-	public void setBtnAddNovaTarefaEdit(Button btnAddNovaTarefaEdit) {
-		this.btnAddNovaTarefaEdit = btnAddNovaTarefaEdit;
-	}
 
 }

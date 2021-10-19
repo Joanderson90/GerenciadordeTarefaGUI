@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /*******************************************************************************
 Autor: Diego Cerqueira e Joanderson Santos
 Componente Curricular: MI Programação
@@ -28,7 +22,7 @@ import javafx.scene.control.MenuItem;
 import screenManager.ScreenManager;
 
 /**
- * Controlador da tela inicial
+ * Controlador da tela inicial.
  * @author Diego Cerqueira e Joanderson Santos
  * @since 2021
  */
@@ -50,10 +44,11 @@ public class MainScreenController implements Initializable {
     private ScreenManager screenManager = new ScreenManager();
 
     /**
-     * Evento para abrir a tela de projetos
-     * @param event
-     * @throws IOException
+     * Evento para abrir a tela de projetos.
+     * @param event 
+     * @throws IOException caso a tela não exista, ou o caminho esteja errado.
      */
+    
     @FXML
     void acessProjetos(ActionEvent event) throws IOException {
     	
@@ -61,10 +56,11 @@ public class MainScreenController implements Initializable {
     }
 
     /**
-     * Evento para abrir a tela de informações do sistema
+     * Evento para abrir a tela de informações do sistema.
      * @param event
-     * @throws IOException
+     * @throws IOException caso a tela não exista, ou o caminho esteja errado.
      */
+    
     @FXML
     void acessSobreSistema(ActionEvent event) throws IOException {
     	
@@ -73,10 +69,11 @@ public class MainScreenController implements Initializable {
 	}
     
     /**
-     * Metodo da interface Initializable
+     * Método da interface Initializable
      * @param url
      * @param rb
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         

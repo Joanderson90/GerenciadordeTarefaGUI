@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /*******************************************************************************
 Autor: Diego Cerqueira e Joanderson Santos
 Componente Curricular: MI Programação
@@ -21,7 +15,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import Exceptions.ObjetoInexistenteException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -37,7 +30,7 @@ import model.Tarefa;
 import screenManager.ScreenManager;
 
 /**
- * Classe controladora da tela de Tarefas
+ * Classe controladora da tela de Tarefas.
  * @author Diego Cerqueira e Joanderson Santos
  * @since 2021
  */
@@ -86,10 +79,11 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     
     
     /**
-     * Evento que abre formulário de criação de tarefas
+     * Evento que abre formulário de cadastro de tarefas.
      * @param event
-     * @throws IOException
+     * @throws IOException caso a tela não exista, ou o caminho esteja errado.
      */
+    
     @FXML
     void openFormularioTarefaScreen(ActionEvent event) throws IOException {
     	
@@ -101,8 +95,9 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
 
     /**
-     *  Metodo que pega a referência da tarefa selecionada para exclusão
+     * Atribui uma referência ao controlador, esta referente ao Formulário da Tarefa.
      */
+    
     private void setReferenciaFormularioTarefaController() {
 
     	Object currentController = screenManager.getCurrenController();
@@ -114,16 +109,17 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 	}
 
     /**
-     * Evento que abre formulário de edição de tarefas
+     * Evento que abre formulário de edição de tarefas.
      * @param event
-     * @throws IOException
+     * @throws IOException caso a tela não exista, ou o caminho esteja errado.
      */
+    
     @FXML
     void openFormularioTarefaScreenEdit(ActionEvent event) throws IOException {
     	
     	if(tarefaSelecionada != null) {
 
-        	screenManager.openNewScreen("FormularioTarefaScreenEdit", "Ediï¿½ï¿½o Tarefas");
+        	screenManager.openNewScreen("FormularioTarefaScreenEdit", "Edição Tarefas");
 
         	setReferenciaFormularioTarefaControllerEdit();
     	}else {
@@ -134,8 +130,9 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     }
 
     /**
-     * Metodo que pega a referência da tarefa selecionada para ser editada
+     * Atribui uma referência ao controlador, esta referente ao Formulário de edição das Tarefas.
      */
+    
     private void setReferenciaFormularioTarefaControllerEdit() {
 
     	Object currentController = screenManager.getCurrenController();
@@ -147,9 +144,10 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 	}
 
     /**
-     * Evento para voltar a tela de projetos
+     * Evento para voltar a tela de projetos.
      * @param event
      */
+    
     @FXML
     void backToScreenProjetos(ActionEvent event) {
     	
@@ -159,9 +157,10 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     }
     
 	/**
-	 * Evento para excluir uma tarefa
+	 * Evento para excluir uma tarefa.
 	 * @param event
 	 */
+    
 	@FXML
     void excluirTarefa(ActionEvent event) {
     	
@@ -182,8 +181,9 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     }
     
     /**
-     * Metodo que dado um projeto carrega suas tarefas na tela
+     * Método que dado um projeto carrega suas tarefas na tela.
      */
+	
     public void loadTarefas() {
     	
     	List<Tarefa> tarefasPendentes  = projetoQueDetemTarefas.getTarefasPendentes();
@@ -200,26 +200,29 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     }
     
     /**
-     * metodo que insere uma nova tarefa
-     * @param newTarefa
+     * Método que insere uma nova tarefa.
+     * @param newTarefa tarefa a ser inserida.
      */
+    
     public static void setTarefaSalva(Tarefa newTarefa) {
     	
     	projetoQueDetemTarefas.setTarefa(newTarefa);
     }
     
     /**
-     * Retorna a tarefa selecionada pelo usuário
-     * @return Tarefa
+     * Retorna a tarefa selecionada pelo usuário.
+     * @return Tarefa tarefa selecionada.
      */
+    
     public static Tarefa getTarefaSelecionada() {
     	
     	return tarefaSelecionada;
     }
     
     /**
-     * Metodo que verifica se uma tarefa da lista de concluidas foi selecionada
+     * Método que verifica se uma tarefa da lista de concluidas foi selecionada.
      */
+    
     @FXML
     void listInViewConcluidas() {
     		
@@ -228,8 +231,9 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     
 
     /**
-     * Metodo que verifica se uma tarefa da lista de em execução foi selecionada
+     * Método que verifica se uma tarefa da lista de em execução foi selecionada.
      */
+    
     @FXML
     void listInViewEmExecucao() {
     	
@@ -237,8 +241,9 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     }
 
     /**
-     * Metodo que verifica se uma tarefa da lista de pendentes foi selecionada
+     * Método que verifica se uma tarefa da lista de pendentes foi selecionada.
      */
+    
     @FXML
      void listInViewPendentes() {
     	 
@@ -248,10 +253,11 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
 
     /**
-     * Metodo da interface Initializable
+     * Método da interface Initializable.
      * @param url
      * @param rb
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -265,9 +271,11 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
     }
 
 	/**
-	 * Metodo que verifica qual botão foi clicado
+	 * Método que verifica qual botão foi clicado e, executa uma ação referente ao Formulário que o botão pertence.O botão pode ser do Formulário de edição de Tarefas,
+	 * ou do Formulário de cadastro de Tarefas.
 	 * @param arg0
 	 */
+    
 	@Override
 	public void handle(ActionEvent arg0) {
 
@@ -283,16 +291,10 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
 		} else if (arg0.getSource() == formularioTarefaControllerEdit.getBtnAddNovaTarefaEdit()) {
 
-			try {
-
 				formularioTarefaControllerEdit.salvarEditTarefa();
 
 				loadTarefas();
 
-			} catch (ObjetoInexistenteException e) {
-
-				e.printStackTrace();
-			}
 
 		} else if (arg0.getSource() == formularioTarefaControllerEdit.getBtnVoltar()) {
 

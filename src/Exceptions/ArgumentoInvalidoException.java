@@ -37,7 +37,7 @@ public class ArgumentoInvalidoException extends Exception{
 	/**
 	 * Obtém a mensagem referente à exceção.
 	 * Mensagem:O argumento deve ser diferente de null ou vazio!
-	 * @return mensagem referente a exceção.
+	 * @return mensagem referente à exceção.
 	 */
 		
 	public String getMessage() {

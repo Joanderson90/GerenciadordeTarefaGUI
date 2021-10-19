@@ -27,13 +27,13 @@ public class ObjetoInexistenteException extends Exception{
 	
 	/**
 	 * Obtém um objeto do tipo <b>ObjetoInexistenteException</b>.<br>
-	 * Mensagem: Objeto não encontrado no sistema
+	 * Mensagem: Objeto não encontrado no sistema.
 	 * @return objeto do tipo <b>ObjetoInexistenteException</b>.
 	 */
 	
 	public ObjetoInexistenteException() {
 		
-		super("Objeto não encontrado no sistema");
+		super("Objeto não encontrado no sistema.");
 	}
 	
 	

@@ -18,16 +18,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Classe principal do projeto
+ * Classe principal do projeto.
  * @author Diego Cerqueira e Joanderson Santos
  *
  */
 public class Main extends Application {
     
     /**
-     * Metodo da interface Application que inicializa a tela principal do projeto
+     * Método da interface Application que inicializa a tela principal do projeto.
      * @param stage
      */
+	
     @Override
     public void start(Stage stage) throws Exception {
     	

@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /*******************************************************************************
 Autor: Diego Cerqueira e Joanderson Santos
 Componente Curricular: MI Programação
@@ -22,7 +16,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import Exceptions.ArgumentoInvalidoException;
-import Exceptions.ObjetoInexistenteException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,7 +32,7 @@ import model.User;
 import screenManager.ScreenManager;
 
 /**
- * Classe controladora da página de projetos
+ * Classe controladora da página de projetos.
  * @author Diego Cerqueira e Joanderson Santos
  * @since 2021
  */
@@ -87,8 +80,9 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     
  
     /**
-     * Metodo que carrega os projetos na tela
+     * Método que carrega os projetos na tela.
      */
+    
     public void loadProjetos() {
     	
     	List<Projeto> projetosCadastrados = user.getProjetos();
@@ -99,13 +93,13 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     }
 
     /**
-     * Metodo que abre o formulário  de cadastro de projetos
+     * Método que abre o formulário  de cadastro de projetos.
      * @param event
-     * @throws IOException
-     * @throws ArgumentoInvalidoException
+     * @throws IOException caso a tela não exista, ou o caminho esteja errado.
      */
+    
     @FXML
-    void openFormularioProjetoScreen(ActionEvent event) throws IOException, ArgumentoInvalidoException {
+    void openFormularioProjetoScreen(ActionEvent event) throws IOException{
     	
     	screenManager.openNewScreen("FormularioProjetoScreen", "Cadastro Projetos");
     	
@@ -115,8 +109,9 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     	  
     
     /**
-     * Metodo que pega a referência de um projeto a ser excluido
+     * Atribui uma referência ao controlador, esta referente ao Formulário do Projeto.
      */
+    
     private void setReferenciaFormularioProjetoController() {
     	
     	Object currentController = screenManager.getCurrenController();
@@ -125,12 +120,14 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     	
     	formularioProjetoController.addButtonsListener(this);
 	}
+    
 
 	/**
-	 * Metodo que abre o formulário de edição de projetos
+	 * Método que abre o formulário de edição de projetos.
 	 * @param event
-	 * @throws IOException
+	 * @throws IOException caso a tela não exista, ou o caminho esteja errado.
 	 */
+    
 	@FXML
     void openFormularioProjetoScreenEdit(ActionEvent event) throws IOException {
     	
@@ -148,10 +145,12 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     		
     	}
     }
+	
 
     /**
-     * Metodo que pega a referência do projeto selecionado para editar
+     * Atribui uma referência ao controlador, esta referente ao Formulário de edição dos Projetos.
      */
+	
     private void setReferenciaFormularioProjetoControllerEdit() {
     	
     	Object currentController = screenManager.getCurrenController();
@@ -163,9 +162,10 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 	}
 
 	/**
-	 * Evento para excluir um projeto
+	 * Evento para excluir um projeto.
 	 * @param event
 	 */
+    
 	@FXML
     void excluirProjeto(ActionEvent event) {
     	
@@ -194,10 +194,11 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     }
     
     /**
-     * Evento para abrir as tarefas relacionadas a um projeto selecionado
+     * Evento para abrir as tarefas, estas relacionadas a um projeto selecionado.
      * @param event
      * @throws IOException
      */
+	
     @FXML
     void openTarefas(ActionEvent event) throws IOException {
     	
@@ -217,19 +218,21 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     }
     
     /**
-     * Metodo que retorna qual projeto foi selecionado
-     * @return Projeto
+     * Método que retorna qual projeto foi selecionado.
+     * @return Projeto projeto selecionado.
      */
+    
     public static Projeto getProjetoSelecionado() {
     	
     	return projetoSelecionado;
     }
     
     /**
-     * Metodo que insere um novo projeto
-     * @param projeto
-     * @throws ArgumentoInvalidoException
+     * Método que insere um novo projeto.
+     * @param projeto projeto a ser inserido.
+     * @throws ArgumentoInvalidoException caso o projeto seja null.
      */
+    
     public static void setNewProjeto(Projeto projeto) throws ArgumentoInvalidoException {
     	
     	user.setProjeto(projeto);
@@ -237,10 +240,11 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     }
     
     /**
-     * Metodo da interface Initializable
+     * Método da interface Initializable.
      * @param url
      * @param rb
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     	 
@@ -248,9 +252,10 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
     }
     
 	/**
-	 * Retorna o usuário da aplicação
-	 * @return User
+	 * Retorna o usuário da aplicação.
+	 * @return User usuário da aplicação.
 	 */
+    
 	public static User getUser() {
 		
 		return user;
@@ -258,9 +263,11 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 
 
 	/**
-	 * Metodo que verifica qual botão foi clicado
+	 * Método que verifica qual botão foi clicado e, executa uma ação referente ao Formulário que o botão pertence.O botão pode ser do Formulário de edição de Projetos,
+	 * ou do Formulário de cadastro de Projetos.
 	 * @param arg0
 	 */
+	
 	@Override
 	public void handle(ActionEvent arg0) {
 		
@@ -284,17 +291,11 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 		}
 		
 		else if(arg0.getSource() == formularioProjetoControllerEdit.getBtnSalvar()) {
-			
-			try {
 				
 				formularioProjetoControllerEdit.addProjetoEditado();
 				
-				loadProjetos();
-				
-			} catch (ArgumentoInvalidoException | ObjetoInexistenteException e) {
-				
-				e.printStackTrace();
-			}
+				loadProjetos();		
+
 			
 		}else if(arg0.getSource() == formularioProjetoControllerEdit.getBtnVoltar()) {
 			

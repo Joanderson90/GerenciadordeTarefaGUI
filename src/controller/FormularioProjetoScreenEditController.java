@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /*******************************************************************************
 Autor: Diego Cerqueira e Joanderson Santos
 Componente Curricular: MI Programação
@@ -20,8 +14,6 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Exceptions.ArgumentoInvalidoException;
-import Exceptions.ObjetoInexistenteException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -31,10 +23,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import message.MessageAlert;
-import model.*;
+import model.Projeto;
 
 /**
- * Controlador do formulario de edição de projetos
+ * Controlador do formulario de edição de projetos.
  * @author Diego Cerqueira e Joanderson Santos
  * @since 2021
  */
@@ -58,11 +50,10 @@ public class FormularioProjetoScreenEditController implements Initializable {
     private Projeto projetoSelecionado;
 
     /**
-     * metodo de salvar alterações em um projeto
-     * @throws ArgumentoInvalidoException
-     * @throws ObjetoInexistenteException
+     * Método de salvar alterações de um projeto.
      */
-    public void addProjetoEditado() throws ArgumentoInvalidoException, ObjetoInexistenteException {
+    
+    public void addProjetoEditado() {
     	
     	String titulo = txtTitulo.getText();
     	String descricao = txtDescricao.getText();
@@ -72,7 +63,9 @@ public class FormularioProjetoScreenEditController implements Initializable {
     		this.msgAlert.getMessageCampoEmBranco();
     		
     	}
+    	
     	else {
+    		
     		
         	projetoSelecionado.setTitulo(titulo);
         	projetoSelecionado.setDescricao(descricao);
@@ -85,8 +78,9 @@ public class FormularioProjetoScreenEditController implements Initializable {
     }
     
     /**
-     * metodo de fechar a tela
+     * Método de fechar a tela.
      */
+    
     void closeScreen() {
     	
     	Stage stage = (Stage) btnVoltar.getScene().getWindow();
@@ -96,8 +90,9 @@ public class FormularioProjetoScreenEditController implements Initializable {
     }
   
     /**
-     * metodo initialize da interface Initializable
+     * Método initialize da interface Initializable.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     	
@@ -108,8 +103,9 @@ public class FormularioProjetoScreenEditController implements Initializable {
     }    
     
     /**
-     * metodo para carregar informações do projeto
+     * Método para carregar informações do projeto.
      */
+    
     public void loadInfoProjeto() {
     	
     	txtTitulo.setText(projetoSelecionado.getTitulo());
@@ -117,8 +113,9 @@ public class FormularioProjetoScreenEditController implements Initializable {
     }
     
     /**
-     * metodo de limpar campos do formulario de editar projeto
+     * Método de limpar campos do formulário de editar projeto
      */
+    
     public void cleanInfoProjeto() {
     	
     	txtTitulo.setText("");
@@ -126,9 +123,10 @@ public class FormularioProjetoScreenEditController implements Initializable {
     }
 
     /**
-     * Metodo para "ouvir" ação do botão
-     * @param listener
+     * Método para adicionar um "ouvinte", este interesado a mudança de estado dos botões deste Formulário.
+     * @param listener "ouvinte" interesado a mudança de estado dos botões.
      */
+    
     public void addButtonsListener(EventHandler<ActionEvent> listener){
  	   
     	btnSalvar.setOnAction(listener);
@@ -136,66 +134,43 @@ public class FormularioProjetoScreenEditController implements Initializable {
     }
 
 	/**
-	 * retorna titulo do projeto
-	 * @return String
+	 * Retorna título do projeto.
+	 * @return String título do projeto.
 	 */
+    
 	public String getTxtTitulo() {
 		return txtTitulo.getText();
 	}
 
-	/**
-	 * insere novo titulo ao projeto
-	 * @param txtTitulo
-	 */
-	public void setTxtTitulo(TextField txtTitulo) {
-		this.txtTitulo = txtTitulo;
-	}
+	
 
 	/**
-	 * retorna descrição do projeto
-	 * @return String
+	 * Retorna descrição do projeto.
+	 * @return String descrição do projeto.
 	 */
+	
 	public String getTxtDescricao() {
 		return txtDescricao.getText();
 	}
 
-	/**
-	 * insere nova descrição do projeto
-	 * @param txtDescricao
-	 */
-	public void setTxtDescricao(TextArea txtDescricao) {
-		this.txtDescricao = txtDescricao;
-	}
 
 	/**
-	 * retorna botão de voltar
-	 * @return Button
+	 * Retorna botão de voltar.
+	 * @return Button botão de voltar.
 	 */
+	
 	public Button getBtnVoltar() {
 		return btnVoltar;
 	}
 
-	/**
-	 * insere botão de voltar
-	 * @param btnVoltar
-	 */
-	public void setBtnVoltar(Button btnVoltar) {
-		this.btnVoltar = btnVoltar;
-	}
 
 	/**
-	 * retorna botão de salvar
-	 * @return Button
+	 * Retorna botão de salvar.
+	 * @return Button botão de salvar.
 	 */
 	public Button getBtnSalvar() {
 		return btnSalvar;
 	}
 
-	/**
-	 * insere botão de salvar
-	 * @param btnSalvar
-	 */
-	public void setBtnSalvar(Button btnSalvar) {
-		this.btnSalvar = btnSalvar;
-	}
+	
 }

@@ -21,9 +21,11 @@ import Interface.UserI;
 import renameManager.RenameTaskManager;
 
 /**
+ * A Classe <b>User</b> representa a modelagem de um <b>usuário</b> do Sistema.
  * @author Diego Cerqueira e Joanderson Santos
  *
  */
+
 public class User implements UserI{
 	
 	private  List<Projeto> projetos = new ArrayList<>();
@@ -32,32 +34,38 @@ public class User implements UserI{
 
 	
 	/**
-	 * Contrutor da classe
+	 * Contrutor da classe.
 	 */
+	
 	public User() {
 		//initialize();
 	}
 		
 	/**
-	 * Contrutor da classe
+	 * Contrutor da classe.
+	 * @param projeto projeto a ser inserido na lista de projetos do usuário.
 	 */
+	
 	public User(Projeto projeto) {
 		
 		projetos.add(projeto);
 	}
 	
 	/**
-	 * Contrutor da classe
+	 * Contrutor da classe.
+	 * @param projetos lista de projetos a ser inserida.
 	 */
+	
 	public User(List<Projeto> projetos) {
 		
 		this.projetos = projetos;
 	}
 	
 	/**
-	 * metodo para inicializar o projeto com alguns projetos e tarefas para facilitar os testes
-	 * Para funcionar é necessário descomentar a unica linha de codigo do contrutor vazio dessa classe 
+	 * Método para inicializar o projeto com alguns projetos e tarefas para facilitar os testes
+	 * Para funcionar é necessário descomentar a única linha de codigo do contrutor vazio desta classe 
 	 */
+	
 	private void initialize() {
 		Projeto p = new Projeto();
 		Projeto p2 = new Projeto();
@@ -79,8 +87,10 @@ public class User implements UserI{
 	}
 
 	/**
-	 * metodo para escluir um projeto
+	 * Método para excluir um projeto.
+	 * @return true se o projeto foi excluído, ou false caso contrário.
 	 */
+	
 	@Override
 	public boolean excluirProjeto(Projeto p) {
 		
@@ -93,10 +103,11 @@ public class User implements UserI{
 	}
 	
 	/**
-	 * Metodo que verifica se todas as tarefas de um projeto foram concluidas
-	 * @param p
-	 * @return boolean
+	 * Método que verifica se todas as tarefas de um projeto foram concluídas.
+	 * @param p projeto a ser verificado.
+	 * @return boolean true se todas as tarefas estão concluídas, ou false caso contrário.
 	 */
+	
 	public boolean verificarTodasTarefasConcluidas(Projeto p) {
 		
 		Tarefa tarefaCadastrada;
@@ -126,10 +137,11 @@ public class User implements UserI{
 	}
 
 	/**
-	 * Metodo para alterar o titulo de uma tarefa ou projeto
-	 * @param obj
-	 * @param newTitulo
+	 * Método para alterar o título de uma tarefa ou projeto.
+	 * @param obj tarefa ou projeto para ter o título alterado.
+	 * @param newTitulo novo título a ser atribuído.
 	 */
+	
 	@Override
 	public boolean renomearTitulo(Object obj, String newTitulo) throws ArgumentoInvalidoException{
 		
@@ -158,10 +170,11 @@ public class User implements UserI{
 	}
 	
 	/**
-	 * Metodo que verifica se umm Object é do tipo Tarefa ou Projeto
-	 * @param obj
-	 * @return boolean
+	 * Método que verifica se o usuário contém um objeto específico.
+	 * @param obj objeto a ser verificado.
+	 * @return boolean true se o usuário contém o objeto, ou false caso contrário.
 	 */
+	
 	public  boolean userContemObj(Object obj) {
 		
 		boolean userContemObj = false;
@@ -198,8 +211,8 @@ public class User implements UserI{
 	}
 
 	/**
-	 * Metodo para alterar a descrição de uma tarefa ou projeto
-	 * @param obj
+	 * Método para alterar a descrição de uma tarefa ou projeto.
+	 * @param obj tarefa ou projeto para ter a descriçao alterada.
 	 * @param newDescricao
 	 * @return boolean
 	 */
@@ -230,11 +243,12 @@ public class User implements UserI{
 	}	
 
 	/**
-	 * Metodo para alterar a validade de uma tarefa
-	 * @param tarefa
-	 * @param newValidade
-	 * @return boolean
+	 * Método para alterar a validade de uma tarefa.
+	 * @param tarefa tarefa para ter a validade alterada.
+	 * @param newValidade nova validade.
+	 * @return boolean true se a validade foi alterada, ou false caso contrário.
 	 */
+	
 	@Override
 	public boolean mudarValidadeTarefa(Tarefa tarefa, String newValidade) {
 		
@@ -258,11 +272,12 @@ public class User implements UserI{
 	}
 
 	/**
-	 * Metodo para alterar o status de uma tarefa
-	 * @param tarefa
-	 * @param newStatus
-	 * @return boolean
+	 * Método para alterar o status de uma tarefa.
+	 * @param tarefa tarefa para ter a validade alterada.
+	 * @param newStatus novo status.
+	 * @return boolean true se o status foi alterada, ou false caso contrário.
 	 */
+	
 	@Override
 	public boolean mudarStatusTarefa(Tarefa tarefa, Status newStatus) {
 		
@@ -286,10 +301,11 @@ public class User implements UserI{
 	}
 
 	/**
-	 * Metodo para escluir uma tarefa
-	 * @param tarefa
-	 * @return boolean
+	 * Método para excluir uma tarefa.
+	 * @param tarefa tarefa a ser excluída.
+	 * @return boolean true se a tarefa foi excluída, ou false caso contrário.
 	 */
+	
 	@Override
 	public boolean excluirTarefa(Tarefa tarefa) throws ObjetoInexistenteException {
 		
@@ -310,11 +326,12 @@ public class User implements UserI{
 	}
 	
 	/**
-	 * Metodo que busca um projeto associado a uma lista de tarefas
-	 * @param tarefaTarget
-	 * @return Projeto
-	 * @throws ObjetoInexistenteException
+	 * Método que busca o projeto que possui uma dada tarefa.
+	 * @param tarefaTarget tarefa alvo.
+	 * @return Projeto projeto que possui a tarefa.
+	 * @throws ObjetoInexistenteException caso o usuáro não tenha a tarefa.
 	 */
+	
 	public Projeto buscarProjetoQuePossuiTarefa(Tarefa tarefaTarget) throws ObjetoInexistenteException {
 
 		
@@ -343,8 +360,12 @@ public class User implements UserI{
 	}
 	
 	/**
-	 * Metodo que busca uma tarefa pelo seu titulo
+	 * Método que busca uma tarefa por título.
+	 * @param tituloTarget tarefa alvo.
+	 * @return Tarefa encontrada.
+	 * @throws ObjetoInexistenteException caso o usuáro não tenha a tarefa.
 	 */
+	
 	@Override
 	public Tarefa buscarTarefaPorTitulo(String tituloTarget) throws ObjetoInexistenteException {
 		
@@ -377,8 +398,12 @@ public class User implements UserI{
 	}
 	
 	/**
-	 * Metodo que busca um projeto pelo seu titulo
+	 * Método que busca um projeto por título.
+	 * @param tituloTarget tarefa alvo.
+	 * @return Projeto encontrado.
+	 * @throws ObjetoInexistenteException caso o usuáro não tenha o projeto.
 	 */
+	
 	@Override
 	public Projeto buscarProjetoPorTitulo(String tituloTarget) throws ObjetoInexistenteException{
 		
@@ -404,8 +429,8 @@ public class User implements UserI{
 
 
 	/**
-	 * retorna uma lista de projetos
-	 * @return List<Projeto>
+	 * retorna uma lista de projetos.
+	 * @return List<Projeto> lista de projetos.
 	 */
 	public  List<Projeto> getProjetos() {
 		return this.projetos;
@@ -413,10 +438,11 @@ public class User implements UserI{
 
 
 	/**
-	 * insere um projeto a lista
-	 * @param projeto
-	 * @throws ArgumentoInvalidoException
+	 * insere um projeto a lista.
+	 * @param projeto projeto a ser inserido.
+	 * @throws ArgumentoInvalidoException caso o projeto seja null.
 	 */
+	
 	public  void setProjeto(Projeto projeto) throws ArgumentoInvalidoException{
 		
 		if(projeto == null) {

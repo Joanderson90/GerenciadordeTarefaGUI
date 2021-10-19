@@ -12,7 +12,7 @@ do código, e estou ciente que estes trechos não serão considerados para fins de 
 package model;
 
 /**
- * Enum de status das tarefas
+ * Enum de status das tarefas.
  * @author Diego Cerqueira e Joanderson Santos
  *
  */
@@ -24,7 +24,17 @@ public enum Status {
 	
 	private char value;
 	
+	/**
+	 * Construtor do Enum.
+	 * @param value
+	 */
+	
 	Status(char value) { this.value = value; }
+	
+	/**
+	 * Obtém o valor associado ao Enum.
+	 * @return char refrente ao Enum.
+	 */
 	
 	public char getValue() { return this.value; }
 }
