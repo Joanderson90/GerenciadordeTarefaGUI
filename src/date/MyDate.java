@@ -1,8 +1,8 @@
 /*******************************************************************************
-Autores: Joanderson Santos e Diego Cerqueira
-Componente Curricular: Algoritmos II
+Autor: Diego Cerqueira e Joanderson Santos
+Componente Curricular: MI Programação
 Concluido em: 18/10/2021
-Declaro que este código foi elaborado por mim de forma individual e não contém nenhum
+Declaro que este código foi elaborado por Diego Cerqueira e Joanderson Santos em dupla e não contém nenhum
 trecho de código de outro colega ou de outro autor, tais como provindos de livros e
 apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
 de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
@@ -20,7 +20,7 @@ import java.util.Date;
  * forma simples. Além de prover métodos para comparação de <b>datas</b>. 
  * referente à GUI do <b>Gerenciador de Tarefas</b>.
  * @since 2021
- * @author Joanderson Santos e Dicego Cerqueira
+ * @author Joanderson Santos e Diego Cerqueira
  */
 
 public class MyDate {
@@ -125,10 +125,4 @@ public class MyDate {
 		
 		return localDate;
 	}
-	
-	
-	
-	
-	
-
 }

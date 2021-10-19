@@ -1,3 +1,14 @@
+/*******************************************************************************
+Autor: Diego Cerqueira e Joanderson Santos
+Componente Curricular: MI Programação
+Concluido em: 18/10/2021
+Declaro que este código foi elaborado por Diego Cerqueira e Joanderson Santos em dupla e não contém nenhum
+trecho de código de outro colega ou de outro autor, tais como provindos de livros e
+apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
+de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
+do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
+******************************************************************************************/
+
 package model;
 
 import java.util.ArrayList;
@@ -9,6 +20,10 @@ import Exceptions.ObjetoInexistenteException;
 import Interface.UserI;
 import renameManager.RenameTaskManager;
 
+/**
+ * @author Diego Cerqueira e Joanderson Santos
+ *
+ */
 public class User implements UserI{
 	
 	private  List<Projeto> projetos = new ArrayList<>();
@@ -16,20 +31,33 @@ public class User implements UserI{
 	private RenameTaskManager renameTaskManager = new RenameTaskManager();
 
 	
+	/**
+	 * Contrutor da classe
+	 */
 	public User() {
 		//initialize();
 	}
 		
+	/**
+	 * Contrutor da classe
+	 */
 	public User(Projeto projeto) {
 		
 		projetos.add(projeto);
 	}
 	
+	/**
+	 * Contrutor da classe
+	 */
 	public User(List<Projeto> projetos) {
 		
 		this.projetos = projetos;
 	}
 	
+	/**
+	 * metodo para inicializar o projeto com alguns projetos e tarefas para facilitar os testes
+	 * Para funcionar é necessário descomentar a unica linha de codigo do contrutor vazio dessa classe 
+	 */
 	private void initialize() {
 		Projeto p = new Projeto();
 		Projeto p2 = new Projeto();
@@ -50,6 +78,9 @@ public class User implements UserI{
 		projetos.add(p2);
 	}
 
+	/**
+	 * metodo para escluir um projeto
+	 */
 	@Override
 	public boolean excluirProjeto(Projeto p) {
 		
@@ -59,10 +90,13 @@ public class User implements UserI{
 						
 		return isAllTarefasConcluidas;
 		
-		
-	
 	}
 	
+	/**
+	 * Metodo que verifica se todas as tarefas de um projeto foram concluidas
+	 * @param p
+	 * @return boolean
+	 */
 	public boolean verificarTodasTarefasConcluidas(Projeto p) {
 		
 		Tarefa tarefaCadastrada;
@@ -91,6 +125,11 @@ public class User implements UserI{
 		return true;
 	}
 
+	/**
+	 * Metodo para alterar o titulo de uma tarefa ou projeto
+	 * @param obj
+	 * @param newTitulo
+	 */
 	@Override
 	public boolean renomearTitulo(Object obj, String newTitulo) throws ArgumentoInvalidoException{
 		
@@ -116,9 +155,13 @@ public class User implements UserI{
 		
 		return isRenomeado;
 						
-		
 	}
 	
+	/**
+	 * Metodo que verifica se umm Object é do tipo Tarefa ou Projeto
+	 * @param obj
+	 * @return boolean
+	 */
 	public  boolean userContemObj(Object obj) {
 		
 		boolean userContemObj = false;
@@ -154,6 +197,12 @@ public class User implements UserI{
 		return userContemObj;
 	}
 
+	/**
+	 * Metodo para alterar a descrição de uma tarefa ou projeto
+	 * @param obj
+	 * @param newDescricao
+	 * @return boolean
+	 */
 	@Override
 	public boolean renomearDescricao(Object obj, String newDescricao) throws ArgumentoInvalidoException {
 		
@@ -180,8 +229,12 @@ public class User implements UserI{
 		return isRenomeado;
 	}	
 
-	
-
+	/**
+	 * Metodo para alterar a validade de uma tarefa
+	 * @param tarefa
+	 * @param newValidade
+	 * @return boolean
+	 */
 	@Override
 	public boolean mudarValidadeTarefa(Tarefa tarefa, String newValidade) {
 		
@@ -204,6 +257,12 @@ public class User implements UserI{
 		return isValidadeMudada;
 	}
 
+	/**
+	 * Metodo para alterar o status de uma tarefa
+	 * @param tarefa
+	 * @param newStatus
+	 * @return boolean
+	 */
 	@Override
 	public boolean mudarStatusTarefa(Tarefa tarefa, Status newStatus) {
 		
@@ -226,6 +285,11 @@ public class User implements UserI{
 		return isStatusMudado;
 	}
 
+	/**
+	 * Metodo para escluir uma tarefa
+	 * @param tarefa
+	 * @return boolean
+	 */
 	@Override
 	public boolean excluirTarefa(Tarefa tarefa) throws ObjetoInexistenteException {
 		
@@ -245,6 +309,12 @@ public class User implements UserI{
 		
 	}
 	
+	/**
+	 * Metodo que busca um projeto associado a uma lista de tarefas
+	 * @param tarefaTarget
+	 * @return Projeto
+	 * @throws ObjetoInexistenteException
+	 */
 	public Projeto buscarProjetoQuePossuiTarefa(Tarefa tarefaTarget) throws ObjetoInexistenteException {
 
 		
@@ -271,8 +341,10 @@ public class User implements UserI{
 		
 		throw new ObjetoInexistenteException();
 	}
-
 	
+	/**
+	 * Metodo que busca uma tarefa pelo seu titulo
+	 */
 	@Override
 	public Tarefa buscarTarefaPorTitulo(String tituloTarget) throws ObjetoInexistenteException {
 		
@@ -304,12 +376,12 @@ public class User implements UserI{
 		throw new ObjetoInexistenteException();
 	}
 	
-	
-	
+	/**
+	 * Metodo que busca um projeto pelo seu titulo
+	 */
 	@Override
 	public Projeto buscarProjetoPorTitulo(String tituloTarget) throws ObjetoInexistenteException{
 		
-	
 		String tituloProjetoCadastrado;
 		Projeto projetoCadastrado;
 		
@@ -331,11 +403,20 @@ public class User implements UserI{
 	}
 
 
+	/**
+	 * retorna uma lista de projetos
+	 * @return List<Projeto>
+	 */
 	public  List<Projeto> getProjetos() {
 		return this.projetos;
 	}
 
 
+	/**
+	 * insere um projeto a lista
+	 * @param projeto
+	 * @throws ArgumentoInvalidoException
+	 */
 	public  void setProjeto(Projeto projeto) throws ArgumentoInvalidoException{
 		
 		if(projeto == null) {
@@ -345,11 +426,6 @@ public class User implements UserI{
 		
 		this.projetos.add(projeto);
 	}
-	
-	
-	
-		
-	
 }
 
 

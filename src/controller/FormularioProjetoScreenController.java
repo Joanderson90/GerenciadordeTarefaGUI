@@ -20,10 +20,9 @@ import javafx.stage.Stage;
 import message.MessageAlert;
 import model.Projeto;
 
-
 /**
- *
- * @author User
+ * Controlador da tela de formulário de projetos
+ * @author Diego Cerqueira e Joanderson Santos
  */
 
 public class FormularioProjetoScreenController implements Initializable {
@@ -40,14 +39,14 @@ public class FormularioProjetoScreenController implements Initializable {
     @FXML
     private Button btnVoltar;
     
-    private MessageAlert msgAlert = new MessageAlert();
-    
-  
-    
+    private MessageAlert msgAlert = new MessageAlert();  
    
+    /**
+     * metodo para criar novo projeto
+     * @throws ArgumentoInvalidoException
+     */
     public void addNewProjeto() throws ArgumentoInvalidoException {
     	
-
     	String titulo = txtTitulo.getText();
     	String descricao = txtDescricao.getText();
     	
@@ -62,18 +61,18 @@ public class FormularioProjetoScreenController implements Initializable {
         	newProjeto.setTitulo(titulo);
         	newProjeto.setDescricao(descricao);
         	
-        	ProjetosScreenController.setNewProjeto(newProjeto);
-        	        		
+        	ProjetosScreenController.setNewProjeto(newProjeto);        	        		
         
         	cleanInfoProjeto();
         	
         	this.msgAlert.getMessageProjetoSalvo();
         	
     	}
-    	
     }
-    
    
+    /**
+     * Metodo para fechar tela de formulário de projeto
+     */
     public void closeScreen() {
     	
     	Stage stage = (Stage) btnVoltar.getScene().getWindow();
@@ -81,8 +80,10 @@ public class FormularioProjetoScreenController implements Initializable {
     	stage.close();
 
     }
- 
     
+    /**
+     * Metodo para limpar campos de cadastro de projeto
+     */
     public void cleanInfoProjeto() {
     	
     	txtTitulo.setText("");
@@ -96,59 +97,86 @@ public class FormularioProjetoScreenController implements Initializable {
     	
     }
     
-    
-  
+    /**
+     * Metodo vazio da interface Initializable
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    	
-        
+
     }    
     
-    
-    
-   public void addButtonsListener(EventHandler<ActionEvent> listener){
+   /**
+    * Metodo para "ouvir" ação do botão e disparar evento
+    * @param listener
+ 	*/
+    public void addButtonsListener(EventHandler<ActionEvent> listener){
 	   
     	btnSalvar.setOnAction(listener);
     	btnVoltar.setOnAction(listener);
     }
 
+	/**
+	 * retorna o titulo do projeto
+	 * @return String
+	 */
 	public String getTxtTitulo() {
 		return txtTitulo.getText();
 	}
 	
+	/**
+	 * insere o titulo do projeto
+	 * @param txtTitulo
+	 */
 	public void setTxtTitulo(TextField txtTitulo) {
 		this.txtTitulo = txtTitulo;
 	}
 	
+	/**
+	 * retorna a descrição do projeto
+	 * @return String
+	 */
 	public String getTxtDescricao() {
 		return txtDescricao.getText();
 	}
 	
+	/**
+	 * insere a descrição do projeto
+	 * @param txtDescricao
+	 */
 	public void setTxtDescricao(TextArea txtDescricao) {
 		this.txtDescricao = txtDescricao;
 	}
 	
+	/**
+	 * retorna o botão de salvar um projeto
+	 * @return Button
+	 */
 	public Button getBtnSalvar() {
 		return btnSalvar;
 	}
 	
+	/**
+	 * metodo de inserir um botão ao projeto
+	 * @param btnSalvar
+	 */
 	public void setBtnSalvar(Button btnSalvar) {
 		this.btnSalvar = btnSalvar;
 	}
 	
+	/**
+	 * retorna o botão de voltar
+	 * @return Button
+	 */
 	public Button getBtnVoltar() {
 		
 		return btnVoltar;
 	}
 	
+	/**
+	 * insere o botão de voltar
+	 * @param btnVoltar
+	 */
 	public void setBtnVoltar(Button btnVoltar) {
 		this.btnVoltar = btnVoltar;
 	}
-    
-    
-    
-    
-    
-    
-    
 }

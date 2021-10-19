@@ -24,7 +24,7 @@ import model.*;
 
 /**
  *
- * @author User
+ * @author Diego Cerqueira e Joanderson Santos
  */
 
 public class FormularioProjetoScreenEditController implements Initializable {
@@ -45,6 +45,11 @@ public class FormularioProjetoScreenEditController implements Initializable {
     
     private Projeto projetoSelecionado;
 
+    /**
+     * metodo de salvar alterações em um projeto
+     * @throws ArgumentoInvalidoException
+     * @throws ObjetoInexistenteException
+     */
     public void addProjetoEditado() throws ArgumentoInvalidoException, ObjetoInexistenteException {
     	
     	String titulo = txtTitulo.getText();
@@ -55,9 +60,7 @@ public class FormularioProjetoScreenEditController implements Initializable {
     		this.msgAlert.getMessageCampoEmBranco();
     		
     	}
-    	
     	else {
-    		
     		
         	projetoSelecionado.setTitulo(titulo);
         	projetoSelecionado.setDescricao(descricao);
@@ -66,13 +69,12 @@ public class FormularioProjetoScreenEditController implements Initializable {
         	
         	this.msgAlert.getMessageProjetoEditado();
         	
-        	
     	}
-    	
-    	
     }
     
- 
+    /**
+     * metodo de fechar a tela
+     */
     void closeScreen() {
     	
     	Stage stage = (Stage) btnVoltar.getScene().getWindow();
@@ -81,6 +83,9 @@ public class FormularioProjetoScreenEditController implements Initializable {
 
     }
   
+    /**
+     * metodo initialize da interface Initializable
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     	
@@ -90,52 +95,94 @@ public class FormularioProjetoScreenEditController implements Initializable {
         
     }    
     
+    /**
+     * metodo para carregar informações do projeto
+     */
     public void loadInfoProjeto() {
     	
     	txtTitulo.setText(projetoSelecionado.getTitulo());
     	txtDescricao.setText(projetoSelecionado.getDescricao());
     }
     
+    /**
+     * metodo de limpar campos do formulario de editar projeto
+     */
     public void cleanInfoProjeto() {
     	
     	txtTitulo.setText("");
     	txtDescricao.setText("");
     }
 
+    /**
+     * Metodo para "ouvir" ação do botão
+     * @param listener
+     */
     public void addButtonsListener(EventHandler<ActionEvent> listener){
  	   
     	btnSalvar.setOnAction(listener);
     	btnVoltar.setOnAction(listener);
     }
 
+	/**
+	 * retorna titulo do projeto
+	 * @return String
+	 */
 	public String getTxtTitulo() {
 		return txtTitulo.getText();
 	}
 
+	/**
+	 * insere novo titulo ao projeto
+	 * @param txtTitulo
+	 */
 	public void setTxtTitulo(TextField txtTitulo) {
 		this.txtTitulo = txtTitulo;
 	}
 
+	/**
+	 * retorna descrição do projeto
+	 * @return String
+	 */
 	public String getTxtDescricao() {
 		return txtDescricao.getText();
 	}
 
+	/**
+	 * insere nova descrição do projeto
+	 * @param txtDescricao
+	 */
 	public void setTxtDescricao(TextArea txtDescricao) {
 		this.txtDescricao = txtDescricao;
 	}
 
+	/**
+	 * retorna botão de voltar
+	 * @return Button
+	 */
 	public Button getBtnVoltar() {
 		return btnVoltar;
 	}
 
+	/**
+	 * insere botão de voltar
+	 * @param btnVoltar
+	 */
 	public void setBtnVoltar(Button btnVoltar) {
 		this.btnVoltar = btnVoltar;
 	}
 
+	/**
+	 * retorna botão de salvar
+	 * @return Button
+	 */
 	public Button getBtnSalvar() {
 		return btnSalvar;
 	}
 
+	/**
+	 * insere botão de salvar
+	 * @param btnSalvar
+	 */
 	public void setBtnSalvar(Button btnSalvar) {
 		this.btnSalvar = btnSalvar;
 	}

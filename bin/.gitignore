@@ -1,7 +1,9 @@
 /controller/
-/model/
-/message/
 /date/
+/message/
+/model/
 /renameManager/
 /screenManager/
+/Interface/
+/Main/
 /Exceptions/
