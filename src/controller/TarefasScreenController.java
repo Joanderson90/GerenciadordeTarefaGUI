@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
@@ -31,251 +32,258 @@ import screenManager.ScreenManager;
 
 /**
  * Classe controladora da tela de Tarefas.
+ * 
  * @author Diego Cerqueira e Joanderson Santos
  * @since 2021
  */
 
 public class TarefasScreenController implements Initializable, EventHandler<ActionEvent> {
-	
+
 	@FXML
-    private ListView<Tarefa> lvTarefasPendentes;
+	private ListView<Tarefa> lvTarefasPendentes;
 
-    @FXML
-    private ListView<Tarefa> lvTarefasEmExecucao;
-    
-    @FXML
-    private ListView<Tarefa> lvTarefasConcluidas;
-    
-    private static ObservableList<Tarefa> obsTarefasPendentes;
-    private static ObservableList<Tarefa> obsTarefasConcluidas;
-    private static ObservableList<Tarefa> obsTarefasEmExecucao;
-    private static Tarefa tarefaSelecionada;
+	@FXML
+	private ListView<Tarefa> lvTarefasEmExecucao;
 
-    @FXML
-    private Button addNovaTarefaBTN;
-    
-    @FXML
-    private Button projetosBTN;
-    
-    @FXML
-    private Button editarTarefaBTN;
+	@FXML
+	private ListView<Tarefa> lvTarefasConcluidas;
 
-    @FXML
-    private Button excluirTarefaBTN;
+	private static ObservableList<Tarefa> obsTarefasPendentes;
+	private static ObservableList<Tarefa> obsTarefasConcluidas;
+	private static ObservableList<Tarefa> obsTarefasEmExecucao;
+	private static Tarefa tarefaSelecionada;
 
-    @FXML
-    private Button attTarefasBTN;
+	@FXML
+	private Button addNovaTarefaBTN;
 
-    private ScreenManager screenManager = new ScreenManager();
+	@FXML
+	private Button projetosBTN;
 
+	@FXML
+	private Button editarTarefaBTN;
 
-    private static Projeto projetoQueDetemTarefas;
-    
-    private FormularioTarefaScreenController formularioTarefaController;
-    private FormularioTarefaScreenEditController formularioTarefaControllerEdit;
-    
-    private MessageAlert msgAlert = new MessageAlert();
-    
-    
-    
-    /**
-     * Evento que abre formulário de cadastro de tarefas.
-     * @param event
-     * @throws IOException caso a tela não exista, ou o caminho esteja errado.
-     */
-    
-    @FXML
-    void openFormularioTarefaScreen(ActionEvent event) throws IOException {
-    	
-    	screenManager.openNewScreen("FormularioTarefaScreen", "Cadastro Tarefas");
-    	
-    	setReferenciaFormularioTarefaController();
+	@FXML
+	private Button excluirTarefaBTN;
 
-    }
+	@FXML
+	private Button attTarefasBTN;
 
+	private ScreenManager screenManager = new ScreenManager();
 
-    /**
-     * Atribui uma referência ao controlador, esta referente ao Formulário da Tarefa.
-     */
-    
-    private void setReferenciaFormularioTarefaController() {
+	private static Projeto projetoQueDetemTarefas;
 
-    	Object currentController = screenManager.getCurrenController();
-    	
-    	formularioTarefaController = (FormularioTarefaScreenController) currentController;
+	private FormularioTarefaScreenController formularioTarefaController;
+	private FormularioTarefaScreenEditController formularioTarefaControllerEdit;
 
-    	formularioTarefaController.addButtonsListener(this);
+	private MessageAlert msgAlert = new MessageAlert();
+
+	/**
+	 * Evento que abre formulário de cadastro de tarefas.
+	 * 
+	 * @param event
+	 * @throws IOException caso a tela não exista, ou o caminho esteja errado.
+	 */
+
+	@FXML
+	void openFormularioTarefaScreen(ActionEvent event) throws IOException {
+
+		screenManager.openNewScreen("FormularioTarefaScreen", "Cadastro Tarefas");
+
+		setReferenciaFormularioTarefaController();
 
 	}
 
-    /**
-     * Evento que abre formulário de edição de tarefas.
-     * @param event
-     * @throws IOException caso a tela não exista, ou o caminho esteja errado.
-     */
-    
-    @FXML
-    void openFormularioTarefaScreenEdit(ActionEvent event) throws IOException {
-    	
-    	if(tarefaSelecionada != null) {
+	/**
+	 * Atribui uma referência ao controlador, esta referente ao Formulário da
+	 * Tarefa.
+	 */
 
-        	screenManager.openNewScreen("FormularioTarefaScreenEdit", "Edição Tarefas");
+	private void setReferenciaFormularioTarefaController() {
 
-        	setReferenciaFormularioTarefaControllerEdit();
-    	}else {
+		Object currentController = screenManager.getCurrenController();
 
-			this.msgAlert.getMessageTarefaNaoSelecionada();
+		formularioTarefaController = (FormularioTarefaScreenController) currentController;
+
+		formularioTarefaController.addButtonsListener(this);
+
+	}
+
+	/**
+	 * Evento que abre formulário de edição de tarefas.
+	 * 
+	 * @param event
+	 * @throws IOException caso a tela não exista, ou o caminho esteja errado.
+	 */
+
+	@FXML
+	void openFormularioTarefaScreenEdit(ActionEvent event) throws IOException {
+
+		if (tarefaSelecionada != null) {
+
+			screenManager.openNewScreen("FormularioTarefaScreenEdit", "Edição Tarefas");
+
+			setReferenciaFormularioTarefaControllerEdit();
+
+		} else {
+
+			this.msgAlert.showMessage("Por favor selecione uma Tarefa!", AlertType.ERROR);
 		}
 
-    }
+	}
 
-    /**
-     * Atribui uma referência ao controlador, esta referente ao Formulário de edição das Tarefas.
-     */
-    
-    private void setReferenciaFormularioTarefaControllerEdit() {
+	/**
+	 * Atribui uma referência ao controlador, esta referente ao Formulário de edição
+	 * das Tarefas.
+	 */
 
-    	Object currentController = screenManager.getCurrenController();
+	private void setReferenciaFormularioTarefaControllerEdit() {
 
-    	formularioTarefaControllerEdit = (FormularioTarefaScreenEditController) currentController;
+		Object currentController = screenManager.getCurrenController();
 
-    	formularioTarefaControllerEdit.addButtonsListener(this);
+		formularioTarefaControllerEdit = (FormularioTarefaScreenEditController) currentController;
+
+		formularioTarefaControllerEdit.addButtonsListener(this);
 
 	}
 
-    /**
-     * Evento para voltar a tela de projetos.
-     * @param event
-     */
-    
-    @FXML
-    void backToScreenProjetos(ActionEvent event) {
-    	
-    	Stage stage = (Stage) projetosBTN.getScene().getWindow();
-    	
-    	stage.close();
-    }
-    
 	/**
-	 * Evento para excluir uma tarefa.
+	 * Evento para voltar a tela de projetos.
+	 * 
 	 * @param event
 	 */
-    
+
 	@FXML
-    void excluirTarefa(ActionEvent event) {
-    	
-    	if(tarefaSelecionada != null) {
-    		
-    		projetoQueDetemTarefas.getTarefas().remove(tarefaSelecionada);
-    		
-    		loadTarefas();
-    		
-    		this.msgAlert.getMessageTarefaExcluida();
-    	}
-    	
-    	else {
-			
-			this.msgAlert.getMessageTarefaNaoSelecionada();
-		}
+	void backToScreenProjetos(ActionEvent event) {
 
-    }
-    
-    /**
-     * Método que dado um projeto carrega suas tarefas na tela.
-     */
-	
-    public void loadTarefas() {
-    	
-    	List<Tarefa> tarefasPendentes  = projetoQueDetemTarefas.getTarefasPendentes();
-    	List<Tarefa> tarefasEmExecucao  = projetoQueDetemTarefas.getTarefasEmExecucao();
-    	List<Tarefa> tarefasConcluidas  = projetoQueDetemTarefas.getTarefasConcluidas();
-    	
-    	obsTarefasPendentes = FXCollections.observableArrayList(tarefasPendentes);
-    	obsTarefasEmExecucao = FXCollections.observableArrayList(tarefasEmExecucao);
-    	obsTarefasConcluidas = FXCollections.observableArrayList(tarefasConcluidas);
-    	
-    	lvTarefasPendentes.setItems(obsTarefasPendentes);
-    	lvTarefasEmExecucao.setItems(obsTarefasEmExecucao);
-    	lvTarefasConcluidas.setItems(obsTarefasConcluidas);
-    }
-    
-    /**
-     * Método que insere uma nova tarefa.
-     * @param newTarefa tarefa a ser inserida.
-     */
-    
-    public static void setTarefaSalva(Tarefa newTarefa) {
-    	
-    	projetoQueDetemTarefas.setTarefa(newTarefa);
-    }
-    
-    /**
-     * Retorna a tarefa selecionada pelo usuário.
-     * @return Tarefa tarefa selecionada.
-     */
-    
-    public static Tarefa getTarefaSelecionada() {
-    	
-    	return tarefaSelecionada;
-    }
-    
-    /**
-     * Método que verifica se uma tarefa da lista de concluidas foi selecionada.
-     */
-    
-    @FXML
-    void listInViewConcluidas() {
-    		
-    	tarefaSelecionada = lvTarefasConcluidas.getSelectionModel().getSelectedItem();
-    }
-    
+		Stage stage = (Stage) projetosBTN.getScene().getWindow();
 
-    /**
-     * Método que verifica se uma tarefa da lista de em execução foi selecionada.
-     */
-    
-    @FXML
-    void listInViewEmExecucao() {
-    	
-    	tarefaSelecionada = lvTarefasEmExecucao.getSelectionModel().getSelectedItem();
-    }
-
-    /**
-     * Método que verifica se uma tarefa da lista de pendentes foi selecionada.
-     */
-    
-    @FXML
-     void listInViewPendentes() {
-    	 
-    	tarefaSelecionada = lvTarefasPendentes.getSelectionModel().getSelectedItem();
-
-    }
-
-
-    /**
-     * Método da interface Initializable.
-     * @param url
-     * @param rb
-     */
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
-    	projetoQueDetemTarefas = ProjetosScreenController.getProjetoSelecionado();
-
-    	formularioTarefaControllerEdit = new FormularioTarefaScreenEditController();
-
-    	formularioTarefaController = new FormularioTarefaScreenController();
-    	
-        loadTarefas();
-    }
+		stage.close();
+	}
 
 	/**
-	 * Método que verifica qual botão foi clicado e, executa uma ação referente ao Formulário que o botão pertence.O botão pode ser do Formulário de edição de Tarefas,
-	 * ou do Formulário de cadastro de Tarefas.
+	 * Evento para excluir uma tarefa.
+	 * 
+	 * @param event
+	 */
+
+	@FXML
+	void excluirTarefa(ActionEvent event) {
+
+		if (tarefaSelecionada != null) {
+
+			projetoQueDetemTarefas.getTarefas().remove(tarefaSelecionada);
+
+			loadTarefas();
+
+			this.msgAlert.showMessage("Tarefa excluída com Sucesso!", AlertType.INFORMATION);
+		}
+
+		else {
+
+			this.msgAlert.showMessage("Por favor selecione uma tarefa primeiro!", AlertType.ERROR);
+		}
+
+	}
+
+	/**
+	 * Método que dado um projeto carrega suas tarefas na tela.
+	 */
+
+	public void loadTarefas() {
+
+		List<Tarefa> tarefasPendentes = projetoQueDetemTarefas.getTarefasPendentes();
+		List<Tarefa> tarefasEmExecucao = projetoQueDetemTarefas.getTarefasEmExecucao();
+		List<Tarefa> tarefasConcluidas = projetoQueDetemTarefas.getTarefasConcluidas();
+
+		obsTarefasPendentes = FXCollections.observableArrayList(tarefasPendentes);
+		obsTarefasEmExecucao = FXCollections.observableArrayList(tarefasEmExecucao);
+		obsTarefasConcluidas = FXCollections.observableArrayList(tarefasConcluidas);
+
+		lvTarefasPendentes.setItems(obsTarefasPendentes);
+		lvTarefasEmExecucao.setItems(obsTarefasEmExecucao);
+		lvTarefasConcluidas.setItems(obsTarefasConcluidas);
+	}
+
+	/**
+	 * Método que insere uma nova tarefa.
+	 * 
+	 * @param newTarefa tarefa a ser inserida.
+	 */
+
+	public static void setTarefaSalva(Tarefa newTarefa) {
+
+		projetoQueDetemTarefas.setTarefa(newTarefa);
+	}
+
+	/**
+	 * Retorna a tarefa selecionada pelo usuário.
+	 * 
+	 * @return Tarefa tarefa selecionada.
+	 */
+
+	public static Tarefa getTarefaSelecionada() {
+
+		return tarefaSelecionada;
+	}
+
+	/**
+	 * Método que verifica se uma tarefa da lista de concluidas foi selecionada.
+	 */
+
+	@FXML
+	void listInViewConcluidas() {
+
+		tarefaSelecionada = lvTarefasConcluidas.getSelectionModel().getSelectedItem();
+	}
+
+	/**
+	 * Método que verifica se uma tarefa da lista de em execução foi selecionada.
+	 */
+
+	@FXML
+	void listInViewEmExecucao() {
+
+		tarefaSelecionada = lvTarefasEmExecucao.getSelectionModel().getSelectedItem();
+	}
+
+	/**
+	 * Método que verifica se uma tarefa da lista de pendentes foi selecionada.
+	 */
+
+	@FXML
+	void listInViewPendentes() {
+
+		tarefaSelecionada = lvTarefasPendentes.getSelectionModel().getSelectedItem();
+
+	}
+
+	/**
+	 * Método da interface Initializable.
+	 * 
+	 * @param url
+	 * @param rb
+	 */
+
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+
+		projetoQueDetemTarefas = ProjetosScreenController.getProjetoSelecionado();
+
+		formularioTarefaControllerEdit = new FormularioTarefaScreenEditController();
+
+		formularioTarefaController = new FormularioTarefaScreenController();
+
+		loadTarefas();
+	}
+
+	/**
+	 * Método que verifica qual botão foi clicado e, executa uma ação referente ao
+	 * Formulário que o botão pertence.O botão pode ser do Formulário de edição de
+	 * Tarefas, ou do Formulário de cadastro de Tarefas.
+	 * 
 	 * @param arg0
 	 */
-    
+
 	@Override
 	public void handle(ActionEvent arg0) {
 
@@ -291,13 +299,11 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
 		} else if (arg0.getSource() == formularioTarefaControllerEdit.getBtnAddNovaTarefaEdit()) {
 
-				formularioTarefaControllerEdit.salvarEditTarefa();
+			formularioTarefaControllerEdit.salvarEditTarefa();
 
-				loadTarefas();
-
+			loadTarefas();
 
 		} else if (arg0.getSource() == formularioTarefaControllerEdit.getBtnVoltar()) {
-
 
 			formularioTarefaControllerEdit.closeScreen();
 

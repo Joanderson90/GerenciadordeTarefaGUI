@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
@@ -28,235 +29,240 @@ import message.MessageAlert;
 import model.Status;
 import model.Tarefa;
 
-
 /**
  * Classe controladora da tela de edição de tarefas.
+ * 
  * @author Diego Cerqueira e Joanderson Santos
  * @since 2021
  */
 
 public class FormularioTarefaScreenEditController implements Initializable {
-	
+
 	@FXML
-    private TextField txtTitulo;
+	private TextField txtTitulo;
 
-    @FXML
-    private TextArea txtDescricao;
-    
-    @FXML
-    private Button btnVoltar;
+	@FXML
+	private TextArea txtDescricao;
 
-    @FXML
-    private DatePicker txtValidade;
-    
-    @FXML
-    private Button btnAddNovaTarefaEdit;
+	@FXML
+	private Button btnVoltar;
 
-    @FXML
-    private ToggleGroup group;
-   
-    private MessageAlert msgAlert = new MessageAlert();
-    
-    private Tarefa tarefaSelecionada;
+	@FXML
+	private DatePicker txtValidade;
 
+	@FXML
+	private Button btnAddNovaTarefaEdit;
 
-    /**
-     * Método para salvar as alterações em uma tarefa.
-     * 
-     */
-    
-    public void salvarEditTarefa() {
-    	
-    	boolean isCampoAnyEmpty  = verificarCampoAnyEmpty();
-    	
-    	if(isCampoAnyEmpty) {
-    		
-    		this.msgAlert.getMessageCampoEmBranco();
-    	} else {
-    		
+	@FXML
+	private ToggleGroup group;
+
+	private MessageAlert msgAlert = new MessageAlert();
+
+	private Tarefa tarefaSelecionada;
+
+	/**
+	 * Método para salvar as alterações em uma tarefa.
+	 * 
+	 */
+
+	public void salvarEditTarefa() {
+
+		boolean isCampoAnyEmpty = verificarCampoAnyEmpty();
+
+		if (isCampoAnyEmpty) {
+
+			this.msgAlert.showMessage("Por favor preencha os campos primeiro!", AlertType.ERROR);
+
+		} else {
+
 			String titleTarefa = txtTitulo.getText();
-    		String descriptionTarefa = txtDescricao.getText();
-    		String dateTarefa = txtValidade.getEditor().getText();
-    		Status statusSelecionado = getStatusSelecionado();
-    		
-    		tarefaSelecionada.setTitulo(titleTarefa);
-    		tarefaSelecionada.setDescricao(descriptionTarefa);
-    		tarefaSelecionada.setValidade(dateTarefa);
-    		tarefaSelecionada.setStatus(statusSelecionado);
-    		  		
-    		cleanInfoTarefa();
-    		
-    		this.msgAlert.getMessageTarefaEditada();
-    		
-    	}
-    }
-    
-    /**
-     * Método para fechar a tela de edição de tarefas e voltar a tela com a listagem das tarefas.
- 	 */
-    
-    public void closeScreen() {
-    	
-    	Stage stage = (Stage) btnVoltar.getScene().getWindow();
-    	
-    	stage.close();
+			String descriptionTarefa = txtDescricao.getText();
+			String dateTarefa = txtValidade.getEditor().getText();
+			Status statusSelecionado = getStatusSelecionado();
 
-    }
-  
-    /**
-     * Método que limpa os campos do formulário de edição de tarefa.
-     */
-    
-    private void cleanInfoTarefa() {
-		
-    	txtTitulo.setText("");
-    	txtDescricao.setText("");
-    	txtValidade.getEditor().setText("");
-		
+			tarefaSelecionada.setTitulo(titleTarefa);
+			tarefaSelecionada.setDescricao(descriptionTarefa);
+			tarefaSelecionada.setValidade(dateTarefa);
+			tarefaSelecionada.setStatus(statusSelecionado);
+
+			cleanInfoTarefa();
+
+			this.msgAlert.showMessage("Tarefa editada com Sucesso!", AlertType.INFORMATION);
+
+		}
+	}
+
+	/**
+	 * Método para fechar a tela de edição de tarefas e voltar a tela com a listagem
+	 * das tarefas.
+	 */
+
+	public void closeScreen() {
+
+		Stage stage = (Stage) btnVoltar.getScene().getWindow();
+
+		stage.close();
+
+	}
+
+	/**
+	 * Método que limpa os campos do formulário de edição de tarefa.
+	 */
+
+	private void cleanInfoTarefa() {
+
+		txtTitulo.setText("");
+		txtDescricao.setText("");
+		txtValidade.getEditor().setText("");
+
 	}
 
 	/**
 	 * Verifica se pelo menos um campo está vazio.
-	 * @return boolean true se pelo menos um campo está vazio, ou false se todos os campos estão preenchidos.
+	 * 
+	 * @return boolean true se pelo menos um campo está vazio, ou false se todos os
+	 *         campos estão preenchidos.
 	 */
-    
+
 	private boolean verificarCampoAnyEmpty() {
-    	
-    	boolean isCampoAnyEmpty = false;
-    	
-    	if( txtTitulo.getText() == "" ||
-    	    txtDescricao.getText() == "" ||
-    	    txtValidade.getEditor().getText() == "") {
-    		
-    		isCampoAnyEmpty = true;
-    	}
-    		
+
+		boolean isCampoAnyEmpty = false;
+
+		if (txtTitulo.getText() == "" || txtDescricao.getText() == "" || txtValidade.getEditor().getText() == "") {
+
+			isCampoAnyEmpty = true;
+		}
+
 		return isCampoAnyEmpty;
 	}
-	
+
 	/**
 	 * Retorna qual o status foi selecionado no formulário.
+	 * 
 	 * @return Status status selecionado no formulário.
 	 */
-	
+
 	public Status getStatusSelecionado() {
-		
+
 		Status statusSelecionado;
-		
+
 		RadioButton radio = (RadioButton) group.getSelectedToggle();
-		
-		if(radio.getText().equals("Pendente")) {
-			
-			
+
+		if (radio.getText().equals("Pendente")) {
+
 			statusSelecionado = Status.PENDENTE;
-		} else if(radio.getText().equals("Concluída")) {
-			
-			
+
+		} else if (radio.getText().equals("Concluída")) {
+
 			statusSelecionado = Status.CONCLUIDA;
+
 		} else {
-			
+
 			statusSelecionado = Status.EM_EXECUCAO;
 		}
-		
+
 		return statusSelecionado;
-		
+
 	}
-	
+
 	/**
 	 * Método da interface Initializable.
+	 * 
 	 * @param url
 	 * @param rb
 	 */
-	
+
 	@Override
-    public void initialize(URL url, ResourceBundle rb) {
-		
+	public void initialize(URL url, ResourceBundle rb) {
+
 		tarefaSelecionada = TarefasScreenController.getTarefaSelecionada();
-		
+
 		txtTitulo.setText(tarefaSelecionada.getTitulo());
-    	txtDescricao.setText(tarefaSelecionada.getDescricao());
-    	txtValidade.getEditor().setText(tarefaSelecionada.getValidade());
-        
-    }    
-    
+		txtDescricao.setText(tarefaSelecionada.getDescricao());
+		txtValidade.getEditor().setText(tarefaSelecionada.getValidade());
+
+	}
+
 	/**
-	 * Método para adicionar um "ouvinte", este interesado a mudança de estado dos botões deste Formulário.
+	 * Método para adicionar um "ouvinte", este interesado a mudança de estado dos
+	 * botões deste Formulário.
+	 * 
 	 * @param listener "ouvinte" interesado a mudança de estado dos botões.
 	 */
-	
-	public void addButtonsListener(EventHandler<ActionEvent> listener){
-		   
+
+	public void addButtonsListener(EventHandler<ActionEvent> listener) {
+
 		btnAddNovaTarefaEdit.setOnAction(listener);
-    	btnVoltar.setOnAction(listener);
-    }
+		btnVoltar.setOnAction(listener);
+	}
 
 	/**
 	 * Retorna o título da tarefa editada.
+	 * 
 	 * @return TextField título da tarefa editada.
 	 */
-	
+
 	public TextField getTxtTitulo() {
 		return txtTitulo;
 	}
 
-
 	/**
 	 * Método que retorna a nova descrição da tarefa.
+	 * 
 	 * @return TextArea descrição da tarefa.
 	 */
-	
+
 	public TextArea getTxtDescricao() {
 		return txtDescricao;
 	}
 
-
 	/**
 	 * Retorna o botão de voltar.
+	 * 
 	 * @return Button botão de voltar.
 	 */
 	public Button getBtnVoltar() {
 		return btnVoltar;
 	}
 
-
 	/**
 	 * Retorna uma data selecionada.
+	 * 
 	 * @return DatePicker data selecionada.
 	 */
-	
+
 	public DatePicker getTxtValidade() {
 		return txtValidade;
 	}
 
-
 	/**
 	 * Retorna um ToggleGroup.
+	 * 
 	 * @return ToggleGroup
 	 */
-	
+
 	public ToggleGroup getGroup() {
 		return group;
 	}
 
-	
 	/**
 	 * Retorna a tarefa selecionada.
+	 * 
 	 * @return Tarefa tarefa selecionada.
 	 */
-	
+
 	public Tarefa getTarefaSelecionada() {
 		return tarefaSelecionada;
 	}
 
-
 	/**
 	 * Retorna o botão de editar tarefa.
+	 * 
 	 * @return Button botão de editar tarefa.
 	 */
-	
+
 	public Button getBtnAddNovaTarefaEdit() {
 		return btnAddNovaTarefaEdit;
 	}
-
 
 }
