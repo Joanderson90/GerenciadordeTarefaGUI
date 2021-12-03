@@ -75,6 +75,7 @@ public class FormularioProjetoScreenController implements Initializable {
 			ProjetosScreenController.setNewProjeto(newProjeto);
 
 			cleanInfoProjeto();
+			closeScreen();
 
 			this.msgAlert.showMessage("Projeto Salvo com Sucesso!", AlertType.INFORMATION);
 

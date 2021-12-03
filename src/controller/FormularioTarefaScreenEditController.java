@@ -86,6 +86,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
 			tarefaSelecionada.setStatus(statusSelecionado);
 
 			cleanInfoTarefa();
+			closeScreen();
 
 			this.msgAlert.showMessage("Tarefa editada com Sucesso!", AlertType.INFORMATION);
 

@@ -77,6 +77,7 @@ public class FormularioTarefaScreenController implements Initializable {
 			TarefasScreenController.setTarefaSalva(newTarefa);
 
 			cleanInfoTarefa();
+			closeScreen();
 
 			this.msgAlert.showMessage("Tarefa salva com Sucesso!", AlertType.INFORMATION);
 

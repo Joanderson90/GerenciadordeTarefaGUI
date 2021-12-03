@@ -72,6 +72,7 @@ public class FormularioProjetoScreenEditController implements Initializable {
 			projetoSelecionado.setDescricao(descricao);
 
 			cleanInfoProjeto();
+			closeScreen();
 
 			this.msgAlert.showMessage("Projeto Editado com Sucesso!", AlertType.INFORMATION);
 
