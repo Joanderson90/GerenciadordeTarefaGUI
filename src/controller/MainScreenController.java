@@ -17,65 +17,62 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.Button;
 import screenManager.ScreenManager;
 
 /**
  * Controlador da tela inicial.
+ * 
  * @author Diego Cerqueira e Joanderson Santos
  * @since 2021
  */
 
 public class MainScreenController implements Initializable {
-	
+
 	@FXML
-    private Menu menuArquivo;
+	private Button btnProjetos;
 
-    @FXML
-    private MenuItem menuItemProjetos;
+	@FXML
+	private Button btnSobre;
 
-    @FXML
-    private Menu menuSobre;
+	private ScreenManager screenManager = new ScreenManager();
 
-    @FXML
-    private MenuItem menuItemSistema;
-    
-    private ScreenManager screenManager = new ScreenManager();
+	/**
+	 * Evento para abrir a tela de projetos.
+	 * 
+	 * @param event
+	 * @throws IOException caso a tela não exista, ou o caminho esteja errado.
+	 */
 
-    /**
-     * Evento para abrir a tela de projetos.
-     * @param event 
-     * @throws IOException caso a tela não exista, ou o caminho esteja errado.
-     */
-    
-    @FXML
-    void acessProjetos(ActionEvent event) throws IOException {
-    	
-    	screenManager.openNewScreen("ProjetosScreen", "Projetos");
-    }
+	@FXML
+	void acessProjetos(ActionEvent event) throws IOException {
 
-    /**
-     * Evento para abrir a tela de informações do sistema.
-     * @param event
-     * @throws IOException caso a tela não exista, ou o caminho esteja errado.
-     */
-    
-    @FXML
-    void acessSobreSistema(ActionEvent event) throws IOException {
-    	
-    	screenManager.openNewScreen("SobreScreen", "Sobre");
+		screenManager.openNewScreen("ProjetosScreen", "Projetos");
+	}
+
+	/**
+	 * Evento para abrir a tela de informações do sistema.
+	 * 
+	 * @param event
+	 * @throws IOException caso a tela não exista, ou o caminho esteja errado.
+	 */
+
+	@FXML
+	void acessSobreSistema(ActionEvent event) throws IOException {
+
+		screenManager.openNewScreen("SobreScreen", "Sobre");
 
 	}
-    
-    /**
-     * Método da interface Initializable
-     * @param url
-     * @param rb
-     */
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
+
+	/**
+	 * Método da interface Initializable
+	 * 
+	 * @param url
+	 * @param rb
+	 */
+
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+
+	}
 }
