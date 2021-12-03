@@ -40,6 +40,8 @@ public class Main extends Application {
         
         stage.setTitle("MainScreen");
         //stage.setMaximized(true);
+        stage.setMinHeight(332);
+        stage.setMinWidth(447);
         stage.setScene(scene);
         stage.show();
     }
