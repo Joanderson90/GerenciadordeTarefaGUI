@@ -7,31 +7,44 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FormularioProjetoScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FormularioProjetoScreenController">
    <children>
       <HBox layoutX="7.0" layoutY="20.0" prefHeight="9.0" prefWidth="200.0" />
       <HBox layoutX="7.0" layoutY="93.0" prefHeight="17.0" prefWidth="347.0" />
       <VBox layoutX="14.0" layoutY="29.0" prefHeight="61.0" prefWidth="308.0">
          <children>
-            <Label text="Título" />
+            <Label text="Título" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
             <TextField fx:id="txtTitulo" />
          </children>
       </VBox>
       <VBox layoutX="14.0" layoutY="110.0" prefHeight="200.0" prefWidth="308.0">
          <children>
-            <Label text="Descrição" />
+            <Label text="Descrição" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
             <TextArea fx:id="txtDescricao" prefHeight="183.0" prefWidth="297.0" />
          </children>
       </VBox>
       <VBox layoutX="14.0" layoutY="324.0" prefHeight="55.0" prefWidth="100.0">
          <children>
-            <Button fx:id="btnSalvar" mnemonicParsing="false" text="Salvar" />
+            <Button fx:id="btnSalvar" mnemonicParsing="false" prefHeight="30.0" prefWidth="74.0" style="-fx-background-color: white;" text="Salvar">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
          </children>
       </VBox>
-      <VBox layoutX="274.0" layoutY="324.0" prefHeight="25.0" prefWidth="52.0">
+      <VBox layoutX="258.0" layoutY="324.0" prefHeight="30.0" prefWidth="64.0">
          <children>
-            <Button fx:id="btnVoltar" mnemonicParsing="false" text="Voltar" />
+            <Button fx:id="btnVoltar" mnemonicParsing="false" prefHeight="30.0" prefWidth="74.0" style="-fx-background-color: white;" text="Voltar">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
          </children>
       </VBox>
    </children>

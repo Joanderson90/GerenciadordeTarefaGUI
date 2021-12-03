@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProjetosScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="625.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProjetosScreenController">
    <children>
       <HBox alignment="CENTER" layoutX="175.0" layoutY="7.0" prefHeight="36.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Projetos">
+            <Label text="Projetos" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -27,21 +27,33 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="8.0" layoutY="50.0" prefHeight="36.0" prefWidth="625.0" AnchorPane.bottomAnchor="365.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="50.0">
          <children>
-            <Button fx:id="novoProjetoBTN" mnemonicParsing="false" onAction="#openFormularioProjetoScreen" text="Novo">
+            <Button fx:id="novoProjetoBTN" mnemonicParsing="false" onAction="#openFormularioProjetoScreen" style="-fx-background-color: white;" text="Novo">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
             </Button>
-            <Button fx:id="excluirProjetoBTN" mnemonicParsing="false" onAction="#excluirProjeto" text="Excluir">
+            <Button fx:id="excluirProjetoBTN" mnemonicParsing="false" onAction="#excluirProjeto" style="-fx-background-color: white;" text="Excluir">
                <HBox.margin>
                   <Insets left="12.0" right="12.0" />
                </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
             </Button>
-            <Button fx:id="editarProjetoBTN" mnemonicParsing="false" onAction="#openFormularioProjetoScreenEdit" text="Editar" />
-            <Button fx:id="openTarefasBTN" mnemonicParsing="false" onAction="#openTarefas" text="Tarefas">
+            <Button fx:id="editarProjetoBTN" mnemonicParsing="false" onAction="#openFormularioProjetoScreenEdit" style="-fx-background-color: white;" text="Editar">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="openTarefasBTN" mnemonicParsing="false" onAction="#openTarefas" style="-fx-background-color: white;" text="Tarefas">
                <HBox.margin>
                   <Insets left="12.0" right="12.0" />
-               </HBox.margin></Button>
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
          </children>
       </HBox>
    </children>
