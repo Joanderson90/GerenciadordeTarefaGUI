@@ -12,8 +12,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FormularioTarefaScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="600.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FormularioTarefaScreenController">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -28,10 +29,13 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Título">
+                  <Label text="Título" textFill="#ebeaea">
                      <VBox.margin>
                         <Insets left="6.0" top="12.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
                   </Label>
                   <TextField fx:id="txtTitulo">
                      <VBox.margin>
@@ -42,10 +46,13 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                <children>
-                  <Label text="Descrição">
+                  <Label text="Descrição" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="6.0" top="12.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
                   </Label>
                   <TextArea fx:id="txtDescricao" prefHeight="200.0" prefWidth="200.0">
                      <VBox.margin>
@@ -56,12 +63,15 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                <children>
-                  <Label text="Validade">
+                  <Label text="Validade" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="6.0" top="12.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
                   </Label>
-                  <DatePicker fx:id="txtValidade">
+                  <DatePicker fx:id="txtValidade" style="-fx-background-color: white;">
                      <VBox.margin>
                         <Insets left="6.0" top="3.0" />
                      </VBox.margin>
@@ -70,14 +80,20 @@
             </VBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
-                  <Button fx:id="btnAddNovaTarefa" mnemonicParsing="false" text="Salvar">
+                  <Button fx:id="btnAddNovaTarefa" mnemonicParsing="false" style="-fx-background-color: white;" text="Salvar">
                      <HBox.margin>
                         <Insets left="6.0" />
-                     </HBox.margin></Button>
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Button>
                   <Button fx:id="btnVoltar" mnemonicParsing="false" text="Voltar">
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
                   </Button>
                </children>
             </HBox>

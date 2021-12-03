@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TarefasScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="768.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TarefasScreenController">
    <children>
       <HBox alignment="TOP_CENTER" layoutX="192.0" layoutY="7.0" prefHeight="34.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Tarefas">
+            <Label text="Tarefas" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
          </children>
@@ -37,27 +37,27 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Pendentes">
+                  <Label text="Pendentes" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Label text="Em execução">
+                  <Label text="Em execução" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <Label text="Concluídas">
+                  <Label text="Concluídas" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
@@ -80,21 +80,33 @@
             </ListView>
             <VBox prefHeight="352.0" prefWidth="194.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="addNovaTarefaBTN" mnemonicParsing="false" onAction="#openFormularioTarefaScreen" prefHeight="25.0" prefWidth="60.0" text="Nova" />
-                  <Button fx:id="editarTarefaBTN" mnemonicParsing="false" onAction="#openFormularioTarefaScreenEdit" prefHeight="25.0" prefWidth="60.0" text="Editar">
+                  <Button fx:id="addNovaTarefaBTN" mnemonicParsing="false" onAction="#openFormularioTarefaScreen" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: white;" text="Nova">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Button>
+                  <Button fx:id="editarTarefaBTN" mnemonicParsing="false" onAction="#openFormularioTarefaScreenEdit" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: white;" text="Editar">
                      <VBox.margin>
                         <Insets bottom="24.0" top="24.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="excluirTarefaBTN" mnemonicParsing="false" onAction="#excluirTarefa" prefHeight="25.0" prefWidth="60.0" text="Excluir">
+                  <Button fx:id="excluirTarefaBTN" mnemonicParsing="false" onAction="#excluirTarefa" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: white;" text="Excluir">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="projetosBTN" mnemonicParsing="false" onAction="#backToScreenProjetos" text="Projetos">
+                  <Button fx:id="projetosBTN" mnemonicParsing="false" onAction="#backToScreenProjetos" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: white;" text="Projetos">
                      <VBox.margin>
                         <Insets top="24.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
                   </Button>
                </children>
                <GridPane.margin>

@@ -39,6 +39,9 @@
                </font></Button>
          </children>
       </VBox>
-      <Button fx:id="btnVoltar" layoutX="276.0" layoutY="324.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Voltar" />
+      <Button fx:id="btnVoltar" layoutX="276.0" layoutY="324.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Voltar">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>
