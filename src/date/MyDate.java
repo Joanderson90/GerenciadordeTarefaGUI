@@ -11,10 +11,10 @@ do código, e estou ciente que estes trechos não serão considerados para fins de 
 
 package date;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 /**
  * A Classe <b>MyDate</b> permite através de uma instância a obtenção da
@@ -138,13 +138,25 @@ public class MyDate {
 
 		// Format date day/dayOfMonth/year example: 12/08/2021
 
-		int year = Integer.parseInt(date.substring(6, 10));
-		int month = Integer.parseInt(date.substring(3, 5));
-		int dayOfMonth = Integer.parseInt(date.substring(0, 2));
+		String year = date.substring(6, 10);
+		String month = date.substring(3, 5);
+		String dayOfMonth = date.substring(0, 2);
 
-		Date myDate = new GregorianCalendar(year, month - 1, dayOfMonth).getTime();
+		String dateFormatSQL = year + "-" + month + "-" + dayOfMonth;
 
-		return myDate;
+		Date dateSQL = null;
+
+		try {
+
+			dateSQL = new SimpleDateFormat("yyyy-MM-dd").parse(dateFormatSQL);
+
+		} catch (ParseException e) {
+
+			e.printStackTrace();
+		}
+
+		return dateSQL;
+
 	}
 
 }

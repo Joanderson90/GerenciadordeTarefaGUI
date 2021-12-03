@@ -49,6 +49,7 @@ public class Main extends Application {
         
         String dateTes = "03/12/2021";
         
+        System.out.println(MyDate.parseToSQLFormat(dateTes).getYear());
     }
 
    
