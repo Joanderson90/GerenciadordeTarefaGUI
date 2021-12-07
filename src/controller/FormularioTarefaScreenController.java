@@ -58,7 +58,7 @@ public class FormularioTarefaScreenController implements Initializable {
 
 	public void salvarNovaTarefa() {
 
-		boolean isCampoAnyEmpty = verificarCampoAnyEmpty();
+		boolean isCampoAnyEmpty = isAnyCampoEmpty();
 
 		if (isCampoAnyEmpty) {
 
@@ -105,16 +105,16 @@ public class FormularioTarefaScreenController implements Initializable {
 	 *         campos estão preenchidos.
 	 */
 
-	private boolean verificarCampoAnyEmpty() {
+	private boolean isAnyCampoEmpty() {
 
-		boolean isCampoAnyEmpty = false;
+		boolean isAnyCampoEmpty = false;
 
 		if (txtTitulo.getText() == "" || txtDescricao.getText() == "" || txtValidade.getEditor().getText() == "") {
 
-			isCampoAnyEmpty = true;
+			isAnyCampoEmpty = true;
 		}
 
-		return isCampoAnyEmpty;
+		return isAnyCampoEmpty;
 	}
 
 	/**
