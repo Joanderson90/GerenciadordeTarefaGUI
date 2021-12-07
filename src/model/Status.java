@@ -13,28 +13,44 @@ package model;
 
 /**
  * Enum de status das tarefas.
+ * 
  * @author Diego Cerqueira e Joanderson Santos
  *
  */
 public enum Status {
 
-	PENDENTE('P'),
-	EM_EXECUCAO('E'),
-	CONCLUIDA('C');
-	
+	PENDENTE('P'), EM_EXECUCAO('E'), CONCLUIDA('C');
+
 	private char value;
-	
+
 	/**
 	 * Construtor do Enum.
+	 * 
 	 * @param value
 	 */
-	
-	Status(char value) { this.value = value; }
-	
+
+	Status(char value) {
+		this.value = value;
+	}
+
 	/**
 	 * Obtém o valor associado ao Enum.
+	 * 
 	 * @return char refrente ao Enum.
 	 */
-	
-	public char getValue() { return this.value; }
+
+	public char getValue() {
+		return this.value;
+	}
+
+	public static Status getStatus(String arg) {
+
+		for (Status statu : Status.values()) {
+
+			if (statu.toString().equals(arg.toUpperCase()))
+				return statu;
+		}
+
+		return null;
+	}
 }

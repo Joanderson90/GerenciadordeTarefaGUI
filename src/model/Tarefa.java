@@ -22,6 +22,7 @@ import date.MyDate;
  */
 public class Tarefa {
 
+	private int id;
 	private String titulo;
 	private String descricao;
 	private String validade;
@@ -222,6 +223,14 @@ public class Tarefa {
 
 	public void setIdProjetoPertencente(int idProjetoPertencente) {
 		this.idProjetoPertencente = idProjetoPertencente;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
