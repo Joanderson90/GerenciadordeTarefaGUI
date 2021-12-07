@@ -63,7 +63,7 @@ public class FormularioProjetoScreenEditController implements Initializable {
 
 		if (titulo == "" || descricao == "") {
 
-			this.msgAlert.showMessage("Por favor preencha os campos primeiro!", AlertType.ERROR);
+			this.msgAlert.showMessage("Por favor preencha os campos primeiro!", AlertType.WARNING);
 
 		}
 
