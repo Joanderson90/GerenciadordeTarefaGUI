@@ -190,4 +190,45 @@ public class TarefaDAO {
 
 	}
 
+	public static Tarefa getTarefaById(int id) {
+
+		Connection con = ConnectionFactory.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		Tarefa tarefa = null;
+
+		try {
+
+			stmt = con.prepareStatement("SELECT * FROM tarefas WHERE id = ?");
+
+			stmt.setInt(1, id);
+
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+
+				tarefa = new Tarefa();
+
+				tarefa.setId(rs.getInt("id"));
+				tarefa.setTitulo(rs.getString("titulo"));
+				tarefa.setDescricao(rs.getString("descricao"));
+				tarefa.setStatus(Status.getStatus(rs.getString("status")));
+				tarefa.setValidade(MyDate.parseToComumFormat(rs.getDate("validade")));
+				tarefa.setIdProjetoPertencente(rs.getInt("idProjetoPertencente"));
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			ConnectionFactory.closeConnection(con, stmt, rs);
+		}
+
+		return tarefa;
+
+	}
+
 }
