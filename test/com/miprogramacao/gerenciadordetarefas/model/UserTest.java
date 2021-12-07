@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.Before;
 import org.junit.Test;
 
-import Exceptions.ArgumentoInvalidoException;
-import Exceptions.ObjetoInexistenteException;
+import exceptions.ArgumentoInvalidoException;
+import exceptions.ObjetoInexistenteException;
 import model.Projeto;
 import model.Status;
 import model.Tarefa;

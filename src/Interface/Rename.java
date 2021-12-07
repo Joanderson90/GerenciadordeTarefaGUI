@@ -11,8 +11,8 @@ do código, e estou ciente que estes trechos não serão considerados para fins de 
 
 package Interface;
 
-import Exceptions.ArgumentoInvalidoException;
-import Exceptions.ObjetoInexistenteException;
+import exceptions.ArgumentoInvalidoException;
+import exceptions.ObjetoInexistenteException;
 
 /**
  * @author Diego Cerqueira e Joanderson Santos

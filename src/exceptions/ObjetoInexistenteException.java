@@ -9,40 +9,44 @@ de outra autoria que não a minha está destacado com uma citação para o autor e a
 do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
 ******************************************************************************************/
 
-package Exceptions;
+package exceptions;
 
 /**
- * A Classe <b>ArgumentoInvalidoException</b> representa a modelagem de uma exceção, esta referente a um argumento inválido.
+ * A Classe <b>ObjetoInexistenteException</b> representa a modelagem de uma exceção,
+ * esta referente a um objeto não cadastrado no Sistema.
  * @since 2021
  * @author Joanderson Santos e Dicego Cerqueira
  */
 
-public class ArgumentoInvalidoException extends Exception{
-
+public class ObjetoInexistenteException extends Exception{
+	
+	
 	private static final long serialVersionUID = 1L;
 	
 	private String msg;
 	
 	/**
-	 * Obtém um objeto do tipo <b>ArgumentoInvalidoException</b>.<br>
-	 * Mensagem:O argumento deve ser diferente de null ou vazio!
-	 * @return objeto do tipo <b>ArgumentoInvalidoException</b>.
+	 * Obtém um objeto do tipo <b>ObjetoInexistenteException</b>.<br>
+	 * Mensagem: Objeto não encontrado no sistema.
+	 * @return objeto do tipo <b>ObjetoInexistenteException</b>.
 	 */
 	
-	public ArgumentoInvalidoException() {
-			
-		super("O argumento deve ser diferente de null ou vazio!");
+	public ObjetoInexistenteException() {
+		
+		super("Objeto não encontrado no sistema.");
 	}
+	
 	
 	/**
 	 * Obtém a mensagem referente à exceção.
-	 * Mensagem:O argumento deve ser diferente de null ou vazio!
-	 * @return mensagem referente à exceção.
+	 * Mensagem:Objeto não encontrado no sistema
+	 * @return mensagem referente a exceção.
 	 */
 		
+
 	public String getMessage() {
 		
 		return this.msg;
 	}
-
+	 
 }

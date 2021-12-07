@@ -10,9 +10,9 @@ do código, e estou ciente que estes trechos não serão considerados para fins de 
 ******************************************************************************************/
 package renameManager;
 
-import Exceptions.ArgumentoInvalidoException;
-import Exceptions.ObjetoInexistenteException;
 import Interface.Rename;
+import exceptions.ArgumentoInvalidoException;
+import exceptions.ObjetoInexistenteException;
 import model.Projeto;
 import model.Tarefa;
 

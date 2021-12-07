@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import Exceptions.ArgumentoInvalidoException;
-import Exceptions.ObjetoInexistenteException;
 import Interface.UserI;
+import exceptions.ArgumentoInvalidoException;
+import exceptions.ObjetoInexistenteException;
 import renameManager.RenameTaskManager;
 
 /**

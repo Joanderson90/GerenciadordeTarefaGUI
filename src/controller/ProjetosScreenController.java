@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import Exceptions.ArgumentoInvalidoException;
+import exceptions.ArgumentoInvalidoException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
