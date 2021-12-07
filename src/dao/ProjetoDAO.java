@@ -89,7 +89,7 @@ public class ProjetoDAO {
 
 			stmt.setString(1, newProjeto.getTitulo());
 			stmt.setString(2, newProjeto.getDescricao());
-			stmt.setInt(5, newProjeto.getId());
+			stmt.setInt(3, newProjeto.getId());
 
 			stmt.executeUpdate();
 

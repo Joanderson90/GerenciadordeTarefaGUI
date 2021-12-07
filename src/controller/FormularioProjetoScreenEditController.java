@@ -14,6 +14,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dao.ProjetoDAO;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -70,6 +71,8 @@ public class FormularioProjetoScreenEditController implements Initializable {
 
 			projetoSelecionado.setTitulo(titulo);
 			projetoSelecionado.setDescricao(descricao);
+
+			ProjetoDAO.update(projetoSelecionado);
 
 			cleanInfoProjeto();
 			closeScreen();

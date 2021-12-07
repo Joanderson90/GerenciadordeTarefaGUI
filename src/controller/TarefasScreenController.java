@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import dao.TarefaDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -171,7 +172,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
 		if (tarefaSelecionada != null) {
 
-			projetoQueDetemTarefas.getTarefas().remove(tarefaSelecionada);
+			TarefaDAO.remove(tarefaSelecionada);
 
 			loadTarefas();
 
@@ -212,7 +213,8 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
 	public static void setTarefaSalva(Tarefa newTarefa) {
 
-		projetoQueDetemTarefas.setTarefa(newTarefa);
+		TarefaDAO.create(newTarefa);
+
 	}
 
 	/**

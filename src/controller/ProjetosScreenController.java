@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import dao.ProjetoDAO;
 import exceptions.ArgumentoInvalidoException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -86,7 +87,7 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 
 	public void loadProjetos() {
 
-		List<Projeto> projetosCadastrados = user.getProjetos();
+		List<Projeto> projetosCadastrados = ProjetoDAO.getProjetos();
 
 		obsProjetos = FXCollections.observableArrayList(projetosCadastrados);
 

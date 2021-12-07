@@ -13,6 +13,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dao.TarefaDAO;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -84,6 +85,8 @@ public class FormularioTarefaScreenEditController implements Initializable {
 			tarefaSelecionada.setDescricao(descriptionTarefa);
 			tarefaSelecionada.setValidade(dateTarefa);
 			tarefaSelecionada.setStatus(statusSelecionado);
+
+			TarefaDAO.update(tarefaSelecionada);
 
 			cleanInfoTarefa();
 			closeScreen();

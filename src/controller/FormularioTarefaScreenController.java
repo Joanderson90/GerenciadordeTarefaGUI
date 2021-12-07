@@ -68,11 +68,14 @@ public class FormularioTarefaScreenController implements Initializable {
 
 			Tarefa newTarefa;
 
+			int idProjetoPertencente = ProjetosScreenController.getProjetoSelecionado().getId();
 			String titleTarefa = txtTitulo.getText();
 			String descriptionTarefa = txtDescricao.getText();
 			String dateTarefa = txtValidade.getEditor().getText();
 
 			newTarefa = new Tarefa(titleTarefa, descriptionTarefa, dateTarefa);
+			
+			newTarefa.setIdProjetoPertencente(idProjetoPertencente);
 
 			TarefasScreenController.setTarefaSalva(newTarefa);
 

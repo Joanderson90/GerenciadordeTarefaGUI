@@ -11,11 +11,6 @@ do código, e estou ciente que estes trechos não serão considerados para fins de 
 
 package Main;
 
-
-
-import java.sql.Date;
-
-import date.MyDate;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -50,9 +45,6 @@ public class Main extends Application {
 		stage.setMinWidth(447);
 		stage.setScene(scene);
 		stage.show();
-		
-		Date d = new Date(MyDate.parseToSQLFormat("07/12/2021").getTime());
-		System.out.println(d);
 
 	}
 
