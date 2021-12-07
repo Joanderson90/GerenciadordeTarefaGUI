@@ -14,194 +14,216 @@ package model;
 import date.MyDate;
 
 /**
- * A Classe <b>Tarefa</b> representa a modelagem de uma <b>Tarefa</b> do Sistema.
+ * A Classe <b>Tarefa</b> representa a modelagem de uma <b>Tarefa</b> do
+ * Sistema.
+ * 
  * @author Diego Cerqueira e Joanderson Santos
  *
  */
 public class Tarefa {
-	
+
 	private String titulo;
 	private String descricao;
 	private String validade;
 	private Status status;
-	
+	private int idProjetoPertencente;
+
 	/**
 	 * Construtor vazio de tarefa.
 	 */
-	
+
 	public Tarefa() {
-		
+
 	}
-			
+
 	/**
 	 * Contrutor de tarefa.
-	 * @param titulo título da tarefa a ser inserido.
+	 * 
+	 * @param titulo    título da tarefa a ser inserido.
 	 * @param descricao descrição da tarefa a ser inserida.
-	 * @param validade validade da tarefa a ser inserida.
+	 * @param validade  validade da tarefa a ser inserida.
 	 */
-	
+
 	public Tarefa(String titulo, String descricao, String validade) {
-		
+
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.validade = validade;
 		this.status = Status.PENDENTE;
 	}
-	
+
 	/**
 	 * Contrutor de tarefa
-	 * @param titulo título da tarefa a ser inserido.
+	 * 
+	 * @param titulo   título da tarefa a ser inserido.
 	 * @param validade validade da tarefa a ser inserida.
 	 */
-	
+
 	public Tarefa(String titulo, String validade) {
-		
+
 		this.titulo = titulo;
 		this.descricao = "";
 		this.validade = validade;
 		this.status = Status.PENDENTE;
 	}
-	
+
 	/**
 	 * retorna o título da tarefa.
+	 * 
 	 * @return String título da tarefa.
 	 */
-	
+
 	public String getTitulo() {
 		return titulo;
 	}
-	
+
 	/**
 	 * insere o título da tarefa
+	 * 
 	 * @param titulo título da tarefa a ser inserido.
 	 */
-	
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	
+
 	/**
 	 * retorna a descrição da tarefa.
+	 * 
 	 * @return String descrição da tarefa.
 	 */
-	
+
 	public String getDescricao() {
 		return descricao;
 	}
-	
+
 	/**
 	 * insere a descrição da tarefa.
+	 * 
 	 * @param descricao descrição da tarefa.
 	 */
-	
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
 	/**
 	 * retorna a data de validade da tarefa no formato dd/MM/yyyy.
+	 * 
 	 * @return String validade da tarefa no formato dd/MM/yyyy.
 	 */
-	
+
 	public String getValidade() {
 		return validade;
 	}
-	
+
 	/**
 	 * insere uma validade a tarefa no formato dd/MM/yyyy.
+	 * 
 	 * @param validade validade da tarefa formato dd/MM/yyyy.
 	 */
-	
+
 	public void setValidade(String validade) {
 		this.validade = validade;
 	}
-	
+
 	/**
 	 * retorna o status da tarefa.
+	 * 
 	 * @return Status Enum referente ao Status da tarefa.
 	 */
-	
+
 	public Status getStatus() {
 		return status;
 	}
-	
+
 	/**
 	 * insere um status a tarefa
+	 * 
 	 * @param status Enum referente ao Status da tarefa a ser inserido.
 	 */
-	
+
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	
+
 	/**
 	 * Compara duas tarefas.
+	 * 
 	 * @return true se os dois projetos são iguais, ou false caso contrário.
 	 */
-	
+
 	public boolean equals(Object obj) {
-        
-        if (obj instanceof Tarefa){
 
-            Tarefa tarefaASerComparada = (Tarefa) obj;
-            
-            return (this.titulo == tarefaASerComparada.getTitulo() &&
-            		this.descricao == tarefaASerComparada.getDescricao() &&           		
-    				this.validade == tarefaASerComparada.getValidade() &&
-    				this.status == tarefaASerComparada.getStatus());
+		if (obj instanceof Tarefa) {
 
-        }
-        
-        return false;
+			Tarefa tarefaASerComparada = (Tarefa) obj;
+
+			return (this.titulo == tarefaASerComparada.getTitulo()
+					&& this.descricao == tarefaASerComparada.getDescricao()
+					&& this.validade == tarefaASerComparada.getValidade()
+					&& this.status == tarefaASerComparada.getStatus());
+
+		}
+
+		return false;
 	}
 
 	/**
 	 * verifica se uma tarefa está atrasada.
+	 * 
 	 * @return boolean true se a tarefa está atrasada, ou false caso contrário.
 	 */
-	
+
 	public boolean getIsAtrasada() {
-		
+
 		Status statusConcluida = Status.CONCLUIDA;
-		
+
 		boolean isAtrasada = false;
 		boolean isTarefaConcluida = (this.status == statusConcluida);
-		
-		if(!isTarefaConcluida) {
-			
+
+		if (!isTarefaConcluida) {
+
 			MyDate date = new MyDate();
-			
+
 			String currentDate = date.getCurrentDate();
 			String dateTarefa = this.validade;
-			
-			
-			int valComp = date.compareTo(currentDate, dateTarefa);//Método similar ao CompareTo da classe String
-			
-			if(valComp >= 1) isAtrasada = true; //Data atual > Data tarefa
-		}	
+
+			int valComp = date.compareTo(currentDate, dateTarefa);// Método similar ao CompareTo da classe String
+
+			if (valComp >= 1)
+				isAtrasada = true; // Data atual > Data tarefa
+		}
 		return isAtrasada;
 	}
-	
 
 	/**
 	 * Método pra converter um objeto tarefa para uma string.
 	 */
-	
+
 	@Override
 	public String toString() {
-		
-		boolean isTarefaAtrasada = this.getIsAtrasada();
-		
-		String marcacaoAtrasada = "";
-		
 
-		if(isTarefaAtrasada)  marcacaoAtrasada = " [Atrasada!]";
-		
-		return "Título: "    +  this.getTitulo()  + "\n" +
-			   "Descrição: " + this.getDescricao() + "\n" +
-			   "Validade: " + this.getValidade() + 
-			   marcacaoAtrasada;
+		boolean isTarefaAtrasada = this.getIsAtrasada();
+
+		String marcacaoAtrasada = "";
+
+		if (isTarefaAtrasada)
+			marcacaoAtrasada = " [Atrasada!]";
+
+		return "Título: " + this.getTitulo() + "\n" + "Descrição: " + this.getDescricao() + "\n" + "Validade: "
+				+ this.getValidade() + marcacaoAtrasada;
 
 	}
+
+	public int getIdProjetoPertencente() {
+		return idProjetoPertencente;
+	}
+
+	public void setIdProjetoPertencente(int idProjetoPertencente) {
+		this.idProjetoPertencente = idProjetoPertencente;
+	}
 	
+	
+
 }
