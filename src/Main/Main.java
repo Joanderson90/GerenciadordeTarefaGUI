@@ -11,7 +11,6 @@ do código, e estou ciente que estes trechos não serão considerados para fins de 
 
 package Main;
 
-import date.MyDate;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,41 +19,37 @@ import javafx.stage.Stage;
 
 /**
  * Classe principal do projeto.
+ * 
  * @author Diego Cerqueira e Joanderson Santos
  *
  */
 public class Main extends Application {
-    
-    /**
-     * Método da interface Application que inicializa a tela principal do projeto.
-     * @param stage
-     */
-	
-    @Override
-    public void start(Stage stage) throws Exception {
-    	
-    	FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/MainScreen.fxml"));
-        Parent root = loader.load();
-        
-        
-        Scene scene = new Scene(root);
-        
-        stage.setTitle("MainScreen");
-        //stage.setMaximized(true);
-        stage.setMinHeight(332);
-        stage.setMinWidth(447);
-        stage.setScene(scene);
-        stage.show();
-        
-        
-        String dateTes = "03/12/2021";
-        
-        System.out.println(MyDate.parseToSQLFormat(dateTes).getYear());
-    }
 
-   
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
+	/**
+	 * Método da interface Application que inicializa a tela principal do projeto.
+	 * 
+	 * @param stage
+	 */
+
+	@Override
+	public void start(Stage stage) throws Exception {
+
+		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/MainScreen.fxml"));
+		Parent root = loader.load();
+
+		Scene scene = new Scene(root);
+
+		stage.setTitle("MainScreen");
+		// stage.setMaximized(true);
+		stage.setMinHeight(332);
+		stage.setMinWidth(447);
+		stage.setScene(scene);
+		stage.show();
+
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+
 }

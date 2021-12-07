@@ -136,7 +136,8 @@ public class MyDate {
 
 	public static Date parseToSQLFormat(String date) {
 
-		// Format date day/dayOfMonth/year example: 12/08/2021
+		// Format date input day/dayOfMonth/year example: 12/08/2021
+		// Format date output year-dayOfMonth-year example: 12-08-2021
 
 		String year = date.substring(6, 10);
 		String month = date.substring(3, 5);
