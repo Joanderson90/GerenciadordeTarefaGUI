@@ -177,7 +177,7 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 
 		if (projetoAlvo == null) {
 
-			this.msgAlert.showMessage("Por favor selecione um projeto primeiro!", AlertType.ERROR);
+			this.msgAlert.showMessage("Por favor selecione um projeto primeiro!", AlertType.WARNING);
 
 		} else {
 
@@ -191,7 +191,7 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 
 			} else {
 
-				this.msgAlert.showMessage("O projeto detém tarefas não concluídas!", AlertType.ERROR);
+				this.msgAlert.showMessage("O projeto detém tarefas não concluídas!", AlertType.WARNING);
 
 			}
 		}
@@ -217,7 +217,7 @@ public class ProjetosScreenController implements Initializable, EventHandler<Act
 
 		} else {
 
-			this.msgAlert.showMessage("Por favor selecione um projeto primeiro!", AlertType.ERROR);
+			this.msgAlert.showMessage("Por favor selecione um projeto primeiro!", AlertType.WARNING);
 		}
 	}
 
