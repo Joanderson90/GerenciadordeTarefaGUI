@@ -68,9 +68,7 @@ public class FormularioTarefaScreenEditController implements Initializable {
 
 	public void salvarEditTarefa() {
 
-		boolean isCampoAnyEmpty = verificarCampoAnyEmpty();
-
-		if (isCampoAnyEmpty) {
+		if (isAnyCampoEmpty()) {
 
 			this.msgAlert.showMessage("Por favor preencha os campos primeiro!", AlertType.ERROR);
 
@@ -88,7 +86,6 @@ public class FormularioTarefaScreenEditController implements Initializable {
 
 			TarefaDAO.update(tarefaSelecionada);
 
-			cleanInfoTarefa();
 			closeScreen();
 
 			this.msgAlert.showMessage("Tarefa editada com Sucesso!", AlertType.INFORMATION);
@@ -110,34 +107,22 @@ public class FormularioTarefaScreenEditController implements Initializable {
 	}
 
 	/**
-	 * Método que limpa os campos do formulário de edição de tarefa.
-	 */
-
-	private void cleanInfoTarefa() {
-
-		txtTitulo.setText("");
-		txtDescricao.setText("");
-		txtValidade.getEditor().setText("");
-
-	}
-
-	/**
 	 * Verifica se pelo menos um campo está vazio.
 	 * 
 	 * @return boolean true se pelo menos um campo está vazio, ou false se todos os
 	 *         campos estão preenchidos.
 	 */
 
-	private boolean verificarCampoAnyEmpty() {
+	private boolean isAnyCampoEmpty() {
 
-		boolean isCampoAnyEmpty = false;
+		boolean isAnyCampoEmpty = false;
 
 		if (txtTitulo.getText() == "" || txtDescricao.getText() == "" || txtValidade.getEditor().getText() == "") {
 
-			isCampoAnyEmpty = true;
+			isAnyCampoEmpty = true;
 		}
 
-		return isCampoAnyEmpty;
+		return isAnyCampoEmpty;
 	}
 
 	/**
