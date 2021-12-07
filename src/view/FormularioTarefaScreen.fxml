@@ -87,7 +87,7 @@
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></Button>
-                  <Button fx:id="btnVoltar" mnemonicParsing="false" text="Voltar">
+                  <Button fx:id="btnVoltar" mnemonicParsing="false" style="-fx-background-color: white;" text="Voltar">
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>

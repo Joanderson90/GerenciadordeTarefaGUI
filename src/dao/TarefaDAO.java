@@ -96,12 +96,12 @@ public class TarefaDAO {
 		try {
 
 			stmt = connection.prepareStatement(
-					"UPDATE tarefas SET titulo = ?, descricao = ?, status = ?, validade = ? WHERE id = ?");
+					"UPDATE tarefas SET titulo = ?, descricao = ?, validade = ?, status = ? WHERE id = ?");
 
 			stmt.setString(1, newTarefa.getTitulo());
 			stmt.setString(2, newTarefa.getDescricao());
-			stmt.setString(3, newTarefa.getStatus().name());
-			stmt.setString(4, newTarefa.getValidade());
+			stmt.setDate(3, new Date(MyDate.parseToSQLFormat(newTarefa.getValidade()).getTime()));
+			stmt.setString(4, newTarefa.getStatus().name());
 			stmt.setInt(5, newTarefa.getId());
 
 			stmt.executeUpdate();
