@@ -74,29 +74,16 @@ public class FormularioTarefaScreenController implements Initializable {
 			String dateTarefa = txtValidade.getEditor().getText();
 
 			newTarefa = new Tarefa(titleTarefa, descriptionTarefa, dateTarefa);
-			
+
 			newTarefa.setIdProjetoPertencente(idProjetoPertencente);
 
 			TarefasScreenController.setTarefaSalva(newTarefa);
 
-			cleanInfoTarefa();
 			closeScreen();
 
 			this.msgAlert.showMessage("Tarefa salva com Sucesso!", AlertType.INFORMATION);
 
 		}
-	}
-
-	/**
-	 * Método para limpar os campos do formulário.
-	 */
-
-	private void cleanInfoTarefa() {
-
-		txtTitulo.setText("");
-		txtDescricao.setText("");
-		txtValidade.getEditor().setText("");
-
 	}
 
 	/**
