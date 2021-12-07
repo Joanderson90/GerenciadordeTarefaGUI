@@ -119,7 +119,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 	@FXML
 	void openFormularioTarefaScreenEdit(ActionEvent event) throws IOException {
 
-		if (tarefaSelecionada != null) {
+		if (isTarefaSelecionada()) {
 
 			screenManager.openNewScreen("FormularioTarefaScreenEdit", "Edição Tarefas");
 
@@ -130,6 +130,11 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 			this.msgAlert.showMessage("Por favor selecione uma Tarefa!", AlertType.ERROR);
 		}
 
+	}
+
+	private boolean isTarefaSelecionada() {
+
+		return tarefaSelecionada != null;
 	}
 
 	/**
@@ -170,7 +175,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 	@FXML
 	void excluirTarefa(ActionEvent event) {
 
-		if (tarefaSelecionada != null) {
+		if (isTarefaSelecionada()) {
 
 			TarefaDAO.remove(tarefaSelecionada);
 
