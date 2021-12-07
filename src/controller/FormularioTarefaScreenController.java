@@ -62,7 +62,7 @@ public class FormularioTarefaScreenController implements Initializable {
 
 		if (isCampoAnyEmpty) {
 
-			this.msgAlert.showMessage("Por favor preencha os campos primeiro!", AlertType.ERROR);
+			this.msgAlert.showMessage("Por favor preencha os campos primeiro!", AlertType.WARNING);
 
 		} else {
 
