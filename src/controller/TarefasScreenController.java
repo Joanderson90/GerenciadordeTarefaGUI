@@ -127,7 +127,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
 		} else {
 
-			this.msgAlert.showMessage("Por favor selecione uma Tarefa!", AlertType.ERROR);
+			this.msgAlert.showMessage("Por favor selecione uma Tarefa!", AlertType.WARNING);
 		}
 
 	}
@@ -186,7 +186,7 @@ public class TarefasScreenController implements Initializable, EventHandler<Acti
 
 		else {
 
-			this.msgAlert.showMessage("Por favor selecione uma tarefa primeiro!", AlertType.ERROR);
+			this.msgAlert.showMessage("Por favor selecione uma tarefa primeiro!", AlertType.WARNING);
 		}
 
 	}
