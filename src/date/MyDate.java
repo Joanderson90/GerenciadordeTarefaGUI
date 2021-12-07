@@ -159,5 +159,13 @@ public class MyDate {
 		return dateSQL;
 
 	}
+	
+	public static String parseToComumFormat(Date date) {
+		
+		// Format date input year-dayOfMonth-year example: 12-08-2021
+		// Format date output day/dayOfMonth/year example: 12/08/2021
+
+		return new SimpleDateFormat("dd/MM/yyyy").format(date);
+	}
 
 }
